@@ -1,0 +1,5 @@
+FROM scratch
+LABEL maintainer "Dominic Taylor <dominic@yobasystems.co.uk>" architecture="ARM32v7/armhf"  alpineversion="3.6.1"
+
+ADD alpine-minirootfs-3.6.1-armhf.tar.gz /
+CMD ["/bin/sh"]
