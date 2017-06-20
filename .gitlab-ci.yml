@@ -3,8 +3,7 @@ stages:
   - deploy
 
 amd64 build:
-  services:
-    - docker:dind
+  stage: docker:dind
   stage: build
   tags:
     - amd64
