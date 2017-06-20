@@ -2,7 +2,6 @@ stages:
   - build
   - deploy
 
-
 amd64 build:
   services:
     - docker:dind
@@ -36,12 +35,16 @@ arm32v7 build:
 
 Github Mirror:
   stage: deploy
+  tags:
+    - deploy
   script:
     - git push --mirror https://$GITHUB_USERNAME:$GITHUB_PASSWORD@$GITHUB_REPO
     - git push https://$GITHUB_USERNAME:$GITHUB_PASSWORD@$GITHUB_REPO HEAD:master
 
 Bitbucket Mirror:
   stage: deploy
+  tags:
+    - deploy
   script:
     - mkdir -p ~/.ssh
     - echo "$BB_SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
