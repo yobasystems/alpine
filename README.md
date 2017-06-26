@@ -1,8 +1,9 @@
 # Alpine Linux in Docker
 
+### Current Alpine Version 3.6.2 (Released Jun 17, 2017)
+
 This docker image is the base Alpine Linux.
 
-### Current Alpine Version 3.6.2 (Released Jun 17, 2017)
 ----
 
 ## What is Alpine Linux?
@@ -11,10 +12,10 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 ## More about this Docker image
 This docker image is so it makes it easy for a base Alpine image for all architectures listed below;
 
-(amd64)   - 64 bit Intel/AMD - x86_64/amd64
-(i386)    - 32 bit Intel/AMD - x86/i386
-(arm64v8) - 64 bit ARM - ARMv8/aarch64
-(arm32v7) - 32 bit ARM - ARMv7/armhf
+```(amd64)```    - 64 bit Intel/AMD - x86_64/amd64
+```(i386)```     - 32 bit Intel/AMD - x86/i686
+```(arm64v8)```  - 64 bit ARM - ARMv8/aarch64
+```(arm32v7)```  - 32 bit ARM - ARMv7/armhf
 
 
 
