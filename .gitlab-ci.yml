@@ -31,6 +31,21 @@ arm32v7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf
 
+i386 build:
+  stage: yobasystems/alpine-dind:armhf
+  stage: build
+  tags:
+    - x86
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd i386/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:i386 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:i386 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:i386 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:x86 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:x86 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:i386
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:x86
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:i386
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:x86
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:i386
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86
 
 Github Mirror:
   stage: deploy
