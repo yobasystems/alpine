@@ -32,7 +32,7 @@ arm32v7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf
 
 i386 build:
-  stage: yobasystems/alpine-dind:armhf
+  stage: yobasystems/alpine-dind:x86
   stage: build
   tags:
     - x86
