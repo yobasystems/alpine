@@ -1,6 +1,6 @@
 # Alpine Linux in Docker
 
-### Current Alpine Version 3.6.2 (Released Jun 17, 2017)
+### Current Alpine Version 3.7.0 (Released Nov 30, 2017)
 
 This docker image is the base Alpine Linux.
 
