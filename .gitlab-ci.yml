@@ -47,8 +47,7 @@ i386 latest build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:i386
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86
 
-
-amd64 3.7 build:
+amd64 3.7.0 build:
   stage: docker:dind
   stage: build
   tags:
@@ -60,7 +59,7 @@ amd64 3.7 build:
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-amd64
 
-arm32v7 3.7 build:
+arm32v7 3.7.0 build:
   stage: yobasystems/alpine-dind:armhf
   stage: build
   tags:
@@ -76,7 +75,7 @@ arm32v7 3.7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-arm32v7
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-armhf
 
-i386 3.7 build:
+i386 3.7.0 build:
   stage: yobasystems/alpine-dind:x86
   stage: build
   tags:
@@ -92,7 +91,7 @@ i386 3.7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-i386
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-x86
 
-amd64 3.7 build:
+amd64 3.6.2 build:
   stage: docker:dind
   stage: build
   tags:
@@ -104,7 +103,7 @@ amd64 3.7 build:
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-amd64
 
-arm32v7 3.7 build:
+arm32v7 3.6.2 build:
   stage: yobasystems/alpine-dind:armhf
   stage: build
   tags:
@@ -120,7 +119,7 @@ arm32v7 3.7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-arm32v7
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-armhf
 
-i386 3.7 build:
+i386 3.6.2 build:
   stage: yobasystems/alpine-dind:x86
   stage: build
   tags:
