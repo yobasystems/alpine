@@ -2,7 +2,7 @@ stages:
   - build
   - deploy
 
-amd64 build:
+amd64 latest build:
   stage: docker:dind
   stage: build
   tags:
@@ -15,7 +15,7 @@ amd64 build:
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
     - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:amd64
 
-arm32v7 build:
+arm32v7 latest build:
   stage: yobasystems/alpine-dind:armhf
   stage: build
   tags:
@@ -31,7 +31,7 @@ arm32v7 build:
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf
 
-i386 build:
+i386 latest build:
   stage: yobasystems/alpine-dind:x86
   stage: build
   tags:
@@ -46,6 +46,95 @@ i386 build:
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:x86
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:i386
     - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86
+
+
+amd64 3.7 build:
+  stage: docker:dind
+  stage: build
+  tags:
+    - amd64
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.7.0/amd64/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-amd64 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-amd64
+
+arm32v7 3.7 build:
+  stage: yobasystems/alpine-dind:armhf
+  stage: build
+  tags:
+    - armhf
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.7.0/arm32v7/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-arm32v7 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-armhf -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-armhf -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-armhf .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-arm32v7
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-armhf
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-arm32v7
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-armhf
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-arm32v7
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-armhf
+
+i386 3.7 build:
+  stage: yobasystems/alpine-dind:x86
+  stage: build
+  tags:
+    - x86
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.7.0/i386/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-i386 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-i386 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-i386 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-x86 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-x86 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-x86 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-i386
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0-x86
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-i386
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0-x86
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-i386
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7.0-x86
+
+amd64 3.7 build:
+  stage: docker:dind
+  stage: build
+  tags:
+    - amd64
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.6.2/amd64/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-amd64 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-amd64
+
+arm32v7 3.7 build:
+  stage: yobasystems/alpine-dind:armhf
+  stage: build
+  tags:
+    - armhf
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.6.2/arm32v7/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-arm32v7 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-armhf -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-armhf -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-armhf .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-arm32v7
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-armhf
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-arm32v7
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-armhf
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-arm32v7
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-armhf
+
+i386 3.7 build:
+  stage: yobasystems/alpine-dind:x86
+  stage: build
+  tags:
+    - x86
+  script:
+    - apk add --update git
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $DOCKER_REGISTRY
+    - cd alpine-3.6.2/i386/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-i386 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-i386 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-i386 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-x86 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-x86 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-x86 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-i386
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2-x86
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-i386
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6.2-x86
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-i386
+    - docker login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6.2-x86
 
 Github Mirror:
   stage: deploy
