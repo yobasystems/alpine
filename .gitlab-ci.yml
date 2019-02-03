@@ -106,6 +106,28 @@ arm32v7 3.8.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.2-armhf
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-armhf
 
+arm64v8 3.8.2 build:
+  stage: yobasystems/alpine-dind:aarch64
+  stage: build
+  tags:
+    - aarch64
+  script:
+    - apk add --update git
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
+    - cd arm64v8/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.2-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.2-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.2-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.2-arm64v8 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.2-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.2-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-arm64v8 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.2-arm64v8
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8-arm64v8
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.2-aarch64
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8-aarch64
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.2-arm64v8
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8-arm64v8
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.2-aarch64
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8-aarch64
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.2-arm64v8
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-arm64v8
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.2-aarch64
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-aarch64
+
 i386 3.8.2 build:
   stage: yobasystems/alpine-dind:x86
   stage: build
@@ -161,6 +183,22 @@ arm32v7 3.8.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-arm32v7
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-armhf
 
+arm64v8 3.8.1 build:
+  stage: yobasystems/alpine-dind:aarch64
+  stage: build
+  tags:
+    - aarch64
+  script:
+    - apk add --update git
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
+    - cd alpine-3.8.1/arm64v8/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.1-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.1-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.1-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.1-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-arm64v8 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.1-arm64v8
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.1-aarch64
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.1-arm64v8
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.1-aarch64
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-arm64v8
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-aarch64
+
 i386 3.8.1 build:
   stage: yobasystems/alpine-dind:x86
   stage: build
@@ -208,6 +246,22 @@ arm32v7 3.8.0 build:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0-armhf
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-arm32v7
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-armhf
+
+arm64v8 3.8.0 build:
+  stage: yobasystems/alpine-dind:aarch64
+  stage: build
+  tags:
+    - aarch64
+  script:
+    - apk add --update git
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
+    - cd alpine-3.8.0/arm64v8/ && docker build -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.0-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.0-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-arm64v8 .
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.0-arm64v8
+    - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.0-aarch64
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0-arm64v8
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0-aarch64
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-arm64v8
+    - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-aarch64
 
 i386 3.8.0 build:
   stage: yobasystems/alpine-dind:x86
