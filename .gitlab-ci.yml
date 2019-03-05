@@ -616,6 +616,42 @@ dockerhub manifest creation 3.9:
     - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9-arm64v8 --os linux --arch arm64
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9
 
+gitlab manifest creation 3.9.0:
+  image: yobasystems/alpine-docker:amd64-dind
+  stage: manifest
+  tags:
+    - amd64
+  script:
+    - mkdir /root/.docker
+    - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
+    - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-amd64
+    - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm32v7
+    - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm64v8
+    - docker manifest create $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-amd64 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm32v7 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm64v8
+    - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-amd64 --os linux --arch amd64
+    - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm32v7 --os linux --arch arm
+    - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0-arm64v8 --os linux --arch arm64
+    - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0
+
+dockerhub manifest creation 3.9.0:
+  image: yobasystems/alpine-docker:amd64-dind
+  stage: manifest
+  tags:
+    - amd64
+  script:
+    - mkdir /root/.docker
+    - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-amd64
+    - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm32v7
+    - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm64v8
+    - docker manifest create $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-amd64 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm32v7 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm64v8
+    - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-amd64 --os linux --arch amd64
+    - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm32v7 --os linux --arch arm
+    - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0-arm64v8 --os linux --arch arm64
+    - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0
+
 gitlab manifest creation 3.8:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
