@@ -548,7 +548,7 @@ gitlab manifest creation latest:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -566,7 +566,7 @@ dockerhub manifest creation latest:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -584,7 +584,7 @@ gitlab manifest creation 3.9:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -602,7 +602,7 @@ dockerhub manifest creation 3.9:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -620,7 +620,7 @@ gitlab manifest creation 3.9.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -638,7 +638,7 @@ dockerhub manifest creation 3.9.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -656,7 +656,7 @@ gitlab manifest creation 3.8:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -674,7 +674,7 @@ dockerhub manifest creation 3.8:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -692,7 +692,7 @@ gitlab manifest creation 3.8.2:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -710,7 +710,7 @@ dockerhub manifest creation 3.8.2:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -728,7 +728,7 @@ gitlab manifest creation 3.8.1:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -746,7 +746,7 @@ dockerhub manifest creation 3.8.1:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -764,7 +764,7 @@ gitlab manifest creation 3.8.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -782,7 +782,7 @@ dockerhub manifest creation 3.8.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -800,7 +800,7 @@ gitlab manifest creation 3.7:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -818,7 +818,7 @@ dockerhub manifest creation 3.7:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -836,7 +836,7 @@ gitlab manifest creation 3.7.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -854,7 +854,7 @@ dockerhub manifest creation 3.7.0:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -872,7 +872,7 @@ gitlab manifest creation 3.6:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -890,7 +890,7 @@ dockerhub manifest creation 3.6:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -908,7 +908,7 @@ gitlab manifest creation 3.6.2:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
@@ -926,7 +926,7 @@ dockerhub manifest creation 3.6.2:
   image: yobasystems/alpine-docker:amd64-dind
   stage: manifest
   tags:
-    - amd64
+    - manifest
   script:
     - mkdir /root/.docker
     - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
