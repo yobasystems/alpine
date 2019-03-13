@@ -4,18 +4,18 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL maintainer="Dominic Taylor <dominic@yobasystems.co.uk>" \
-    architecture="amd64/x86_64" \
-    alpine-version="3.8.2" \
+    architecture="arm32v7/armhf" \
+    alpine-version="3.9.2" \
     build="13-Mar-2019" \
     org.opencontainers.image.title="alpine" \
     org.opencontainers.image.description="Docker image running on Alpine Linux" \
     org.opencontainers.image.authors="Dominic Taylor <dominic@yobasystems.co.uk>" \
     org.opencontainers.image.vendor="Yoba Systems" \
-    org.opencontainers.image.version="v3.8.2" \
+    org.opencontainers.image.version="v3.9.2" \
     org.opencontainers.image.url="https://hub.docker.com/r/yobasystems/alpine/" \
     org.opencontainers.image.source="https://github.com/yobasystems/alpine" \
     org.opencontainers.image.revision=$VCS_REF \
     org.opencontainers.image.created=$BUILD_DATE
 
-ADD alpine-minirootfs-3.8.2-x86_64.tar.gz /
+ADD alpine-minirootfs-3.9.2-armhf.tar.gz /
 CMD ["/bin/sh"]

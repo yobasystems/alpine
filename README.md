@@ -4,12 +4,12 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 [![Docker Stars](https://img.shields.io/docker/stars/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 
-[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.9.0-green.svg?style=for-the-badge)](https://alpinelinux.org/)
+[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.9.2-green.svg?style=for-the-badge)](https://alpinelinux.org/)
 
 
 This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
-##### Alpine Version 3.9.0 (Released January 29, 2019)
+##### Alpine Version 3.9.2 (Released March 04, 2019)
 
 This docker image is the base Alpine Linux.
 
@@ -20,14 +20,14 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 
 ## Features
 
-  * Minimal size only, minimal layers
-  * Memory usage is minimal on a simple install.
+* Minimal size only, minimal layers
+* Memory usage is minimal on a simple install.
 
 ## Architectures
 
-  * ```:amd64```, ```:x86_64``` - 64 bit Intel/AMD (x86_64/amd64)
-  * ```:arm64v8```, ```:aarch64``` - 64 bit ARM (ARMv8/aarch64)
-  * ```:arm32v7```, ```:armhf``` - 32 bit ARM (ARMv7/armhf)
+* ```:amd64```, ```:x86_64``` - 64 bit Intel/AMD (x86_64/amd64)
+* ```:arm64v8```, ```:aarch64``` - 64 bit ARM (ARMv8/aarch64)
+* ```:arm32v7```, ```:armhf``` - 32 bit ARM (ARMv7/armhf)
 
 #### PLEASE CHECK TAGS BELOW FOR SUPPORTED ARCHITECTURES, THE ABOVE IS A LIST OF EXPLANATION
 
@@ -35,7 +35,7 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 
 * ```:latest``` latest branch based (Automatic Architecture Selection)
 * ```:master``` master branch usually inline with latest
-* ```:3.9.0```, ```:3.9.0-arch``` version tag (Automatic Architecture Selection)
+* ```:3.9.2```, ```:3.9.2-arch``` version tag (Automatic Architecture Selection)
 * ```:amd64```, ```:x86_64``` amd64 based on latest tag but amd64 architecture
 * ```:aarch64```, ```:arm64v8``` Armv8 based on latest tag but arm64 architecture
 * ```:armhf```, ```:arm32v7``` Armv7 based on latest tag but arm architecture
