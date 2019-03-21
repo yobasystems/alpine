@@ -5,7 +5,7 @@ stages:
   - deploy
 
 amd64 latest build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -26,7 +26,7 @@ amd64 latest build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64
 
 arm32v7 latest build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -47,7 +47,7 @@ arm32v7 latest build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf
 
 arm64v8 latest build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -68,7 +68,7 @@ arm64v8 latest build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:aarch64
 
 amd64 3.9.2 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -95,7 +95,7 @@ amd64 3.9.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9-amd64
 
 arm32v7 3.9.2 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -122,7 +122,7 @@ arm32v7 3.9.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9-armhf
 
 arm64v8 3.9.2 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -149,7 +149,7 @@ arm64v8 3.9.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9-aarch64
 
 amd64 3.9.1 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -170,7 +170,7 @@ amd64 3.9.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.1-amd64
 
 arm32v7 3.9.1 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -191,7 +191,7 @@ arm32v7 3.9.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.1-armhf
 
 arm64v8 3.9.1 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -212,7 +212,7 @@ arm64v8 3.9.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.1-aarch64
 
 amd64 3.9.0 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -233,7 +233,7 @@ amd64 3.9.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.0-amd64
 
 arm32v7 3.9.0 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -254,7 +254,7 @@ arm32v7 3.9.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.0-armhf
 
 arm64v8 3.9.0 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -275,7 +275,7 @@ arm64v8 3.9.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.9.0-aarch64
 
 amd64 3.8.2 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -302,7 +302,7 @@ amd64 3.8.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-amd64
 
 arm32v7 3.8.2 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -329,7 +329,7 @@ arm32v7 3.8.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-armhf
 
 arm64v8 3.8.2 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -356,7 +356,7 @@ arm64v8 3.8.2 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8-aarch64
 
 amd64 3.8.1 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -377,7 +377,7 @@ amd64 3.8.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-amd64
 
 arm32v7 3.8.1 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -398,7 +398,7 @@ arm32v7 3.8.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-armhf
 
 arm64v8 3.8.1 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -419,7 +419,7 @@ arm64v8 3.8.1 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.1-aarch64
 
 amd64 3.8.0 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -440,7 +440,7 @@ amd64 3.8.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-amd64
 
 arm32v7 3.8.0 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -461,7 +461,7 @@ arm32v7 3.8.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-armhf
 
 arm64v8 3.8.0 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -482,7 +482,7 @@ arm64v8 3.8.0 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.8.0-aarch64
 
 amd64 3.7 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -509,7 +509,7 @@ amd64 3.7 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7-amd64
 
 arm64v8 3.7 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -536,7 +536,7 @@ arm64v8 3.7 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7-aarch64
 
 arm32v7 3.7 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -563,7 +563,7 @@ arm32v7 3.7 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.7-armhf
 
 amd64 3.6 build:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - amd64
@@ -590,7 +590,7 @@ amd64 3.6 build:
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.6-amd64
 
 arm64v8 3.6 build:
-  image: yobasystems/alpine-docker:aarch64-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - aarch64
@@ -618,7 +618,7 @@ arm64v8 3.6 build:
 
 
 arm32v7 3.6 build:
-  image: yobasystems/alpine-docker:armhf-dind
+  image: yobasystems/alpine-docker:dind
   stage: build
   tags:
     - armhf
@@ -656,7 +656,7 @@ container_scanning:
     CLAIR_HOST: $CLAIR_URL
   allow_failure: true
   services:
-    - yobasystems/alpine-docker:amd64-dind
+    - yobasystems/alpine-docker:dind
   script:
     - apk add -U wget ca-certificates
     - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
@@ -671,7 +671,7 @@ container_scanning:
       container_scanning: gl-container-scanning-report.json
 
 gitlab manifest creation latest:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -689,7 +689,7 @@ gitlab manifest creation latest:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
 
 dockerhub manifest creation latest:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -707,7 +707,7 @@ dockerhub manifest creation latest:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
 
 gitlab manifest creation 3.9:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -725,7 +725,7 @@ gitlab manifest creation 3.9:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9
 
 dockerhub manifest creation 3.9:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -743,7 +743,7 @@ dockerhub manifest creation 3.9:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9
 
 gitlab manifest creation 3.9.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -761,7 +761,7 @@ gitlab manifest creation 3.9.2:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.2
 
 dockerhub manifest creation 3.9.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -779,7 +779,7 @@ dockerhub manifest creation 3.9.2:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.2
 
 gitlab manifest creation 3.9.1:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -797,7 +797,7 @@ gitlab manifest creation 3.9.1:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.1
 
 dockerhub manifest creation 3.9.1:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -815,7 +815,7 @@ dockerhub manifest creation 3.9.1:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.1
 
 gitlab manifest creation 3.9.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -833,7 +833,7 @@ gitlab manifest creation 3.9.0:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.9.0
 
 dockerhub manifest creation 3.9.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -851,7 +851,7 @@ dockerhub manifest creation 3.9.0:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.9.0
 
 gitlab manifest creation 3.8:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -869,7 +869,7 @@ gitlab manifest creation 3.8:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8
 
 dockerhub manifest creation 3.8:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -887,7 +887,7 @@ dockerhub manifest creation 3.8:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8
 
 gitlab manifest creation 3.8.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -905,7 +905,7 @@ gitlab manifest creation 3.8.2:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.2
 
 dockerhub manifest creation 3.8.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -923,7 +923,7 @@ dockerhub manifest creation 3.8.2:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.2
 
 gitlab manifest creation 3.8.1:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -941,7 +941,7 @@ gitlab manifest creation 3.8.1:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.1
 
 dockerhub manifest creation 3.8.1:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -959,7 +959,7 @@ dockerhub manifest creation 3.8.1:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.1
 
 gitlab manifest creation 3.8.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -977,7 +977,7 @@ gitlab manifest creation 3.8.0:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.8.0
 
 dockerhub manifest creation 3.8.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -995,7 +995,7 @@ dockerhub manifest creation 3.8.0:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.8.0
 
 gitlab manifest creation 3.7:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1013,7 +1013,7 @@ gitlab manifest creation 3.7:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7
 
 dockerhub manifest creation 3.7:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1031,7 +1031,7 @@ dockerhub manifest creation 3.7:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7
 
 gitlab manifest creation 3.7.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1049,7 +1049,7 @@ gitlab manifest creation 3.7.0:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.7.0
 
 dockerhub manifest creation 3.7.0:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1067,7 +1067,7 @@ dockerhub manifest creation 3.7.0:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.7.0
 
 gitlab manifest creation 3.6:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1085,7 +1085,7 @@ gitlab manifest creation 3.6:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6
 
 dockerhub manifest creation 3.6:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1103,7 +1103,7 @@ dockerhub manifest creation 3.6:
     - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.6
 
 gitlab manifest creation 3.6.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
@@ -1121,7 +1121,7 @@ gitlab manifest creation 3.6.2:
     - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.6.2
 
 dockerhub manifest creation 3.6.2:
-  image: yobasystems/alpine-docker:amd64-dind
+  image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
     - manifest
