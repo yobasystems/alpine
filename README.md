@@ -4,12 +4,12 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 [![Docker Stars](https://img.shields.io/docker/stars/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 
-[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.9.3-green.svg?style=for-the-badge)](https://alpinelinux.org/)
+[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.9.4-green.svg?style=for-the-badge)](https://alpinelinux.org/)
 
 
 This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
-##### Alpine Version 3.9.3 (Released Apr 08, 2019)
+##### Alpine Version 3.9.4 (Released May 09, 2019)
 
 This docker image is the base Alpine Linux.
 
