@@ -76,6 +76,8 @@ This yields us a virtual image size of about 184MB image.
 
 ## Source Repository
 
+* [Gitlab - yobasystems/alpine](https://gitlab.com/yobasystems/alpine)
+
 * [Bitbucket - yobasystems/alpine](https://bitbucket.org/yobasystems/alpine/)
 
 * [Github - yobasystems/alpine](https://github.com/yobasystems/alpine)
