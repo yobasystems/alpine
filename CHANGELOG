@@ -1,3 +1,489 @@
+ALPINE LINUX 3.11.6 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.11.6 of its Alpine Linux operating system.
+
+This includes an important security fix for openssl (CVE-2020-1967).
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+Andy Postnikov (2):
+      community/php7: security upgrade to 7.3.17 CVE-2020-7067
+      community/cacti: upgrade to 1.2.11
+
+Arda Aytekin (1):
+      community/openblas: revert LAPACK changes
+
+Ariadne Conill (2):
+      community/tor: disable package pending security review
+      community/tor: re-enable and rebuild to avoid bogus IDS warning
+
+Carlo Landmeter (1):
+      main/py3-crypto: fix operator
+
+J0WI (6):
+      main/apache2: security upgrade to 2.4.43
+      main/apache2: modernize
+      main/haproxy: security upgrade to 2.0.14
+      main/gd: patch CVE-2018-14553 and CVE-2019-11038
+      main/libssh: security upgrade to 0.9.4
+      main/git: security upgrade to 2.24.2
+
+Jake Buchholz (1):
+      community/runc: security upgrade to 1.0.0_rc10
+
+Kaarle Ritvanen (3):
+      main/strongswan: subpackage for logfile config
+      main/in-sync: backport from edge
+      main/dmvpn: file list for in-sync
+
+Keith Maxwell (1):
+      [3.11] main/ansible: security upgrade to 2.9.7
+
+Kevin Daudt (1):
+      main/git: security upgrade to 2.24.3 (CVE-2020-11008)
+
+Leo (22):
+      community/py3-twisted: security upgrade to 20.3.0
+      main/bluez: fix CVE-2020-0556
+      main/icu: fix CVE-2020-10531
+      community/py3-bleach: security upgrade to 3.1.4
+      main/libmspack: security upgrade to 0.10.1_alpha
+      main/libvpx: add missing secfixes info
+      community/nethack: upgrade to 3.6.6
+      main/unzip: fix CVE-2019-13232
+      community/jenkins: security upgrade to 2.228
+      main/unzip: actually fix CVE-2019-13232
+      main/screen: fix CVE-2020-9366
+      community/dia: fix secfixes comment
+      main/gnutls: fix GNUTLS-SA-2020-03-31
+      main/libgit2: upgrade to 0.28.5
+      main/gnutls: add CVE secfixes info
+      main/mbedtls: security upgrade to 2.16.5
+      main/bubblewrap: security upgrade to 0.4.1
+      main/xen: add missing CVE info
+      main/mercurial: upgrade to 5.3.2
+      community/freerdp: security upgrade to 2.0.0
+      community/wireshark: security upgrade to 3.0.10
+      main/xen: fix various security issues
+
+Leonardo Arena (2):
+      community/nextcloud: upgrade to 17.0.5
+      community/racktables: needs mbstring PHP module
+
+Milan P. Stanić (5):
+      community/firefox-esr: upgrade to 68.6.1
+      community/firefox-esr: upgrade to 68.7.0
+      main/ncurses: fix missing vtXXX terminfo in ncurses-terminfo-base
+      main/st: set depends on ncurses-terminfo-base
+      testing/st-xrdb: set depends on ncurses-terminfo-base
+
+Natanael Copa (16):
+      main/screen: fix patch for CVE-2020-9366
+      main/uwsgi: use libucontext for ugreen plugin
+      community/graphicsmagick: security upgrade to 1.3.35 (CVE-2020-10938)
+      main/freeradius: fix going though post-proxy on dead home server
+      main/openssl: security upgrade to 1.1.1g (CVE-2020-1967)
+      main/linux-lts: upgrade to 5.4.34 and misc config fixes
+      community/jool-modules-lts: rebuild against kernel 5.4.34-r0
+      community/virtualbox-guest-modules-lts: rebuild against kernel 5.4.34-r0
+      community/wireguard-lts: update to 1.0.20200401 / 5.4.34-r0
+      main/drbd-lts: rebuild against kernel 5.4.34-r0
+      main/xtables-addons-lts: rebuild against kernel 5.4.34-r0
+      main/zfs-lts: rebuild against kernel 5.4.34-r0
+      main/linux-rpi: upgrade to 5.4.34
+      community/jool-modules-rpi: rebuild against kernel 5.4.34-r0
+      community/wireguard-rpi: upgrade to 1.0.20200401 / 5.4.34-r0
+      ===== release 3.11.6 =====
+
+Rasmus Thomsen (13):
+      main/vala: upgrade to 0.46.7
+      community/libwpe: new aport
+      community/libwpebackend-fdo: new aport
+      community/webkit2gtk: security upgrade to 2.28.0
+      community/gjs: upgrade to 1.58.6
+      community/mutter: upgrade to 3.34.5
+      community/gnome-shell: upgrade to 3.34.5
+      community/gnome-control-center: upgrade to 3.34.5
+      community/gnome-desktop: upgrade to 3.34.5
+      community/gnome-weather: upgrade to 3.34.1
+      community/gnome-weather: upgrade to 3.34.2
+      community/webkit2gtk: security upgrade to 2.28.1
+      main/vala: upgrade to 0.46.8
+
+Robert Pritzkow (1):
+      main/ruby: security upgrade to 2.6.6
+
+Sören Tempel (1):
+      main/mcpp: fix CVE-2019-14274
+
+Thomas Liske (1):
+      main/py-dbus: fix packaging
+
+Timo Teräs (1):
+      main/apk-tools: upgrade to 2.10.5
+
+Đoàn Trần Công Danh (1):
+      main/git: fix and enable tests
+
+
+ALPINE LINUX 3.11.5 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.11.5 of its Alpine Linux operating system.
+
+The full lists of changes can be found in the git log.
+
+The 3.11.4 release was skipped due to an error in release process.
+
+GIT SHORTLOG
+dam Jensen (2):
+      community/bcc: add static subpackage
+      community/libbpf: upgrade to 0.0.6
+
+André Klitzing (1):
+      main/mercurial: upgrade to 5.3.1
+
+Andy Postnikov (7):
+      community/php7-pecl-xdebug: upgrade to 2.9.1
+      community/phpmyadmin: add secfixes
+      main/ansible: security upgrade to 2.9.3 CVE-2019-14904 CVE-2019-14905
+      main/postfix: upgrade to 3.4.9
+      community/php7: security upgrade to 7.3.15
+      community/php7: security upgrade to 7.3.16
+      community/phpmyadmin: security upgrade to 4.9.5
+
+Bart Ribbers (1):
+      community/okular: security upgrade to 19.08.3-r1
+
+Carlo Landmeter (2):
+      community/chromium: change maintainer
+      main/mariadb: upgrade to 10.4.12 and fix deps
+
+Chad Dougherty (1):
+      main/doas: fix simple typo in description
+
+Francesco Colista (3):
+      community/live-media: fixed symbol-not-found issue
+      community/vlc: bump pkgrel due to upgrade of live-media
+      community/mplayer: bump pkgrel due to upgrade of live-media
+
+Holger Jaekel (1):
+      community/gdal: upgrade to 3.0.3
+
+J0WI (5):
+      main/luajit: add support for s390x
+      community/php7: security upgrade to 7.3.14 (CVE-2020-7059 CVE-2020-7060)
+      community/openjdk8: security upgrade to 8.242.08
+      main/postgresql: security upgrade to 12.2
+      community/tor: security upgrade to 0.4.1.9
+
+Jake Buchholz (1):
+      main/mariadb: upgrade to 10.4.11
+
+Jakub Jirutka (24):
+      community/cesnet-tcs-cli: upgrade to 0.3.0
+      community/kea: fix depends_dev
+      community/kea: move binary kea-lfc to kea-common, remove subpkg kea-utils
+      main/freeradius: fix segfault in process request_running()
+      main/opensmtpd: security upgrade to 6.6.2p1
+      main/opensmtpd: add secfixes
+      community/kea: fix problem with kea service doesn't want to stop
+      main/uwsgi: mitigate backward compat. breakage in -python3 and -gevent3
+      main/uwsgi: actually add post-upgrade script
+      main/sudo: fix CVE-2019-18634
+      main/nodejs: upgrade to 12.15.0
+      main/nodejs: fix man pages to have npm- prefix
+      main/openvpn: allow to pass additional arguments for openvpn
+      community/uacme: create acme-challenge dir
+      main/libxml2: fix CVE-2020-7595
+      main/freeradius: remove sites-available/*.orig
+      main/freeradius: fix perms in certs directory
+      main/protobuf: fix ruby gem - missing symbol __va_copy
+      community/lua-mmdb: new aport (needed for knot-resolver)
+      community/knot-resolver: add missing dependencies
+      community/knot-resolver: add init script for kres-cache-gc
+      main/opensmtpd: security upgrade to 6.6.4p1
+      community/cesnet-tcs-cli: upgrade to 0.3.1
+      community/cesnet-tcs-cli: upgrade to 0.3.2
+
+Kaarle Ritvanen (5):
+      main/awall: upgrade to 1.7.0
+      main/py3-django: security upgrade to 1.11.28
+      main/awall: upgrade to 1.7.1
+      main/dmvpn: fix race condition
+      main/dmvpn: various fixes
+
+Kevin Daudt (5):
+      ci: silence fetching from upstream
+      ci: enable shallow cloning/fetching
+      ci: use clone instead of fetch
+      community/weechat: security upgrade to 2.7.1 (CVE-2020-8955)
+      main/squid: upgrade to 4.10
+
+Leo (34):
+      community/google-authenticator: upgrade to 1.08
+      main/sudo: don't warn about missing /etc/environment with no PAM
+      main/open-iscsi: fix path of commands on initd, add -dev and -libs subpkg
+      main/doas: upgrade to 6.6.1
+      community/uacme: upgrade to 1.0.22
+      community/py3-prettytable: fix permissions
+      main/glib: add missing CVE info
+      main/glib: upgrade to 2.62.5
+      main/ncurses: fix automatic dependency due to symlinks
+      main/ncurses: upgrade to 6.1_p20200118
+      community/xterm: depend on ncurses-terminfo
+      community/alacritty: depend on ncurses-terminfo
+      community/gnome-terminal: depend on ncurses-terminfo
+      testing/kitty: depend on ncurses-terminfo
+      community/konsole: depend on ncurses-terminfo
+      main/putty: depend on ncurses-terminfo
+      main/ncurses: re-arrange terminfo contents
+      {main,community,testing}: make terminals depend on ncurses-terminfo-base
+      main/ncurses: move screen-256color to ncurses-terminfo-base
+      main/python3: upgrade to 3.8.2
+      main/py3-django: upgrade to 1.11.29
+      main/libarchive: upgrade to 3.4.2
+      community/py3-waitress: upgrade to 1.4.1
+      community/py3-bleach: upgrade to 3.1.1
+      community/sleuthkit: fix CVE-2020-10232 and CVE-2020-10233
+      community/cacti: upgrade to 1.2.10
+      main/exiv2: fix CVE-2019-20421
+      main/virglrenderer: security upgrade to 0.8.1
+      main/gst-plugins-base: add secfixes
+      community/py3-bleach: security upgrade to 3.1.2
+      main/ansible: security upgrade to 2.9.6
+      community/ipmitool: fix CVE-2020-5208
+      main/clamav: add missing secfixes info
+      main/py3-yaml: security upgrade to 5.3.1
+
+Leonardo Arena (2):
+      main/samba: security upgrade to 4.11.5
+      community/wireshark: security upgrade to 3.0.8 (CVE-2020-7045)
+
+Milan P. Stanić (15):
+      main/iproute2: fix LIBDIR for tc plugins
+      community/firefox-esr: upgrade to 68.4.2
+      community/gcc6: fix wrong code when returning padded struct
+      community/firefox-esr: upgrade to 68.5.0
+      main/haproxy: upgrade to 2.0.13
+      main/dovecot: security upgrade to 2.3.9.3
+      main/ppp: security fix
+      community/tvheadend: change pkggroup to video
+      community/acme.sh: upgrade to 2.8.5
+      main/musl: thumb2 support for arm memcpy
+      main/nsd: enable ratelimit configure option
+      main/ppp: secfix for radius and EAP
+      community/firefox-esr: security upgrade to 68.6.0
+      main/gcc: fix wrong code when returning padded struct
+      main/musl: backport fixes from 1.2.0
+
+Natanael Copa (39):
+      community/chromium: upgrade to 79.0.3945.130
+      main/alpine-conf: backport lbu fix for listing ciphers
+      main/alpine-conf: unbreak lbu
+      main/libebml: fix secfixes comment
+      main/lz4: fix secfixes comment
+      main/e2fsprogs: fix secfixes comment
+      main/faac: fix secfixes comment
+      community/sox: fix secfixes comment
+      main/zzliplib: fix secfixes comment
+      community/containerd: fix whitespace damage in comment
+      main/sudo: upgrade to 1.8.31
+      community/webkit2gtk: update secfixes comment
+      main/openjpeg: secfixes (CVE-2020-6851,CVE-2020-8112)
+      main/ca-certificates: fix bundle with certs without newline
+      main/libwebsockets: upgrade to 3.2.2
+      community/wireshark: security upgrade to 3.0.9
+      main/linux-lts: upgrade to 5.4.26
+      community/jool-modules-lts: rebuild against kernel 5.4.26-r0
+      community/virtualbox-guest-modules-lts: rebuild against kernel 5.4.26-r0
+      community/wireguard-lts: rebuild against kernel 5.4.26-r0
+      main/drbd-lts: rebuild against kernel 5.4.26-r0
+      main/xtables-addons-lts: rebuild against kernel 5.4.26-r0
+      main/zfs-lts: rebuild against kernel 5.4.26-r0
+      main/linux-rpi: add check to verify kernel version
+      main/linux-rpi: upgrade to 5.4.26
+      community/jool-modules-rpi: rebuild against kernel 5.4.26-r0
+      community/wireguard-rpi: rebuild against kernel 5.4.26-r0
+      main/raspberrypi-bootloader: upgrade to 1.20200212
+      main/linux-lts: upgrade to 5.4.27
+      community/jool-modules-lts: rebuild against kernel 5.4.27-r0
+      community/virtualbox-guest-modules-lts: rebuild against kernel 5.4.27-r0
+      community/wireguard-lts: rebuild against kernel 5.4.27-r0
+      main/drbd-lts: rebuild against kernel 5.4.27-r0
+      main/xtables-addons-lts: rebuild against kernel 5.4.27-r0
+      main/zfs-lts: rebuild against kernel 5.4.27-r0
+      main/linux-rpi: upgrade to 5.4.27
+      community/jool-modules-rpi: rebuild against kernel 5.4.27-r0
+      community/wireguard-rpi: rebuild against kernel 5.4.27-r0
+      ===== release 3.11.5 =====
+
+Rasmus Thomsen (9):
+      community/webkit2gtk: upgrade to 2.26.3
+      community/orca: upgrade to 3.34.2
+      main/vala: upgrade to 0.46.6
+      community/webkit2gtk: upgrade to 2.26.4
+      main/zfs: upgrade to 0.8.3
+      main/zfs-lts: use zfs 0.8.3
+      main/zfs: fix paths in /etc/zfs/zfs{,-functions}
+      community/librsvg: add missing secinfo for CVE-2019-20446
+      main/glib: upgrade to 2.62.6
+
+Sören Tempel (2):
+      main/openrc: fix do_unmount function
+      main/musl: update URL and sources
+
+TBK (1):
+      main/cvs: security upgrade to 1.12.12
+
+Ted Trask (3):
+      main/acf-core: upgrade to 0.22.0
+      main/acf-alpine-baselayout: upgrade to 0.13.3
+      main/acf-lib: upgrade to 0.11.0
+
+Thomas Liske (1):
+      main/iptables: restore lost init.d script for ebtables
+
+
+ALPINE LINUX 3.11.3 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.11.3 of its Alpine Linux operating system.
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+Andy Postnikov (2):
+      community/drupal7: security upgrade to 7.69
+      community/phpmyadmin: upgrade to 4.9.4
+
+Bart Ribbers (1):
+      community/kdeconnect: add missing runtime dep sshfs
+
+Carlo Landmeter (1):
+      community/lua-turbo: add missing ca-certificates
+
+Henrik Riomar (1):
+      main/etckeeper: upgrade to 1.18.13
+
+J0WI (2):
+      main/openvpn: upgrade to 2.4.8
+      community/firefox-esr: security upgrade to 68.4.1
+
+Jakub Jirutka (12):
+      community/kea: upgrade to 1.7.3
+      community/jetty-runner: upgrade to 9.4.15.20190215
+      community/repmgr: upgrade to 5.0.0
+      community/lua-busted: upgrade to 2.0.0
+      community/kea: fix capabilities
+      community/kea-hook-runscript: rebuild against kea 1.7.3
+      community/kea-hook-runscript: take over maintainership
+      community/ruby-rspec-support: upgrade to 3.9.2
+      community/muacme: fix depends on cmd:openssl
+      community/ldap-passwd-webui: fix depends on py-waitress
+      community/py3-waitress: fix broken upgrade from older versions
+      main/openrc: allow to change interfaces config location
+
+Jason A. Donenfeld (1):
+      community/wireguard: update to 20191226
+
+Joel (1):
+      main/linux-lts: enable cannonlake pinctrl for x86_64
+
+Kaarle Ritvanen (2):
+      main/awall: upgrade to 1.6.13
+      main/ulogd: fix logrotate pattern
+
+Kevin Daudt (1):
+      community/salt: fix python3.8 incompattibilities
+
+Leo (6):
+      community/dia: fix CVE-2019-19451.patch
+      main/python3: upgrade to 3.8.1
+      testing/fontforge: rebuild against python3.8
+      community/ruby-rspec-mocks: upgrade to 3.9.1
+      community/ruby-rspec-core: upgrade to 3.9.1
+      main/e2fsprogs: security upgrade to 1.45.5
+
+Leonardo Arena (5):
+      main/xen: add secinfo
+      main/msmtp: fix init script
+      community/lxcfs: let lxc use lxcfs if installed
+      community/pflogsumm: remove sysklogd dependency
+      main/xen: add secinfo
+
+Milan P. Stanić (6):
+      main/haproxy: upgrade to 2.0.12
+      main/linux-lts: upgrade to 5.4.7
+      main/linux-lts: set UEVENT_HELPER_PATH for armv7
+      main/linux-lts: upgrade to 5.4.8
+      main/linux-lts: upgrade to 5.4.11
+      main/linux-lts: upgrade to 5.4.12
+
+Natanael Copa (34):
+      community/chromium: upgrade to 79.0.3945.88
+      community/chromium: fix build on armv7
+      main/py3-django: security upgrade to 1.11.27 (CVE-2019-19844)
+      main/openssl: fix CVE-2019-1551
+      community/opensc: security upgrade to 0.20.0
+      main/samba: backport fix for python 3.8
+      main/hunspell: fix CVE-2019-16707
+      community/jool-modules-lts: rebuild against kernel 5.4.8-r0
+      community/virtualbox-guest-modules-lts: rebuild against kernel 5.4.8-r0
+      community/wireguard-lts: rebuild against kernel 5.4.8-r0
+      main/drbd-lts: rebuild against kernel 5.4.8-r0
+      main/xtables-addons-lts: rebuild against kernel 5.4.8-r0
+      main/zfs-lts: rebuild against kernel 5.4.8-r0
+      main/linux-rpi: upgrade to 5.4.7
+      main/linux-rpi: upgrade to 5.4.8
+      community/jool-modules-rpi: rebuild against kernel 5.4.8-r0
+      community/wireguard-rpi: rebuild against kernel 5.4.8-r0
+      main/libjpeg-turbo: security upgrade to 2.0.4 (CVE-2019-2201)
+      main/kamailio: increase timout for stopping service
+      main/busybox: enable FEATURE_NSLOOKUP_BIG
+      main/linux-rpi: upgrade to 5.4.12
+      community/wireguard-rpi: rebuild against kernel 5.4.12-r0
+      community/jool-modules-rpi: rebuild against kernel 5.4.12-r0
+      main/linux-lts: enable rtw88 driver for x86/x86_64
+      main/linux-lts: enable serial_ir module
+      community/jool-modules-lts: rebuild against kernel 5.4.12-r1
+      community/virtualbox-guest-modules-lts: rebuild against kernel 5.4.12-r1
+      community/wireguard-lts: rebuild against kernel 5.4.12-r1
+      main/drbd-lts: rebuild against kernel 5.4.12-r1
+      main/xtables-addons-lts: rebuild against kernel 5.4.12-r1
+      main/zfs-lts: rebuild against kernel 5.4.12-r1
+      main/nginx: fix CVE-2019-20372
+      main/mkinitfs: upgrade to 3.4.5
+      ==== release 3.11.3 ====
+
+Rasmus Thomsen (18):
+      community/py3-keepass: use Cryptodome instead of Crypto
+      community/gnome-passwordsafe: use Cryptodome instead of Crypto
+      community/accerciser: upgrade to 3.34.3
+      community/mutter: upgrade to 3.34.3
+      community/gnome-shell: upgrade to 3.34.3
+      community/dconf-editor: upgrade to 3.34.3
+      community/eog: upgrade to 3.34.2
+      community/epiphany: upgrade to 3.34.3.1
+      community/gnome-boxes: upgrade to 3.34.3
+      community/seahorse: upgrade to 3.34.1
+      community/gnome-contacts: upgrade to 3.34.1
+      community/rhythmbox: upgrade to 3.4.4
+      community/gnome-music: upgrade to 3.34.3
+      community/gnome-initial-setup: upgrade to 3.34.3
+      community/gnome-maps: upgrade to 3.34.3
+      community/evolution-data-server: upgrade to 3.34.3
+      community/evolution: upgrade to 3.34.3
+      community/evolution-ews: upgrade to 3.34.3
+
+Stefan Reiff (3):
+      community/wireguard-rpi: enable for rpi4
+      main/libvirt: qemu: Fix migration without parameters
+      community/wireguard-(lts|rpi): upgrade to 0.0.20200105
+
+Sören Tempel (1):
+      main/ctags: enable tests on s390x again
+
+William Johansson (1):
+      main/grub: fix booting Xen under EFI
+
+
 ALPINE LINUX 3.11.2 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.11.2 of its Alpine Linux operating system.
 
