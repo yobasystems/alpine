@@ -1,3 +1,234 @@
+ALPINE LINUX 3.12.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.12.0, the first in the v3.12 stable series.
+
+NEW FEATURES AND NOTEWORTHY NEW PACKAGES
+Initial support for mips64 (big endian).
+Initial support for D programming language.
+SIGNIFICANT UPDATES
+Linux 5.4.43
+GCC 9.3.0
+LLVM 10.0.0
+Git 2.24.3
+Node.js 12.16.3
+Nextcloud 18.0.3
+PostgreSQL 12.3
+QEMU 5.0.0
+Zabbix 5.0.0
+UPGRADE NOTES
+After upgrading to OpenSSH >= 8.2_p1, the server will not accept new connections until it is restarted
+There is no longer a python package providing python2. You need to explicitly install python2 or python3. Additionally, as part of the ongoing work to remove python2, many python2 modules have been removed.
+CREDITS
+Thanks to everyone sending in patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or has contributed in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Packet, vpsFree and RapidSwitch for providing us with hardware and hosting.
+
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+COMMIT STATISTICS
+     7  6543
+    14  Adam Jensen
+     4  Adam Saponara
+     1  Alex
+     2  Alexander Willing
+     1  Andrea Scarpino
+     1  Andrew Gunnerson
+    15  André Klitzing
+     2  Andy Li
+   162  Andy Postnikov
+    15  Anjandev Momi
+    21  Antoine Fontaine
+     2  Arda Aytekin
+   757  Ariadne Conill
+     6  Axel Ulrich
+   788  Bart Ribbers
+     1  Bob Green
+     1  Boris Faure
+     2  Bridouz
+    16  Carlo Landmeter
+     2  Chad Dougherty
+     6  Chloe Kudryavtsev
+     5  Clayton Craft
+     1  Conor Anderson
+     1  Cory Sanin
+     5  Curt Tilmes
+    15  Danct12
+     1  Daniel Corbe
+     3  Daniel Néri
+     7  Daniel Santana
+     1  Daniele Debernardi
+     1  Dave
+     1  Dave Henderson
+   111  David Demelier
+     1  David Florness
+     2  David Heidelberg
+     1  Dennis Günnewig
+     1  Dermot Bradley
+     2  Dmitry Romanenko
+     1  Dominic Fung
+    38  Drew DeVault
+    15  Duncan Bellamy
+     1  Eleksir
+     1  Eric Molitor
+     1  Eric Poelke
+     1  Eric Trombly
+     1  Erik Larsson
+     1  Erik Ogan
+     3  Fabian Affolter
+   228  Francesco Colista
+     2  Frédéric Guillot
+    62  Galen Abell
+     9  Gennady Feldman
+    17  Geod24
+     2  Gompa
+    10  Guilherme Felipe da Silva
+     4  Gustavo L F Walbon
+     2  Gustavo Walbon
+     3  Haelwenn (lanodan) Monnier
+    18  Henrik Riomar
+    44  Holger Jaekel
+     2  Hristiyan Ivanov
+     1  Hugo Rodrigues
+     6  Ian Bashford
+     4  Ian Douglas Scott
+     3  Ibex
+     2  Iskren Chernev
+     2  Ivan Tham
+   287  J0WI
+     9  Jake Buchholz
+   305  Jakub Jirutka
+     2  Jason A. Donenfeld
+    11  Jean-Louis Fuchs
+     3  Jinming Wu, Patrick
+     1  Joel
+     1  Johannes Edmeier
+     1  John Salmon
+     1  Julian Weigt
+   135  Justin Berthault
+    39  Kaarle Ritvanen
+   105  Keith Maxwell
+     1  Kenneth Soerensen
+   210  Kevin Daudt
+     1  Kit
+     2  Kohei Nishimura
+    40  Konstantin Kulikov
+     1  Larry Reaves
+  3551  Leo
+     2  Leon Marz
+    41  Leonardo Arena
+     1  Liam Nattrass
+    23  Luca Weiss
+     6  Lucas Ramage
+     1  Ludovic Chabant
+    26  Marian Buschsieweke
+     1  Mark Pashmfouroush
+     3  Mark Zealey
+     1  Martijn Braam
+     2  Matthias Neugebauer
+     4  Michael Aldridge
+     1  Michael Forney
+     2  Michael John
+    17  Michael Pirogov
+     1  Michael Truog
+     1  Michał Fita
+   175  Michał Polański
+     8  Mike Crute
+     6  Mike Sullivan
+     2  Mikhail Snetkov
+   185  Milan P. Stanić
+    27  Minecrell
+     3  Mohammad Abdolirad
+     6  Mustang
+     1  Natamo
+   623  Natanael Copa
+     1  Nathan Angelacos
+     6  Nero
+     1  Niklas Cathor
+    63  Oleg Titov
+     9  Oliver Smith
+     5  Olliver Schinagl
+     1  Pablo Castorino
+     1  Panagiotis Simakis
+     4  Paper
+     1  Patrick Gaskin
+     1  Patrick Wu
+     1  Pedro Filipe
+     6  Philipp Glaum
+     2  R4SAS
+     1  Raatty
+   999  Rasmus Thomsen
+     3  Reid Rankin
+     1  Richard Kojedzinszky
+     2  Robert Contreras
+     1  Robert Pritzkow
+     5  Russ Webber
+     1  Sandro Jäckel
+     3  Sascha Brawer
+     1  Sascha Paunovic
+    16  Simon Frankenberger
+     5  Simon Rupf
+     4  Simon Zeni
+    11  Stefan Reiff
+     1  Stefano Sasso
+     1  Sven Wick
+   223  Sören Tempel
+   308  TBK
+     8  Taner Tas
+     3  Ted Trask
+     1  Tetsuo NOMRUA
+     5  Thomas Kienlen
+    19  Thomas Liske
+     1  Tim Brust
+    13  Timo Teräs
+     1  Timotej Lazar
+   176  Timothy Legge
+     1  Tobias Spieth
+     1  Tom Parker-Shemilt
+     1  Tom Payne
+     1  Tuan Hoang
+     3  Ty Sarna
+    13  Victor Diego Alegandro Diaz Urbaneja
+     4  Victor Diego Alejandro Diaz Urbaneja
+     1  VÖRÖSKŐI András
+     1  Weilu Jia
+     1  Wictor Lund
+     4  Will Sinatra
+    14  Will sinatra
+     1  William Johansson
+     2  Winston Weinert
+     1  Yaakov Selkowitz
+     1  Yonggang Luo
+     3  aeeq
+     1  allgdante
+     1  alpine-mips-patches
+    14  alpterry
+     1  aptalca
+     2  dunk@denkimushi.com
+     3  iggy
+     4  jirutjak
+     1  kjg-ungleich
+     2  kohnish@gmx.com
+     8  kpcyrd
+     4  macmpi
+     1  mpmkp2020
+     1  msrd0
+     2  nathan hensel
+     2  nihr43
+     9  nixfloyd
+     1  ny-a
+     6  odidev
+     2  pegah.bahramiani
+     2  pglaum
+     2  prez
+    44  prspkt
+    43  rahmanshaber
+     1  umarcor
+     2  viest
+    16  wener
+     3  xrs
+     1  Đoàn Trần Công Danh
+
+
 ALPINE LINUX 3.11.6 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.11.6 of its Alpine Linux operating system.
 

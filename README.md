@@ -4,7 +4,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 [![Docker Stars](https://img.shields.io/docker/stars/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 
-[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.12.0-green.svg?style=for-the-badge)](https://alpinelinux.org/)
+[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.12.0-green.svg?style=for-the-badge&logo=alpine-linux)](https://alpinelinux.org/)
 
 
 This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
@@ -63,39 +63,51 @@ FROM yobasystems/alpine
 RUN apk add --no-cache mysql-client
 ENTRYPOINT ["mysql"]
 ```
-This example has a virtual image size of only 36.5MB. Compare that to our good friend Ubuntu:
+This example has a base image size of only 6MB. Compare that to our good friend Ubuntu:
 
 ```
-FROM ubuntu:16.04
+FROM ubuntu
 RUN apt-get update \
     && apt-get install -y --no-install-recommends mysql-client \
     && rm -rf /var/lib/apt/lists/*
 ENTRYPOINT ["mysql"]
 ```
-This yields us a virtual image size of about 184MB image.
+This yields us a base image size of about 74MB image.
 
-## Source Repository
+## Source Repositories
+
+* [Github - yobasystems/alpine](https://github.com/yobasystems/alpine)
 
 * [Gitlab - yobasystems/alpine](https://gitlab.com/yobasystems/alpine)
 
 * [Bitbucket - yobasystems/alpine](https://bitbucket.org/yobasystems/alpine/)
 
-* [Github - yobasystems/alpine](https://github.com/yobasystems/alpine)
+
+## Container Registries
+
+* [Dockerhub - yobasystems/alpine](https://hub.docker.com/r/yobasystems/alpine/)
+
+* [Quay.io - yobasystems/alpine](https://quay.io/repository/yobasystems/alpine)
+
 
 ## Links
 
 * [Yoba Systems](https://www.yobasystems.co.uk/)
 
-* [Dockerhub - yobasystems](https://hub.docker.com/u/yobasystems/)
+* [Github - Yoba Systems](https://github.com/yobasystems/)
 
-* [Quay.io - yobasystems](https://quay.io/organization/yobasystems)
+* [Dockerhub - Yoba Systems](https://hub.docker.com/u/yobasystems/)
+
+* [Quay.io - Yoba Systems](https://quay.io/organization/yobasystems)
+
+* [Maintainer - Dominic Taylor](https://github.com/dominictayloruk)
 
 ## Donation
 
-```
-BITCOIN: bc1ql0heex0jxh0yj5cucc83a3x6c6rxuq6x9zk07g
-ETHEREUM: 0x6b707391c60d50E4E414a143446C0b8eF9A2d1c4
-STELLAR: GAREZZW36KF2IT2EJW6LG5HH4XT3QIMWCHMCGEBC6V3AP3EFJCORRZIY
-XRP: rsaEp3bh3LrjVHqrcyLgbUb6QUQbBogzR3
-ZCASH: t1MuAY2vR17vDK3BgCAtf8ZdXsCiBw3zkU6
-```
+[![BMAC](https://img.shields.io/badge/BUY%20ME%20A%20COFFEE-£5-blue.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/dominictayloruk?new=1)
+
+[![BITCOIN](https://img.shields.io/badge/BTC-bc1ql0heex0jxh0yj5cucc83a3x6c6rxuq6x9zk07g-blue.svg?style=for-the-badge&logo=bitcoin)](bitcoin:bc1ql0heex0jxh0yj5cucc83a3x6c6rxuq6x9zk07g)
+
+[![ETHEREUM](https://img.shields.io/badge/ETH-0x6b707391c60d50E4E414a143446C0b8eF9A2d1c4-blue.svg?style=for-the-badge&logo=ethereum)](https://etherscan.io/address/dominictaylor.eth)
+
+[![STELLAR](https://img.shields.io/badge/XLM-GAREZZW36KF2IT2EJW6LG5HH4XT3QIMWCHMCGEBC6V3AP3EFJCORRZIY-blue.svg?style=for-the-badge&logo=stellar)](https://keybase.io/dominictayloruk)
