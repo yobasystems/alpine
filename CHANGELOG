@@ -1,3 +1,124 @@
+ALPINE LINUX 3.13.5 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.13.5 of its Alpine Linux operating system.
+
+This release includes a fix for apk-tools CVE-2021-30139.
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+6543 (1):
+      community/gitea: upgrade to 1.13.7
+
+Andy Postnikov (4):
+      community/php7-pecl-mongodb: upgrade to 1.9.1 and modernize
+      community/php8-pecl-mongodb: upgrade to 1.9.1 and modernize
+      community/php7-pecl-xdebug: upgrade to 3.0.4
+      community/php8-pecl-xdebug: upgrade to 3.0.4
+
+Ariadne Conill (4):
+      main/apk-tools: add hotfix for tarball parsing DoS (CVE pending)
+      main/apk-tools: backout the hotfix, causes sporadic failures
+      community/nss: disable binary stripping
+      community/xorg-server: fix CVE-2021-3472
+
+Bart Ribbers (3):
+      community/maliit-framework: upgrade to 2.0.0
+      community/maliit-keyboard: upgrade to 2.0.0
+      community/maliit-keyboard: add missing runtime dep on dconf
+
+Duncan Bellamy (1):
+      community/ceph: upgrade to 15.2.10 * install dashboard mgr node_modules on install as too large
+
+Francesco Colista (1):
+      community/jenkins: security upgrade to 2.287
+
+J0WI (4):
+      community/webkit2gtk: security upgrade to 2.32.0
+      community/firefox-esr: security upgrade to 78.9.0
+      community/nss: upgrade to 3.61
+      community/nss: upgrade to 3.62
+
+Jakub Jirutka (2):
+      main/ruby: remove man files provided by ruby-bundler
+      main/nodejs: fix CVE-2021-27290 in npm subpackage
+
+Justin Berthault (1):
+      main/clamav: upgrade to 0.103.2
+
+Kaarle Ritvanen (1):
+      community/py3-django-oscar: crash fix
+
+Kevin Daudt (1):
+      main/lxc-templates-legacy: account of existing nodes in alpine template
+
+Leo (6):
+      community/xterm: fix CVE-2021-27135
+      community/xterm: drop fix for CVE-2021-27135
+      community/xterm: security upgrade to 367
+      main/tar: security upgrade to 1.34
+      community/nss: upgrade to 3.63
+      community/py3-django: security upgrade to 3.1.8
+
+Leonardo Arena (4):
+      main/spamassassin: security upgrade to 3.4.5
+      main/spamassassin: update source
+      community/nextcloud: upgrade to 20.0.9
+      community/nextcloud19: upgrade to 19.0.10
+
+Michał Polański (7):
+      community/youtube-dl: upgrade to 2021.04.01
+      community/hcloud: upgrade to 1.22.0
+      community/ginkgo: upgrade to 1.16.0
+      community/hcloud: upgrade to 1.22.1
+      community/syncthing: fix CVE-2021-21404
+      main/nodejs: security upgrade to 14.16.1
+      main/clamav: remove CVE-2021-1386 from secfixes
+
+Milan P. Stanić (4):
+      main/lxc: fix cgroup mounting
+      main/postfix: upgrade to 3.5.10
+      main/irssi: upgrade to 1.2.3
+      community/xorg-server: upgrade to 1.20.11
+
+Natanael Copa (15):
+      main/asterisk: remove /tmp
+      main/linux-rpi: upgrade to 5.10.29
+      community/jool-modules-rpi: rebuild against kernel 5.10.29-r0
+      main/zfs-rpi: rebuild against kernel 5.10.29-r0
+      main/linux-lts: upgrade to 5.10.29
+      community/jool-modules-lts: rebuild against kernel 5.10.29-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.29-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.29-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.29-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.29-r0
+      main/zfs-lts: rebuild against kernel 5.10.29-r0
+      main/curl: upgrade to 7.76.1 (CVE-2021-22876, CVE-2021-22890)
+      main/apk-tools: add secfixes info
+      main/busybox: backport tab completion fix
+      ===== release 3.13.5 =====
+
+Rasmus Thomsen (8):
+      community/cbindgen: upgrade to 0.18.0
+      main/cython: depend on python3
+      community/firefox: upgrade to 87.0
+      community/firefox: build with clang, doesn't OOM on 32-bit
+      main/vala: upgrade to 0.50.6
+      main/cairo: add patch for CVE-2020-35492
+      community/librsvg: security upgrade to 2.50.4
+      main/vala: upgrade to 0.50.7
+
+Timo Teräs (1):
+      main/apk-tools: upgrade to 2.12.5
+
+matt335672 (1):
+      community/libvirt: use correct OpenRC service definitions for libvirt-guests
+
+
+ALPINE 3.10.9, 3.11.11 AND 3.12.7 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.10.9, 3.11.11 and 3.12.7 of its Alpine Linux operating system.
+
+Those releases include fixes for apk-tools CVE-2021-30139.
+
 ALPINE LINUX 3.12.0 RELEASED
 We are pleased to announce the release of Alpine Linux 3.12.0, the first in the v3.12 stable series.
 
