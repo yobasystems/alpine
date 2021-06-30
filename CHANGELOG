@@ -1,3 +1,273 @@
+ALPINE LINUX 3.14.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.14.0, the first in the v3.14 stable series.
+
+NEW FEATURES AND NOTEWORTHY NEW PACKAGES
+Lua 5.4.3
+SIGNIFICANT UPDATES
+HAProxy 2.4.0
+KDE 21.04.2
+nginx 1.20.0 and njs 0.5.3
+Node.js 14.17.0
+Plasma 5.22.0
+PostgreSQL 13.3
+Python 3.9.5
+R 4.1.0
+QEMU 6.0.0
+XEN 4.15.0
+Zabbix 5.4.1
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+The faccessat2 syscall has been enabled in musl. This can result in issues on docker hosts with older versions of docker (<20.10.0) and libseccomp (<2.4.4), which blocks this syscall.
+ClamAV has been moved to community due to lack of long-term upstream support.
+LuaJIT package has switched from unmaintained MoonJIT fork to OpenResty’s maintained branch (more info)
+NGINX package changed the default directory for the vhost configs from /etc/nginx/conf.d to /etc/nginx/http.d (more info).
+collectd package has been split into into subpackages for plugins (more info).
+npm package has been moved into a standalone aport (more info).
+In nftables, the rate limit for echo-request has been removed from the default ruleset.
+fail2ban has been disabled for the time being due to many tests failing. As an alternative, sshguard might be used.
+CREDITS
+Thanks to everyone sending in patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or has contributed in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree and RapidSwitch for providing us with hardware and hosting.
+
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+COMMIT STATISTICS
+    12  6543
+     1  ALTracer
+    31  Adam Jensen
+     1  Adam Pimentel
+     1  Adeel
+     6  Aiden Grossman
+     3  Aleks Bunin
+     6  Alex Denes
+     3  Alex Raschi
+    21  Alex Yam
+     2  Alexander Brzoska
+     2  Alexey Minnekhanov
+    13  André Klitzing
+    35  Andy Hawkins
+   236  Andy Postnikov
+    24  Anjandev Momi
+     1  Antoine Fontaine
+     1  Anton Derevyagin
+    69  Antoni Aloy Torrens
+   258  Ariadne Conill
+  1113  Bart Ribbers
+     1  Bhushan Shah
+     4  Bobby The Builder
+     1  Bor Grošelj Simić
+     1  Boris Faure
+     1  Bradford D. Boyle
+    63  Carlo Landmeter
+     1  Carson Page
+     2  Chris Kruger
+     3  Chris Novakovic
+     2  Christine Dodrill
+    72  Clayton Craft
+     1  Cormac Stephenson
+     1  Craig Comstock
+    14  Curt Tilmes
+     3  DDoSolitary
+    80  Damian Kurek
+     6  Danct12
+     1  Daniel Kolesa
+     7  Daniel Néri
+     5  Daniel Santana
+     1  Dave Henderson
+   153  David Demelier
+     2  David Florness
+     1  David Sugar
+     2  Dekedro
+    10  Dennis Krupenik
+    35  Dermot Bradley
+     1  Derriick
+     6  Diaz Urbaneja Victor Diego Alenjandro
+     1  Diego Jara
+     1  Dmitriy Kovalkov
+     1  Dominic
+     4  Dominik Schulz
+     7  Dominique Martinet
+    19  Donoban
+    56  Drew DeVault
+    99  Duncan Bellamy
+     1  Durmot Snell
+    22  Dylan Van Assche
+     2  Emanuele Sorce
+     1  Erik Ogan
+     1  Fabian Affolter
+     2  Francesco Camuffo
+   503  Francesco Colista
+     1  Frank J. Cameron
+     2  Fraser Waters
+    72  Galen Abell
+    10  Geod24
+     1  George Hopkins
+     2  GreyXor
+     1  GreyXor GreyXor
+     2  Haelwenn (lanodan) Monnier
+     2  Hani Shawa
+    20  Henrik Riomar
+    37  Holger Jaekel
+     1  Iskren Chernev
+     1  Ivan Sokolov
+   184  J0WI
+    13  Jake Buchholz
+   314  Jakub Jirutka
+     1  James Stone
+     1  Jellyfrog
+     1  Jinming Wu, Patrick
+     2  Jiri Kastner
+     2  Johannes Heimansberg
+     4  Johannes Marbach
+     1  John Longe
+     2  Jonas
+     1  Jonathan Albrieux
+     4  Jordan Christiansen
+     1  Julian P Samaroo
+     7  Julian Weigt
+    13  JuniorJPDJ
+   146  Justin Berthault
+     9  Kaarle Ritvanen
+     8  Kasper K
+     2  Keith Maxwell
+   301  Kevin Daudt
+    14  Kevin Thomas
+     6  KikooDX
+     1  Kiyoshi Aman
+    45  Konstantin Kulikov
+     2  Krystian Chachuła
+     1  Lars Kuhtz
+    29  Laurent Bercot
+  1579  Leo
+    20  Leon Marz
+    41  Leonardo Arena
+    73  Luca Weiss
+     7  Lucas Ramage
+     5  Maarten van Gompel
+    45  Marian Buschsieweke
+     7  Martijn Braam
+     2  Martin Häger
+     8  Martin Kaesberger
+     1  Martin Koppehel
+     1  Mathew Meins
+     6  Matthew T Hoare
+     1  Michael Dombrowski
+     4  Michael Ekstrand
+     1  Michael Giraldo
+    12  Michael Pirogov
+     2  Michael Truog
+     3  Michał Adamski
+   640  Michał Polański
+     1  Michiel Alexander Boekhoff
+     3  Mikael Jenkler
+     9  Mike Crute
+     1  Mike Gilbert
+   272  Milan P. Stanić
+     6  Minecrell
+     1  Mogens Jensen
+  2038  Natanael Copa
+     3  Nathan Angelacos
+    38  Newbyte
+     1  Nick Black
+     2  Nico Schottelius
+     1  Niek van der Maas
+     7  Noel Kuntze
+    40  Oleg Titov
+    23  Oliver Smith
+     3  Olliver Schinagl
+     2  Paper
+     2  Patrick Gansterer
+     1  Patrycja Rosa
+     6  Paul Bredbury
+     1  Pedro Lucas Porcellis
+     1  Peter M
+     5  Peter van Dijk
+     3  Petr Vorel
+     2  R4SAS
+     1  Raatty
+     1  Ralf Rachinger
+     4  Rasmus
+   401  Rasmus Thomsen
+     2  Reed Wade
+     1  Richard Patel
+     2  River Dillon
+     2  Robert Günzler
+     1  Rodrigo Lourenço
+     4  Roman Shaposhnik
+     7  Rosen Penev
+     4  Ryan Barnett
+     1  Sabin Iacob
+    10  Sean McAvoy
+     1  Sebastiaan van Stijn
+     1  ShaRose
+     1  Shawn Rose
+     5  Sheila Aman
+     1  Shuanglei Tao
+    18  Simon Frankenberger
+    11  Simon Rupf
+     1  Simon Ser
+     8  Siva Mahadevan
+     6  Sodface
+     1  Stacy Harper
+     1  Stefan Hansson
+     5  Stefan Krah
+     2  Stefan Reiff
+   139  Sören Tempel
+    67  TBK
+     1  Ted Trask
+     1  Terra
+    39  Thomas Kienlen
+    13  Thomas Liske
+     2  Tim Weippert
+     6  Timo Teräs
+    94  Timothy Legge
+     9  Tom Lebreux
+     1  Tom Payne
+     1  TuxThePenguin0
+     1  Veovis
+     1  Vlatko Kosturjak
+     1  Walo
+     1  Wesley van Tilburg
+    10  Will Sinatra
+     1  Wolf
+     1  Youfu Zhang
+     1  Your Full Name
+     4  asdf
+     1  david
+     1  dkrefft
+     4  guddaff
+     1  jona
+    10  jvoisin
+     2  kasperk81
+     6  kpcyrd
+     1  la Fleur
+     1  lafleur
+     4  macmpi
+     1  matt335672
+     1  messense
+     1  minus
+    18  nibon7
+     5  nick
+    20  nick black
+     1  okzk
+   181  omni
+     1  opal hart
+    16  pglaum
+   173  prspkt
+    22  rahmanshaber
+     5  shhhum
+     1  solidnerd
+     1  techknowlogick
+     2  tronfortytwo
+     2  ur4t
+     1  vinnie costante
+    12  wener
+     2  Éloi Rivard
+     1  Óliver García Albertos
+
+
 ALPINE LINUX 3.13.5 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.13.5 of its Alpine Linux operating system.
 
