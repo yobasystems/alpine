@@ -1,3 +1,453 @@
+ALPINE LINUX 3.14.2 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.14.2 of its Alpine Linux operating system.
+
+This release includes fixes for openssl CVE-2021-3711 and CVE-2021-3712.
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+6543 (1):
+      community/gitea: upgrade to 1.14.6
+
+Andy Postnikov (10):
+      main/postgresql: security upgrade to 13.4 (CVE-2021-3677)
+      community/composer: upgrade to 2.1.6
+      community/icinga2: security upgrade to 2.12.6 (CVE-2021-37698)
+      main/pgpool: upgrade to 4.2.4
+      community/stunnel: upgrade to 5.60
+      community/php8: improve, build php only twice: apache2+cgi and the rest
+      community/php8: security upgrade to 8.0.10
+      main/nodejs: security upgrade to 14.17.5
+      community/php7: security upgrade to 7.4.23
+      community/php7: improve build
+
+Anjandev Momi (1):
+      community/prosody: upgrade to 0.11.10
+
+Ariadne Conill (4):
+      main/gpsd: move back from community
+      main/ruby: add CVE-2021-31799 to secfixes
+      main/asterisk: add mitigation for CVE-2021-32558
+      main/libspf2: add mitigation for CVE-2021-20314
+
+Bart Ribbers (8):
+      community/plasma: upgrade to 5.22.4
+      community/plasma-workspace: rebuild against gpsd 3.23
+      community/marble: rebuild against gpsd 3.23
+      community/stellarium: rebuild against gpsd 3.23 and modernize
+      community/kasts: add missing dep on qt5-qtbase-sqlite
+      community/amazfish: upgrade to 2.0.2
+      community/sddm: improve init script
+      community/plasma-phone-components: backport fix for screenshots
+
+Daniel Néri (1):
+      main/unbound: upgrade to 1.13.2
+
+Duncan Bellamy (1):
+      community/dovecot-fts-xapian: upgrade to 1.4.12
+
+J0WI (11):
+      community/apache-ant: security upgrade to 1.10.11
+      main/ruby: security upgrade to 2.7.4
+      community/firefox-esr: security upgrade to 78.12.0
+      community/openjdk7: upgrade to 2.6.25
+      community/openjdk7: security upgrade to 7.301.2.6.26
+      main/mariadb: security upgrade to 10.5.12
+      community/rust: upgrade to 1.52.1
+      community/rust: patch CVE-2021-29922
+      community/mozjs78: security upgrade to 78.13.0
+      community/tor: security upgrade to 0.4.5.10
+      main/openssl: security upgrade to 1.1.1l
+
+Kevin Daudt (18):
+      community/uglifycss: remove node_modules/root folder
+      community/uglify-js: remove node_modules/root folder
+      main/c-ares: security upgrade to 1.17.2 (CVE-2021-3672)
+      community/bupstash: rebuild to mitigate CVE-2021-29922
+      community/corrosion: rebuild to mitigate CVE-2021-29922
+      community/git-metafile: rebuild to mitigate CVE-2021-29922
+      community/librsvg: rebuild to mitigate CVE-2021-29922
+      community/mozjs78: rebuild to mitigate CVE-2021-29922
+      community/newsflash: rebuild to mitigate CVE-2021-29922
+      community/squeekboard: rebuild to mitigate CVE-2021-29922
+      community/suricata: rebuild to mitigate CVE-2021-29922
+      community/tokei: rebuild to mitigate CVE-2021-29922
+      community/alacritty: rebuild to mitigate CVE-2021-29922
+      community/salt: upgrade to 3003.2
+      main/bind: security upgrade to 9.16.20 (CVE-2021-25218)
+      main/bind: patch map format
+      community/chezmoi: upgrade to 2.0.16
+      community/libssh: security upgrade to 0.9.6 (CVE-2021-3634)
+
+Leo (4):
+      community/fetchmail: security upgrade to 6.4.20
+      community/gpsd: upgrade to 3.23
+      main/grep: upgrade to 3.7
+      community/wireshark: upgrade to 3.4.8
+
+Leonardo Arena (3):
+      community/nextcloud: upgrade to 21.0.4
+      community/nextcloud20: upgrade to 20.0.12
+      community/zabbix: upgrade to 5.4.3 and fix proc.num support in Agent 2
+
+Michał Polański (2):
+      community/hcloud: upgrade to 1.26.1
+      community/fuse-overlayfs: upgrade to 1.7.1
+
+Milan P. Stanić (2):
+      main/haproxy: security upgrade to 2.4.3
+      main/haproxy: don't override CFLAGS in make
+
+Natanael Copa (33):
+      community/go: upgrade to 1.16.7 (CVE-2021-36221)
+      main/linux-lts: upgrade to 5.10.59
+      community/jool-modules-lts: rebuild against kernel 5.10.59-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.59-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.59-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.59-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.59-r0
+      main/zfs-lts: rebuild against kernel 5.10.59-r0
+      main/busybox-initscripts: create /dev/virtio-ports symlinks
+      main/busybox-initscripts: fix mdev.conf to work with mdev -s
+      main/linux-rpi: upgrade to 5.10.60
+      community/jool-modules-rpi: rebuild against kernel 5.10.60-r0
+      main/zfs-rpi: rebuild against kernel 5.10.60-r0
+      main/linux-lts: upgrade to 5.10.60
+      community/jool-modules-lts: rebuild against kernel 5.10.60-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.60-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.60-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.60-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.60-r0
+      main/zfs-lts: rebuild against kernel 5.10.60-r0
+      main/linux-rpi: upgrade to 5.10.61
+      community/jool-modules-rpi: rebuild against kernel 5.10.61-r0
+      main/zfs-rpi: rebuild against kernel 5.10.61-r0
+      main/linux-lts: upgrade to 5.10.61
+      community/jool-modules-lts: rebuild against kernel 5.10.61-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.61-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.61-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.61-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.61-r0
+      main/zfs-lts: rebuild against kernel 5.10.61-r0
+      scripts/mkimg.base.sh: include gnu wget
+      main/raspberrypi-bootloader: upgrade to 1.20210805
+      ===== release 3.14.2 =====
+
+Oliver Smith (1):
+      community/pmbootstrap: upgrade to 1.36.0
+
+Thomas Liske (3):
+      community/py3-pyroute2: fix empty ipset content
+      community/frr: fix reload script and add checkpath to initd
+      community/ifstate: upgrade to 1.5.5
+
+wener (1):
+      community/tinc-pre: upgrade to 1.1pre18
+
+ALPINE LINUX 3.14.1 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.14.1 of its Alpine Linux operating system.
+
+This release includes a fix for apk-tools CVE-2021-36159.
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+6543 (1):
+      community/gitea: upgrade to 1.14.3
+
+Andy Postnikov (16):
+      community/php7-pecl-imagick: upgrade to 3.5.0
+      community/php8-pecl-imagick: upgrade to 3.5.0
+      community/php7-pecl-xhprof: upgrade to 2.3.3
+      community/php8-pecl-xhprof: upgrade to 2.3.3
+      community/php8: security upgrade to 8.0.8 - CVE-2021-21705
+      community/php7: security upgrade to 7.4.21 - CVE-2021-21705
+      community/php7-pecl-ast: upgrade to 1.0.13
+      community/php8-pecl-ast: upgrade to 1.0.13
+      community/php7-pecl-mongodb: upgrade to 1.10.0
+      community/php8-pecl-mongodb: upgrade to 1.10.0
+      community/drupal7: security upgrade to 7.82 - CVE-2021-32610
+      community/php7-pecl-igbinary: upgrade to 3.2.4
+      community/php8-pecl-igbinary: upgrade to 3.2.4
+      community/nodejs-current: security upgrade to 16.6.0
+      community/php7: upgrade to 7.4.22
+      community/php8: upgrade to 8.0.9
+
+Ariadne Conill (28):
+      main/rssh: add mitigations for CVE-2019-3463 and CVE-2019-1000018, secfixes data for CVE-2019-3464
+      main/nikto: add mitigation for CVE-2018-11652
+      main/avahi: add mitigation for CVE-2021-3468
+      main/patch: add mitigation for CVE-2019-20633
+      main/unzip: add mitigation for CVE-2018-18384 (incomplete fix of CVE-2014-9913)
+      main/{bind,dhcp}: fix secfixes data for CVE-2019-6470
+      community/quassel: add mitigation for CVE-2021-34825
+      community/gdnsd: security upgrade to 2.4.3 (CVE-2019-13952)
+      main/luajit: disable some tests on mips64
+      main/luajit: fix testsuite paths for mips64 case
+      community/notcurses: skip tests on mips64, slow builder
+      community/opendmarc: add mitigation for CVE-2021-34555
+      main/libretls: downgrade libtls SOVERSION to allow coexistence with community/libressl
+      main/libretls: add so:libtls.so.20 provides for transitional period
+      main: chase libretls SOVERSION change
+      community/codemadness-frontends: chase libretls SOVERSION change
+      main/zstd: disable tests on 32-bit arm due to issues caused by having 160 threads
+      community/csync2: add mitigations for CVE-2019-15522 and CVE-2019-15523
+      community/applet-window-buttons: block on mips64
+      community/xrdp: update secfixes data
+      community/libvterm: add mitigation for CVE-2018-20786
+      main/avahi: add mitigation for CVE-2021-36217
+      community/hdf5: fix secfixes
+      main/nodejs: security upgrade to 14.17.3 (CVE-2021-22918)
+      main/aspell: add mitigation for CVE-2019-25051 / OSV-2020-521
+      community/libmad: fix secfixes data to include CVE-2018-7263
+      community/openvswitch: add mitigation for CVE-2021-36980
+      community/djvulibre: add mitigations for CVE-2021-3500, CVE-2021-32490, CVE-2021-32491, CVE-2021-32492, CVE-2021-32493
+
+Bart Ribbers (20):
+      community/py3-tinydb: upgrade to 4.4.0 and modernize
+      community/plasma: upgrade to 5.22.2.1
+      community/plasma-desktop: disable on ppc64le
+      community/purpose: disable on ppc64le
+      community/plasma-browser-integration: disable on ppc64le
+      community/plasma-desktop: actually disable on ppc64le
+      community/applet-window-buttons: new aport
+      community/mauikit: depend on applet-window-buttons
+      community/mauikit-texteditor: new aport
+      community/nota: depend on mauikit-texteditor
+      community/buho: add dep on mauikit-texteditor
+      community/buho: bump pkgrel
+      community/xwayland: add missing replaces on xorg-server-xwayland
+      community/wlroots0.12: add missing replaces on wlroots
+      community/discover: disable KCM
+      community/osmscout-server: upgrade to 2.0.3
+      community/osmscout-server: install proper config version
+      community/plasmatube: upgrade to 0_git20210709
+      community/plasmatube: upgrade to 0_git20210718
+      community/plasmatube: upgrade to 0_git20210719
+
+Carlo Landmeter (2):
+      main/libretls: fix boostrap build
+      community/vectorscan: add debug symbols package
+
+Clayton Craft (1):
+      community/gnome-shell: drop dependency on nm-applet
+
+Devin Lin (2):
+      community/kweathercore: new aport
+      community/kweather: upgrade to 21.06
+
+Duncan Bellamy (6):
+      community/dovecot-fts-xapian: upgrade to 1.4.10 rebuild against new dovecot
+      community/dovecot-fts-xapian: upgrade to 1.4.11
+      community/rspamd: use luajit for all arches * add lpeg patch * fixes #12822
+      community/ceph: upgrade to 16.2.5
+      community/suricata: upgrade to 6.0.3
+      community/libhtp: upgrade to 0.5.38
+
+Francesco Colista (4):
+      community/bareos: remove py3-selenium dep from webui subpackage
+      community/sngrep: enable eep support
+      community/sngrep: disable test-003
+      main/sofia-sip: upgrade to 1.13.4
+
+Henrik Riomar (1):
+      main/rsyslog: load custom config before standard rules
+
+Holger Jaekel (2):
+      community/gdal: upgrade to 3.2.3
+      community/hdf5: upgrade to 1.12.1
+
+J0WI (11):
+      main/mariadb: security upgrade to 10.5.11
+      community/firefox: upgrade to 89.0.1
+      main/nspr: upgrade to 4.31
+      community/mozjs78: security upgrade to 78.12.0
+      main/varnish: security upgrade to 6.6.1
+      main/curl: security upgrade to 7.78.0
+      main/redis: security upgrade to 6.2.5
+      main/krb5: security upgrade to 1.18.4
+      community/miniupnpd: update secfixes
+      community/exiv2: security upgrade to 0.27.4
+      main/libretls: upgrade to 3.3.3p1
+
+Jakub Jirutka (12):
+      community/yamllint: upgrade to 1.26.1
+      community/njs: upgrade to 0.5.3
+      community/cesnet-tcs-cli: upgrade to 0.4.0
+      community/libstemmer: remove duplicate
+      main/fail2ban: fix tests and re-enable for all arches
+      main/fail2ban: move tests to -test subpackage
+      main/fail2ban: remove path configs for other distros
+      main/fail2ban: skip failing DNSUtilsNetworkTests.testFQDN
+      main/dhcpcd: upgrade to 8.1.9
+      community/ruby-ffi: upgrade to 1.15.3
+      community/git-metafile: upgrade to 0.2.1
+      */linux-*: fix perms of kernel.release file to 644
+
+Kaarle Ritvanen (1):
+      community/py3-django: security upgrade to 3.1.13
+
+Kevin Daudt (4):
+      main/openssh: reset dependencies for client-common
+      community/java-jffi: disable on mips64 due to missing java
+      community/zabbix: upgrade to 5.4.2
+      main/rsync: prevent aports version being reported
+
+Leo (16):
+      community/synapse: upgrade to 1.36.0
+      community/skopeo: depend on containers-common during runtime
+      community/vault: remove duplicate CVE value
+      *: remove duplicate CVE values
+      community/synapse: upgrade to 1.37.0
+      community/synapse: upgrade to 1.37.1
+      community/xrdp: generate key and certificate at runtime
+      community/py3-rich: upgrade to 10.5.0
+      community/gnome-authenticator: depend on py3-setuptools at runtime
+      community/ntpsec: security upgrade to 1.2.1
+      main/glib: upgrade to 2.68.3
+      community/wireshark: upgrade to 3.4.7
+      main/gummiboot: move from unmaintained
+      main/gummiboot: fix build with latest GNU-EFI
+      main/gummiboot: split EFISTUB into gummiboot-efistub
+      community/go: security upgrade to 1.16.6
+
+Leonardo Arena (3):
+      main/open-iscsi: fix path of iscsi-name in init script
+      community/nextcloud: upgrade to 21.0.3
+      community/nextcloud20: upgrade to 20.0.11
+
+Marian Buschsieweke (1):
+      community/texlive: fix trigger script
+
+Martijn Braam (1):
+      community/pmbootstrap: upgrade to 1.34.0
+
+Martin Hasoň (2):
+      main/py3-pillow: upgrade to 8.2.0
+      community/py3-reportlab: upgrade to 3.5.68
+
+Martin Kaesberger (2):
+      community/chromium: upgrade to 91.0.4472.114
+      community/chromium: upgrade to 91.0.4472.164
+
+Michał Polański (25):
+      main/nodejs: upgrade to 14.17.1
+      community/lagrange: upgrade to 1.5.2
+      community/caddy: upgrade to 2.4.3
+      community/libslirp: upgrade to 4.6.1
+      community/hcloud: upgrade to 1.24.0
+      community/py3-faker: upgrade to 8.8.1
+      community/podman: fix panic when cgroup filesystem is not mounted
+      community/fuse-overlayfs: upgrade to 1.6
+      community/podman: upgrade to 3.2.2
+      community/containers-common: upgrade to 0.38.11
+      community/skopeo: upgrade to 1.3.1
+      community/buildah: upgrade to 1.21.2
+      community/buildah: add dependency on crun
+      community/wdisplays: change upstream
+      community/wdisplays: upgrade to 1.1
+      community/hcloud: upgrade to 1.25.0
+      community/hcloud: upgrade to 1.25.1
+      community/buildah: upgrade to 1.21.3
+      community/podman: upgrade to 3.2.3
+      community/buildah: upgrade to 1.21.4
+      community/crun: upgrade to 0.21
+      main/nodejs: security upgrade to 14.17.4
+      community/fuse-overlayfs: upgrade to 1.7
+      community/slirp4netns: upgrade to 1.1.12
+      community/hcloud: upgrade to 1.26.0
+
+Milan P. Stanić (5):
+      main/haproxy: upgrade to 2.4.1
+      community/clamav: upgrade to 0.103.3
+      main/dovecot: security upgrade to 2.3.15
+      main/postfix: upgrade to 3.6.2
+      main/haproxy: upgrade to 2.4.2
+
+Natanael Copa (50):
+      scripts/mkimg.base.sh: add dhcpcd to base
+      community/py3-gevent: upgrade to 21.1.2
+      main/kamailio: backport mohqueue fixes from upstream
+      community/containerd: security upgrade to 1.5.4 (CVE-2021-32760)
+      main/rsync: backport fix for --delay-updates
+      main/linux-lts: enable HIGHMEM and LPAE for armv7 -virt
+      main/linux-lts: upgrade to 5.10.44
+      main/linux-lts: upgrade to 5.10.45
+      main/linux-lts: upgrade to 5.10.46
+      main/linux-lts: upgrade to 5.10.47
+      main/linux-lts: upgrade to 5.10.48
+      main/linux-lts: upgrade to 5.10.49
+      main/linux-lts: upgrade to 5.10.50
+      main/linux-lts: upgrade to 5.10.51
+      main/linux-lts: upgrade to 5.10.52
+      main/linux-lts: upgrade to 5.10.53
+      main/linux-lts: upgrade to 5.10.54
+      main/linux-lts: upgrade to 5.10.55
+      community/jool-modules-lts: rebuild against kernel 5.10.55-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.55-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.55-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.55-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.55-r0
+      main/zfs-lts: rebuild against kernel 5.10.55-r0
+      main/linux-rpi: upgrade to 5.10.44
+      main/linux-rpi: upgrade to 5.10.45
+      main/linux-rpi: upgrade to 5.10.46
+      main/linux-rpi: upgrade to 5.10.49
+      main/linux-rpi: upgrade to 5.10.50
+      main/linux-rpi: upgrade to 5.10.51
+      main/linux-rpi: upgrade to 5.10.52
+      main/linux-rpi: upgrade to 5.10.55
+      community/jool-modules-rpi: rebuild against kernel 5.10.55-r0
+      main/zfs-rpi: rebuild against kernel 5.10.55-r0
+      main/mosquitto: add secfixes info for CVE-2021-34432
+      community/miniupnpd: upgrade to 2.2.2 and refactor
+      main/linux-lts: upgrade to 5.10.56
+      community/jool-modules-lts: rebuild against kernel 5.10.56-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.10.56-r0
+      community/rtpengine-lts: rebuild against kernel 5.10.56-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.10.56-r0
+      main/xtables-addons-lts: rebuild against kernel 5.10.56-r0
+      main/zfs-lts: rebuild against kernel 5.10.56-r0
+      main/linux-rpi: upgrade to 5.10.56
+      community/jool-modules-rpi: rebuild against kernel 5.10.56-r0
+      main/zfs-rpi: rebuild against kernel 5.10.56-r0
+      main/raspberrypi-bootloader: upgrade to 1.20210727
+      main/libretls: remove transitional hack provides
+      main/libretls: fix the generation of SO version
+      ===== release 3.14.1 =====
+
+Oliver Smith (2):
+      community/postmarketos-ondev: upgrade to 0.7.0
+      community/pmbootstrap: upgrade to 1.35.0
+
+Sören Tempel (2):
+      main/alpine-baselayout: don't append existing entries to $PATH
+      main/alpine-baselayout: unset script variable in profile
+
+Thomas Liske (3):
+      community/ifstate: upgrade to 1.5.3
+      community/ifstate: upgrade to 1.5.4
+      community/py3-wgnlpy: upgrade to 0.1.5
+
+Timo Teräs (2):
+      main/apk-tools: security upgrade to 2.12.6
+      main/apk-tools: upgrade to 2.12.7
+
+macmpi (2):
+      main/linux-rpi: add linux-firmware-cypress dependency
+      main/linux-firmware: upgrade to 20210716
+
+omni (1):
+      community/tor: security upgrade to 0.4.5.9
+
+pexcn (1):
+      main/linux-lts: enable CONFIG_NET_SCH_CAKE for config-virt
+
+prspkt (1):
+      main/putty: security upgrade to 0.76 (CVE-2021-36367)
+
+
+
 ALPINE LINUX 3.14.0 RELEASED
 We are pleased to announce the release of Alpine Linux 3.14.0, the first in the v3.14 stable series.
 
