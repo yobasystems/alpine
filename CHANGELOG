@@ -1,3 +1,43 @@
+ALPINE LINUX 3.15.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.15.0, the first in the v3.15 stable series.
+
+HIGHLIGHTS
+Linux kernels 5.15 (LTS)
+llvm 12
+nodejs 16.13 (LTS) / nodejs-current 17.0
+postgresql 14
+openldap 2.6
+ruby 3.0
+rust 1.56
+openjdk 17
+kea 2.0
+xorg-server 21.1
+GNOME 41
+KDE Plasma 5.23 / KDE Applications 21.08 / Plasma Mobile Gear 21.10
+Support for disk encryption in installer
+Support for out-of-tree kernel modules via AKMS (inspired by DKMS)
+Initial support for UEFI Secure Boot on x86_64
+SIGNIFICANT CHANGES
+Kernel modules are now compressed with gzip.
+Framebuffer drivers have been disabled in kernel and replaced by simpledrm.
+qt5-qtwebkit and related packages have been removed due to lack of upstream support.
+The MIPS64 port is discontinued. The architecture is EOL and no new releases will be made. See TSC#27.
+
+
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+New 4096 bit RSA keys are now used for package signatures. Make sure alpine-keys>=2.4.0-r0 is installed on your system before upgrading.
+Multiple major versions of PostreSQL can now be installed in parallel to facilitate upgrades. See the PostgreSQL upgrade notes for more details.
+radvd no longer enables forwarding for IPv6. If still required, make sure net.ipv6.conf.all.forwarding is enabled.
+Several ruby packages have been moved to dedicated aports, and others have merged into a single package. See the wiki for details.
+
+
+DEPRECATION NOTES
+sudo will be moved to community in Alpine Linux 3.16. The suggested replacement is doas, which is available in main. See TSC#1
+php7 is being phased out, as the last release, 7.4 will have only 1 year of security support left.
+
+
+
 ALPINE LINUX 3.14.2 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.14.2 of its Alpine Linux operating system.
 
