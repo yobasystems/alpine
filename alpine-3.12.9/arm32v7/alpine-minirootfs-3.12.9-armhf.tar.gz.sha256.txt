@@ -1,1 +1,0 @@
-662f715ea2176c518bccece3d456738cdf3d67f719a49bbf2f27f826c5bb7549  alpine-minirootfs-3.12.9-armhf.tar.gz
