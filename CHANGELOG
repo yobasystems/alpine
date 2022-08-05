@@ -1,3 +1,340 @@
+ALPINE LINUX 3.16.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.16.0, the first in the v3.16 stable series.
+
+HIGHLIGHTS
+Various improvements in the setup scripts:
+Better support for NVMe
+Administrator user creation
+Possibility to add SSH keys
+New setup-desktop script for easy install of desktop environment
+Go 1.18
+LLVM 13
+Node.js (current) 18.2
+Ruby 3.1
+Rust 1.60
+GNOME 42
+KDE Plasma 5.24 / KDE Applications 22.04 / Plasma Mobile Gear 22.04
+Python 3.10
+PHP 8.1
+R 4.2
+Xen 4.16
+Podman 4.0
+SIGNIFICANT CHANGES
+sudo has been moved to community repository, which means that only latest stable release branch will get security updates in the future. Suggested replacement is doas and doas-sudo-shim.
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+Both shadow-login and util-linux-login provides login-utils with this release. The preferred implementation is from util-linux.
+NetworkManager plugins have moved to subpackages and are no longer installed by default. Users may need install plugins to not lose network connectivity.
+The ICU data has been split into icu-data-en (default) and icu-data-full packages. Users may need to install icu-data-full for non-English locales or legacy charset converters support.
+DEPRECATION NOTES
+php7 was removed.
+python2 was removed.
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+CREDITS
+Thanks to everyone sending patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or contributing in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree and RapidSwitch for providing us with hardware and hosting.
+
+APORTS COMMIT CONTRIBUTORS
+6543
+A. Wilcox
+Adam Jensen
+Adam Plumb
+Aiden Grossman
+Aleks Bunin
+Aleksei Nikiforov
+Alex Denes
+Alex Dowad
+Alex McGrath
+Alex Xu (Hello71)
+Alex Yam
+Alexander Brzoska
+Alexey Andreyev
+Alexey Yerin
+Alisa
+Alistair Francis
+Andreas Schneider
+Andrei Jiroh Eugenio Halili
+Andrew Harris
+André Klitzing
+Andrés Maldonado
+Andy Hawkins
+Andy Postnikov
+Anjandev Momi
+Antoine Fontaine
+Antoine Martin
+Antoni Aloy Torrens
+Apo Apangona
+Ariadne Conill
+Arnavion
+Bart Ribbers
+Bertrand Lupart
+Bill Sprinters
+Bobby The Builder
+Boris Faure
+Bradford D. Boyle
+Caleb Connolly
+Carlgo11
+Carlo Landmeter
+Chris Kruger
+Chris Vittal
+Christian Franke
+Clayton Craft
+Cormac Stephenson
+Cory Sanin
+Curt Tilmes
+Dan Theisen
+Daniel Gray
+Daniel Kolesa
+Daniel Néri
+Daniil Nemtsev
+David A. Hannasch
+David Demelier
+David Florness
+Dekedro
+Dermot Bradley
+Dhruvin Gandhi
+Dmitry Kruchko
+Dmitry Romanenko
+Dmitry Zakharchenko
+Dominik Schulz
+Dominika Liberda
+Dominique Martinet
+Drew DeVault
+Duncan Bellamy
+Dylan Van Assche
+Díaz Urbaneja Víctor Diego Alejandro
+Edd Salkield
+Eirik Furuseth
+Elaina Thompson
+Eloi Torrents
+Er2
+Erik Larsson
+Evgeny Grin
+Fabian Affolter
+Fernando Oleo Blanco
+FollieHiyuki
+Francesco Camuffo
+Francesco Colista
+Frank Oltmanns
+Galen Abell
+Gavin Henry
+Gennady Feldman
+Geod24
+Glenn Strauss
+GreyXor
+Grigory Kirillov
+Guilherme Felipe da Silva
+Guillaume Quintard
+Guy Godfroy
+Hakan Erduman
+Hazem
+Henrik Grimler
+Henrik Riomar
+Hiroshi Kajisha
+Holger Jaekel
+Hugo Wang
+Humm
+Ian Bashford
+Iztok Fister Jr
+J0WI
+Jake Buchholz Göktürk
+Jakob Hauser
+Jakub Jirutka
+Jakub Panek
+Jason A. Donenfeld
+Jesse Chan
+Jinming Wu, Patrick
+Johannes Heimansberg
+Jonas
+Joonas Kuorilehto
+Jordan Christiansen
+Jost Brandstetter
+JuniorJPDJ
+Justin
+Justin Berthault
+KILLERTKK
+Kaarle Ritvanen
+Kate
+Kate Deplaix
+Kevin Daudt
+Kevin Thomas
+Kevin Wang
+Klaus Frank
+Konstantin Kulikov
+Krystian Chachuła
+Laszlo Soos
+Lauren N. Liberda
+Laurent Bercot
+Leo
+Leon Marz
+Leon ROUX
+Leonardo Arena
+Lin, Meng-Bo
+Linux User
+Lova Widmark
+Luca Weiss
+Lucas Ramage
+Lucidiot
+Maarten van Gompel
+Magnus Sandin
+Malte Voos
+Marcelo Duarte
+Marco Martinelli
+Marco Schröder
+Marian Buschsieweke
+Marin Purgar
+Mark Pashmfouroush
+Martijn Braam
+Martin Hasoň
+Martin Kühl
+Marvin Preuss
+Mathieu Mirmont
+Matthew T Hoare
+MaxPeal
+Maxim Karasev
+Michael Lyngbol
+Michael Pirogov
+Michael Truog
+Michal Jirku
+Michał Adamski
+Michał Polański
+Mike Banon
+Mike Crute
+Milan P. Stanić
+Miles Alan
+Minecrell
+Misthios
+Mogens Jensen
+Natanael Copa
+Nathan
+Nathan Angelacos
+Nero
+Newbyte
+Nick Hanley
+Nico de Haer
+Nicolas Lorin
+Nilushan Costa
+Noel Kuntze
+Nulo
+Oleg Titov
+Oliver Smith
+Olliver Schinagl
+Pablo Correa Gómez
+Patrick Gansterer
+Paul Bredbury
+Paul Spooren
+Pedro Lucas Porcellis
+Peter Shkenev
+Peter Spiess-Knafl
+Peter van Dijk
+Petr Vorel
+Philipp Arras
+Piper McCorkle
+Pranjal Kole
+QShen3
+R4SAS
+Ralf Rachinger
+Raymond Hackley
+Rob Blanckaert
+Robert Günzler
+Robert Schütz
+Roel Standaert
+Rosen Penev
+Roshless
+S.M Mukarram Nainar
+Sadie Powell
+Saijin-Naib
+Sashanoraa
+Scott Robinson
+Sean McAvoy
+Sebastian
+Shawn Rose
+Sheila Aman
+Simon Frankenberger
+Simon Rupf
+Simon Ser
+Simon Zeni
+Siva Mahadevan
+Sodface
+Stacy Harper
+Steffen Nurpmeso
+Steve McMaster
+Steven Honson
+Stéphane Alnet
+Sven Wick
+Sylvain Prat
+Síle Ekaterin Liszka
+Sören Tempel
+Taner Tas
+Thiago Perrotta
+Thomas Deutsch
+Thomas Kienlen
+Thomas Liske
+Tim Stanley
+Timo Brasz
+Timo Teräs
+Timothee LF
+Timothy Legge
+Tom Lebreux
+Tom Tsagk
+Tuan Hoang
+Umar Getagazov
+Waweic
+Weilu Jia
+Wesley van Tilburg
+Will Sinatra
+Wolf
+Xe
+Yagnesh Mistry
+Zach DeCook
+Zhuo FENG
+alealexpro100
+ayakael
+chenrui
+crapStone
+donoban
+fanquake
+firefly-cpp
+guddaff
+j.r
+jakovrr
+jvoisin
+kedap
+knuxify
+kpcyrd
+krystianch
+kt programs
+ktprograms
+leso-kn
+lonjil
+macmpi
+mcha
+messense
+mio
+mochaaP
+mterron
+nibon7
+nick black
+nilushancosta
+omni
+p3lim
+prspkt
+psykose
+ptrcnull
+quietsy
+rubicon
+sergiotarxz
+shum
+techknowlogick
+tiotags
+wener
+xrs
+Óliver García
+博麗霊夢
+
 ALPINE LINUX 3.15.0 RELEASED
 We are pleased to announce the release of Alpine Linux 3.15.0, the first in the v3.15 stable series.
 
