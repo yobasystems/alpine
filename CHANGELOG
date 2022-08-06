@@ -850,8 +850,8 @@ php7 is being phased out, as the last release, 7.4 will have only 1 year of secu
 
 
 
-ALPINE LINUX 3.14.6 RELEASED
-The Alpine Linux project is pleased to announce the immediate availability of version 3.14.6 of its Alpine Linux operating system.
+ALPINE LINUX 3.14.7 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.14.7 of its Alpine Linux operating system.
 
 This release includes fixes for openssl CVE-2021-3711 and CVE-2021-3712.
 
@@ -983,7 +983,7 @@ Natanael Copa (33):
       main/zfs-lts: rebuild against kernel 5.10.61-r0
       scripts/mkimg.base.sh: include gnu wget
       main/raspberrypi-bootloader: upgrade to 1.20210805
-      ===== release 3.14.6 =====
+      ===== release 3.14.7 =====
 
 Oliver Smith (1):
       community/pmbootstrap: upgrade to 1.36.0
