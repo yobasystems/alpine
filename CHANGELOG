@@ -1,5 +1,480 @@
+ALPINE LINUX 3.16.1 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.16.1 of its Alpine Linux operating system.
+
+This release includes various security fixes, including:
+
+busybox CVE-2022-30065
+openssl CVE-2022-2097
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+6543 (2):
+      community/synapse: upgrade to 1.61.1
+      community/gitea: upgrade to v1.16.9
+
+Andy Postnikov (28):
+      community/{php8,php81}: update provider priority
+      community/php8-pecl-event: upgrade to 3.0.7
+      community/php81-pecl-event: upgrade to 3.0.7
+      community/composer: upgrade to 2.3.6
+      community/drupal7: upgrade to 7.90
+      community/composer: upgrade to 2.3.7
+      community/php8-pecl-xdebug: upgrade to 3.1.5
+      community/php81-pecl-xdebug: upgrade to 3.1.5
+      community/php81: security upgrade to 8.1.7
+      community/php8: security upgrade to 8.0.20
+      community/php8-pecl-rdkafka: upgrade to 6.0.2
+      community/php81-pecl-rdkafka: upgrade to 6.0.2
+      main/postgresql14: upgrade to 14.4
+      community/php8-pecl-swoole: upgrade to 4.8.10
+      community/php81-pecl-swoole: upgrade to 4.8.10
+      main/nginx: upgrade modules
+      community/njs: upgrade to 0.7.5
+      community/php8-pecl-rdkafka: upgrade to 8.0.3
+      community/php81-pecl-rdkafka: upgrade to 6.0.3
+      community/composer: upgrade to 2.3.8
+      community/composer: upgrade to 2.3.9
+      community/php8: upgrade to 8.0.21
+      community/php81: upgrade to 8.1.8
+      community/php81-pecl-swoole: upgrade to 4.8.11
+      community/php8-pecl-swoole: upgrade to 4.8.11
+      community/composer: upgrade to 2.3.10
+      main/openldap: upgrade to 2.6.3
+      main/libwebp: upgrade to 1.2.3
+
+Anjandev Momi (1):
+      community/nextcloud: upgrade to 24.0.1
+
+Antoine Martin (4):
+      community/dotnet6-build: upgrade to 6.0.106
+      community/dotnet6-runtime: upgrade to 6.0.6
+      community/dotne6-build: upgrade to 6.0.107
+      community/dotne6-runtime: upgrade to 6.0.7
+
+Bart Ribbers (7):
+      community/kde release service: upgrade to 22.04.1
+      community/pmbootstrap: upgrade to 1.44.0
+      main/gtk+3.0: fix commands in .post-install
+      community/gtk4.0: fix commands in .post-install
+      community/kde-release-service: upgrade to 22.04.2
+      community/blueman: fix checksums
+      community/blueman: fix build
+
+Damian Kurek (1):
+      main/gptfdisk: Fix null dereference and enable tests
+
+Dermot Bradley (1):
+      [3.16] community/cloud-init: upgrade to 22.2.2
+
+Dominique Martinet (3):
+      main/gptfdisk: fix bad uuid generation error
+      community/networkmanager: upgrade to 1.38.2
+      main/dnsmasq: init: add extra setup command hook
+
+Duncan Bellamy (2):
+      community/dovecot-fts-xapian: rebuild against dovecot 2.3.19
+      community/ceph: add patch for issue #13892
+
+Francesco Colista (4):
+      community/bareos: fix pre-upgrade script
+      community/lua-resty-mail: moved from testing
+      community/lua-resty-postgres: moved from testing
+      community/lua-stacktraceplus: backported from edge
+
+GreyXor (1):
+      main/redis: upgrade to 7.0.2
+
+Henrik Riomar (1):
+      scripts/mkimg.standard.sh: add linux-firmware-none to the extended iso
+
+J0WI (11):
+      main/dpkg: security upgrade to 1.21.8
+      community/nss: security upgrade to 3.78.1
+      main/cifs-utils: update secfixes
+      main/apache2: security upgrade to 2.4.54
+      main/pcre2: security upgrade to 10.40
+      main/ntfs-3g: security upgrade to 2022.5.17
+      main/openssl: security upgrade to 1.1.1p
+      community/knot-resolver: upgrade to 5.5.1
+      main/openssl: security upgrade to 1.1.1q
+      main/openssl: security upgrade to 3.0.5
+      main/gnupg: patch CVE-2022-34903
+
+Jacob Panek (2):
+      community/caddy: fix listening with TLS
+      community/tailscale: add missing ip6tables dependency
+
+Jake Buchholz Göktürk (1):
+      community/containerd: [3.16] security upgrade to 1.6.6
+
+Jakob Hauser (1):
+      community/xorg-server: upgrade to 21.1.4
+
+Jakub Jirutka (29):
+      main/nginx: upgrade to 1.22.0, upgrade modules
+      community/njs: upgrade to 0.7.4
+      main/libde265: backport CVE patches from upstream
+      community/knot-resolver: fix cache error on CoW filesystem
+      community/knot-resolver: define error_logger in init script
+      community/knot-resolver: rebuild
+      community/collectd: backport multiple fixes from upstream
+      community/collectd: install headers to allow building out-of-tree plugins
+      community/collectd: include *.conf from /etc/collectd.d by default
+      main/postgresql-common: use service_set_value and service_get_value
+      main/postgresql13: upgrade to 13.7
+      community/postgresql12: upgrade to 12.11
+      community/bcc: fix broken _tools split - endless sed loop
+      community/bcc: don't bundle LLVM into shared library, link dynamically
+      community/bpftrace: rebuild
+      community/font-noto: fix name of fontconfig configs
+      community/font-noto: fix deprecated ERB.new params in noto-meta
+      community/font-noto: fix fontconfig configs (again)
+      community/avizo: fix missing image on first invocation
+      community/swaylock-effects: change upstream and upgrade to 1.6.10
+      main/dnsmasq: backport bug fixes from upstream and Fedora
+      community/at: import bugfixes from Fedora
+      community/at: don't overwrite /var/spool/atd/.SEQ on upgrade
+      community/earlyoom: fix typo in init script - don't run as root
+      community/earlyoom: fix avoid_cmds, prefer_cmds opts in init script
+      community/earlyoom: drop setcap, rather run as root
+      community/zzz: upgrade to 0.1.1
+      community/xdg-desktop-portal: add missing dependency on cmd:fusermount3
+      community/alpine-make-vm-image: upgrade to 0.9.0
+
+Kaarle Ritvanen (2):
+      main/awall: upgrade to 1.12.0
+      community/py3-django: security upgrade to 3.2.14
+
+Kevin Daudt (3):
+      community/salt: upgrade to 3004.2
+      community/zabbix: upgrade to 6.0.6
+      community/netdata: enable ACLK
+
+Konstantin Kulikov (4):
+      community/grafana-frontend: upgrade to 8.5.6
+      community/grafana: upgrade to 8.5.6
+      community/grafana-frontend: upgrade to 8.5.9
+      community/grafana: security upgrade to 8.5.9
+
+Leonardo Arena (4):
+      community/nextcloud: inform the user about the correct upgrade path
+      community/nextcloud: upgrade to 24.0.2
+      community/nextcloud23: upgrade to 23.0.6
+      community/nextcloud: fix serverinfo subpkg depends
+
+Luca Weiss (1):
+      community/net-cpp: fix issues with new libcurl
+
+Magnus Sandin (1):
+      community/pipewire: Fix pipewire-jack to not crash jack clients
+
+Michał Polański (6):
+      community/py3-jwt: security upgrade to 2.4.0
+      community/intel-media-sdk: upgrade to 22.4.2
+      community/coredns: upgrade to 1.9.3
+      community/intel-media-sdk: upgrade to 22.4.3
+      community/conmon: upgrade to 2.1.2
+      community/caddy: upgrade to 2.5.2
+
+Milan P. Stanić (12):
+      community/linux-edge: upgrade to 5.18.0
+      community/linux-edge: upgrade to 5.18.1
+      community/linux-edge: upgrade to 5.18.3
+      main/dovecot: bugfix upgrade to 2.3.19.1
+      community/linux-edge: upgrade to 5.18.4
+      community/linux-edge: upgrade to 5.18.5
+      community/linux-edge: upgrade to 5.18.6
+      community/linux-edge: upgrade to 5.18.7
+      community/linux-edge: upgrade to 5.18.8
+      community/linux-edge: upgrade to 5.18.9
+      community/linux-edge: upgrade to 5.18.10
+      community/linux-edge: upgrade to 5.18.11
+
+Natanael Copa (91):
+      community/gnunet-gtk: upgrade to 0.16.0
+      main/alpine-baselayout: fix -data to not depend on itself
+      main/busybox-initscripts: fix mdev-conf to not depend on itself
+      main/ncurses: add secfixes data for CVE-2022-29458
+      main/postgresql-common: add secfixes comment for CVE-2019-3466
+      main/openldap: add secfixes comment for CVE-2022-29155
+      community/exo: upgrade to 4.16.4
+      main/linux-lts: enable gpio power reset for armv7 virt kernel
+      main/linux-lts: enable libnvdimm and nfit
+      main/linux-lts: upgrade to 5.15.43
+      main/linux-lts: enable devicetree based probing for 8250 ports
+      main/linux-lts: upgrade to 5.15.45
+      main/linux-lts: re-enable efi stub
+      main/linux-lts: upgrade to 5.15.46
+      main/linux-lts: upgrade to 5.15.47
+      community/jool-modules-lts: rebuild against kernel 5.15.47-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.47-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.47-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.47-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.47-r0
+      main/zfs-lts: rebuild against kernel 5.15.47-r0
+      main/build-base: set MIT license
+      main/linux-lts: upgrade to 5.15.48
+      community/jool-modules-lts: rebuild against kernel 5.15.48-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.48-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.48-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.48-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.48-r0
+      main/zfs-lts: rebuild against kernel 5.15.48-r0
+      main/linux-lts: upgrade to 5.15.49
+      main/linux-lts: enable BFQ IO scheduler
+      main/linux-lts: upgrade to 5.15.50
+      community/jool-modules-lts: rebuild against kernel 5.15.50-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.50-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.50-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.50-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.50-r0
+      main/zfs-lts: rebuild against kernel 5.15.50-r0
+      main/linux-lts: upgrade to 5.15.51
+      community/jool-modules-lts: rebuild against kernel 5.15.51-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.51-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.51-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.51-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.51-r0
+      main/zfs-lts: rebuild against kernel 5.15.51-r0
+      main/linux-lts: upgrade to 5.15.52
+      community/jool-modules-lts: rebuild against kernel 5.15.52-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.52-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.52-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.52-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.52-r0
+      main/zfs-lts: rebuild against kernel 5.15.52-r0
+      main/linux-lts: upgrade to 5.15.53
+      community/jool-modules-lts: rebuild against kernel 5.15.53-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.53-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.53-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.53-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.53-r0
+      main/zfs-lts: rebuild against kernel 5.15.53-r0
+      community/mplayer: enable armv7
+      main/linux-rpi: upgrade to 5.15.53
+      community/jool-modules-rpi: rebuild against kernel 5.15.53-r0
+      main/zfs-rpi: rebuild against kernel 5.15.53-r0
+      main/linux-lts: upgrade to 5.15.54
+      community/jool-modules-lts: rebuild against kernel 5.15.54-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.54-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.54-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.54-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.54-r0
+      main/zfs-lts: rebuild against kernel 5.15.54-r0
+      main/linux-rpi: upgrade to 5.15.54
+      community/jool-modules-rpi: rebuild against kernel 5.15.54-r0
+      main/zfs-rpi: rebuild against kernel 5.15.54-r0
+      main/linux-lts: upgrade to 5.15.55
+      community/jool-modules-lts: rebuild against kernel 5.15.55-r0
+      community/rtl8821ce-lts: rebuild against kernel 5.15.55-r0
+      community/rtpengine-lts: rebuild against kernel 5.15.55-r0
+      main/dahdi-linux-lts: rebuild against kernel 5.15.55-r0
+      main/xtables-addons-lts: rebuild against kernel 5.15.55-r0
+      main/zfs-lts: rebuild against kernel 5.15.55-r0
+      main/linux-rpi: upgrade to 5.15.55
+      community/jool-modules-rpi: rebuild against kernel 5.15.55-r0
+      main/zfs-rpi: rebuild against kernel 5.15.55-r0
+      main/alpine-conf: upgrade to 3.14.5
+      main/alpine-conf: fix tests over ssh
+      main/busybox: add fix for CVE-2022-30065
+      main/mkinitfs: upgrade to 3.6.2
+      main/busybox-initscripts: refactor tests to kyua
+      main/busybox-initscripts: tests for persistent-storage
+      main/busybox-initscripts: backwards compat for /dev/usbdisk
+      ===== release 3.16.1 =====
+
+Newbyte (8):
+      community/gnome-calculator: upgrade to 42.1
+      community/karlender: upgrade to 0.4.4
+      community/amberol: upgrade to 0.8.0
+      community/mozjs91: upgrade to 91.10.0
+      community/mozjs91: add icu-data-full to checkdepends
+      community/headlines: upgrade to 0.7.1
+      community/karlender: upgrade to 0.5.1
+      community/karlender: upgrade to 0.6.0
+
+Nicolas Lorin (1):
+      community/repmgr: upgrade to 5.3.2
+
+Oliver Smith (3):
+      community/pmbootstrap: upgrade to 1.44.1
+      community/bemenu: add replaces=sxmo-bemenu
+      community/pmbootstrap: upgrade to 1.45.0
+
+Pablo Correa Gómez (9):
+      community/gnome-feeds: fix dependencies
+      community/gnome-control-center: upgrade to 42.2
+      community/gnome-control-center: add patch to fix change password dialog
+      community/gnome-remote-desktop: upgrade to 42.2
+      community/gnome-remote-desktop: add lang subpackage
+      community/gnome-remote-desktop: update url
+      main/gtk+2.0: fix commands in .post-install
+      community/chatty: upgrade to 0.6.7
+      community/gnome-control-center: upgrade to 42.3
+
+Peter Shkenev (1):
+      [3.16] community/gajim: add missing dependency
+
+Robert Scheck (1):
+      community/signify: enable on armhf
+
+Simon Frankenberger (1):
+      main/gnupg: fix importing ed25519 keys with leading zero bit (MPI key)
+
+Stephen Abbene (1):
+      main/alpine-baselayout: fix pre-upgrade erroneously detecting symlinks as dirs
+
+Sören Tempel (2):
+      main/busybox: fix yet another use-after-free in BusyBox ash
+      main/mkinitfs: provide initramfs-generator
+
+Thomas Liske (1):
+      community/lldpd: upgrade to 1.0.14
+
+Wesley van Tilburg (6):
+      community/minify: upgrade to 2.11.5
+      community/minify: upgrade to 2.11.7
+      community/minify: upgrade to 2.11.9
+      community/minify: upgrade to 2.11.10
+      community/minify: upgrade to 2.11.11, add options=net
+      community/minify: upgrade to 2.11.12
+
+Will Sinatra (1):
+      community/sbcl: fix dynamic space and sb:thread
+
+donoban (2):
+      community/bubblejail: upgrade to 0.6.1
+      community/bubblejail: upgrade to 0.6.2
+
+knuxify (2):
+      community/gnome-feeds: re-add py3-syndom dependency
+      community/blueman: upgrade to 2.2.5
+
+macmpi (3):
+      community/bluez-alsa: upgrade to 4.0.0
+      main/linux-firmware: update pi brcmfmac43436 files to 1:20210315-3+rpt6 release
+      community/bluez-alsa: build all utilities into a utils sub-package
+
+omni (12):
+      community/qt5-qtwebengine: chromium security upgrade
+      main/xen: add mitigations for XSA-401 & XSA-402
+      community/tor: security upgrade to 0.4.7.8
+      main/xen: add mitigations for XSA-404
+      main/linux-lts: backport export mmu_feature_keys as non-GPL
+      main/zfs: upgrade to 2.1.5
+      main/zfs-lts: upgrade to 2.1.5
+      main/xen: add mitigations for XSA-403
+      community/libvirt: rebuild against xen 4.16.1-r3
+      community/py3-mistune: security upgrade to 2.0.3
+      main/xen: add mitigations for XSA-407
+      community/py3-mistune: upgrade to 2.0.4
+
+prspkt (1):
+      community/wavpack: security upgrade to 5.5.0
+
+psykose (77):
+      community/qbittorrent: upgrade to 4.4.3
+      community/glib-networking: revert back to gnutls
+      community/prosody: add icu-data-full to depends
+      community/prosody: move icu-data-full to top-level
+      community/libkgapi: disable failing tests
+      main/cairo: actually apply inf-loop patch
+      community/openbox: make autostart py3 compatible
+      main/libidn2: fix utils path
+      community/tectonic: add icu-data-full dependency
+      community/vectorscan: remove march=native, use ninja
+      community/qbittorrent: upgrade to 4.4.3.1
+      main/cups: upgrade to 2.4.2
+      community/chromium: upgrade to 102.0.5005.61
+      community/chromium: use bundled desktop file, install metadata
+      community/bloaty: move .so to main package
+      main/alpine-conf: upgrade to 3.14.2
+      main/gnutls: upgrade to 3.7.6
+      community/qt6-qt5compat: add icu-data-full
+      main/apr: fix CVE-2021-35940
+      community/qbittorrent: fix rss on qt 6.3.0
+      community/firefox-esr: upgrade to 91.10.0
+      community/firefox: upgrade to 101.0
+      community/cbindgen: upgrade to 0.23.0
+      community/thunderbird: upgrade to 91.10.0
+      community/wlroots: allow replace for sxmo-wlroots
+      community/ffnvcodec-headers: new aport
+      main/logrotate: fix CVE-2022-1348
+      community/evolution-data-server: upgrade to 3.44.2
+      community/evolution: upgrade to 3.44.2
+      community/evolution-ews: upgrade to 3.44.2
+      community/py3-ipykernel: amend dependencies
+      community/quassel: don't depend on self top-level
+      community/blender: don't depend on blender-shared on self
+      community/py3-readability-lxml: remove !py3-readability reference
+      main/gnupg: remove !gnupg reference
+      community/modemmanager: make libmm not depend on itself
+      community/bareos: make storage-daemon not depend on pkgname
+      community/dotnet6-runtime: make host not depend on hostxfr
+      community/quassel: split -libs
+      community/blender: actually remove circular dep on -shared
+      community/bareos: split -libs
+      main/gnupg: remove more circular depends
+      community/containerd: correct secfix version
+      community/firefox: upgrade to 101.0.1
+      main/gstreamer: upgrade to 1.20.3
+      main/gst-plugins-base: upgrade to 1.20.3
+      community/py3-gst: upgrade to 1.20.3
+      community/gst-plugins-ugly: upgrade to 1.20.3
+      community/gst-libav: upgrade to 1.20.3
+      community/gst-plugins-bad: upgrade to 1.20.3
+      community/gst-plugins-good: upgrade to 1.20.3
+      community/gst-editing-services: upgrade to 1.20.3
+      community/audacious: add qt5-qtsvg to depends
+      main/logrotate: fix permissions of logrotate status
+      community/gitea: don't run passwd -u without fresh user creation
+      community/networkmanager: add -dbg
+      main/linux-firmware: add brcm-43436 firmware
+      community/firefox-esr: upgrade to 91.11.0
+      community/thunderbird: upgrade to 91.11.0
+      main/curl: add fixes for cves
+      community/keepalived: add support for SNMP RFC MIBs
+      community/py3-ujson: upgrade to 5.4.0
+      community/webkit2gtk-5.0: upgrade to 2.36.4
+      community/webkit2gtk: upgrade to 2.36.4
+      community/py3-scikit-learn: add missing dependency
+      community/xscreensaver: upgrade to 6.04
+      main/binutils: backport fix for -Os on ppc64le
+      community/xorg-server: fix CVE-2022-2319 and CVE-2022-2320
+      community/xorg-server: rename patches
+      main/mbedtls: upgrade to 2.28.1
+      testing/gn: upgrade to 0_git20220608
+      community/gn: move from testing
+      community/chromium: upgrade to 102.0.5005.158
+      main/git: upgrade to 2.36.2
+      main/freetype: update cves
+      main/rsync: fix rrsync dependency on python3
+      main/dhcpcd: fix openrc management
+
+ptrcnull (12):
+      community/zabbix: upgrade to 6.0.5
+      community/labwc: add missing xwayland dependency
+      community/xf86-video-qxl: replace get_boolean_option patch
+      main/libid3tag: upgrade to 0.16.2
+      community/easytag: rebuild against libid3tag-0.16.2-r0
+      community/libmp3splt: rebuild against libid3tag-0.16.2-r0
+      community/minidlna: rebuild against libid3tag-0.16.2-r0
+      community/mpd: rebuild against libid3tag-0.16.2-r0
+      community/sox: rebuild against libid3tag-0.16.2-r0
+      community/tenacity: rebuild against libid3tag-0.16.2-r0
+      main/imlib2: rebuild against libid3tag-0.16.2-r0
+      main/net-snmp: upgrade to 5.9.3
+
+rubicon (3):
+      community/sbcl: upgrade to 2.2.5
+      community/ecl: fix specification of integer suffixes
+      main/perl-lwp-protocol-https: add install_if for perl-app-cpanminus
+
+vin01 (1):
+      community/salt: remove stale patch for python3.10 compatibility
+
 ALPINE LINUX 3.16.0 RELEASED
-We are pleased to announce the release of Alpine Linux 3.16.0, the first in the v3.16 stable series.
+We are pleased to announce the release of Alpine Linux 3.16.1, the first in the v3.16 stable series.
 
 HIGHLIGHTS
 Various improvements in the setup scripts:
