@@ -469,7 +469,7 @@ arm64v8 3.14.8 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.14.8-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.14-aarch64
-amd64 3.13.11 build:
+amd64 3.13.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
   tags:
@@ -482,35 +482,35 @@ amd64 3.13.11 build:
   - echo "$COMMIT_TIME" && echo "$CI_COMMIT_SHORT_SHA"
   - apk add --update git
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-  - cd alpine-3.13.11/amd64/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
+  - cd alpine-3.13.12/amd64/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
     --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-x86_64
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-x86_64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-amd64
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-amd64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-x86_64
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-amd64
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-x86_64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-amd64
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-x86_64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-amd64
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-amd64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-x86_64
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-amd64
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-x86_64
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-amd64
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-amd64 .
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-x86_64
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-x86_64
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-amd64
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-amd64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-amd64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-x86_64
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-x86_64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-x86_64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-amd64
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-amd64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-x86_64
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-x86_64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-x86_64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-amd64
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-amd64
-arm32v7 3.13.11 build:
+arm32v7 3.13.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
   tags:
@@ -523,35 +523,35 @@ arm32v7 3.13.11 build:
   - echo "$COMMIT_TIME" && echo "$CI_COMMIT_SHORT_SHA"
   - apk add --update git
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-  - cd alpine-3.13.11/arm32v7/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
-    --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-armhf
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-armhf -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-armhf
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-armhf -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-armhf
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm32v7
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm32v7
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-arm32v7
+  - cd alpine-3.13.12/arm32v7/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
+    --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-armhf
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-armhf -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-armhf
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-armhf -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-armhf
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm32v7
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm32v7
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-arm32v7
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-arm32v7 .
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm32v7
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm32v7
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-armhf
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-armhf
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-armhf
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm32v7
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm32v7
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm32v7
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-armhf
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-armhf
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-arm32v7
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-arm32v7
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-arm32v7
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-armhf
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-armhf
-arm64v8 3.13.11 build:
+arm64v8 3.13.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
   tags:
@@ -564,32 +564,32 @@ arm64v8 3.13.11 build:
   - echo "$COMMIT_TIME" && echo "$CI_COMMIT_SHORT_SHA"
   - apk add --update git
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-  - cd alpine-3.13.11/arm64v8/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
-    --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-aarch64
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-aarch64
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-aarch64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm64v8
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm64v8
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-arm64v8
+  - cd alpine-3.13.12/arm64v8/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
+    --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-aarch64
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-aarch64
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-aarch64
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm64v8
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm64v8
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-arm64v8
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-arm64v8 .
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm64v8
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-arm64v8
-  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-aarch64
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-aarch64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13-aarch64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm64v8
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm64v8
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm64v8
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-aarch64
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-aarch64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-arm64v8
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-arm64v8
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-arm64v8
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.11-aarch64
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13.12-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.13-aarch64
 amd64 3.12.12 build:
@@ -1051,7 +1051,7 @@ dockerhub manifest creation 3.13:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13-arm64v8
     --os linux --arch arm64
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13
-gitlab manifest creation 3.13.11:
+gitlab manifest creation 3.13.12:
   image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
@@ -1060,19 +1060,19 @@ gitlab manifest creation 3.13.11:
   - mkdir /root/.docker
   - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-amd64
-  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm32v7
-  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm64v8
-  - docker manifest create $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-amd64
-    $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm32v7 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm64v8
-  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-amd64
+  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-amd64
+  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm32v7
+  - docker pull $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm64v8
+  - docker manifest create $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-amd64
+    $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm32v7 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm64v8
+  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-amd64
     --os linux --arch amd64
-  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm32v7
+  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm32v7
     --os linux --arch arm
-  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11-arm64v8
+  - docker manifest annotate $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12 $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12-arm64v8
     --os linux --arch arm64
-  - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.11
-dockerhub manifest creation 3.13.11:
+  - docker manifest push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.13.12
+dockerhub manifest creation 3.13.12:
   image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
@@ -1081,18 +1081,18 @@ dockerhub manifest creation 3.13.11:
   - mkdir /root/.docker
   - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-amd64
-  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm32v7
-  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm64v8
-  - docker manifest create $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-amd64
-    $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm32v7 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm64v8
-  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-amd64
+  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-amd64
+  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm32v7
+  - docker pull $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm64v8
+  - docker manifest create $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-amd64
+    $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm32v7 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm64v8
+  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-amd64
     --os linux --arch amd64
-  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm32v7
+  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm32v7
     --os linux --arch arm
-  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11-arm64v8
+  - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12-arm64v8
     --os linux --arch arm64
-  - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.11
+  - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.13.12
 gitlab manifest creation 3.12:
   image: yobasystems/alpine-docker:dind
   stage: manifest
