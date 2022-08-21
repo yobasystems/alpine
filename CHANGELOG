@@ -1,5 +1,5 @@
-ALPINE LINUX 3.16.1 RELEASED
-The Alpine Linux project is pleased to announce the immediate availability of version 3.16.1 of its Alpine Linux operating system.
+ALPINE LINUX 3.16.2 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of version 3.16.2 of its Alpine Linux operating system.
 
 This release includes various security fixes, including:
 
@@ -281,7 +281,7 @@ Natanael Copa (91):
       main/busybox-initscripts: refactor tests to kyua
       main/busybox-initscripts: tests for persistent-storage
       main/busybox-initscripts: backwards compat for /dev/usbdisk
-      ===== release 3.16.1 =====
+      ===== release 3.16.2 =====
 
 Newbyte (8):
       community/gnome-calculator: upgrade to 42.1
@@ -474,7 +474,7 @@ vin01 (1):
       community/salt: remove stale patch for python3.10 compatibility
 
 ALPINE LINUX 3.16.0 RELEASED
-We are pleased to announce the release of Alpine Linux 3.16.1, the first in the v3.16 stable series.
+We are pleased to announce the release of Alpine Linux 3.16.2, the first in the v3.16 stable series.
 
 HIGHLIGHTS
 Various improvements in the setup scripts:

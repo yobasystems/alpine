@@ -4,12 +4,12 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 [![Docker Stars](https://img.shields.io/docker/stars/yobasystems/alpine.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/yobasystems/alpine/)
 
-[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.16.1-green.svg?style=for-the-badge&logo=alpine-linux)](https://alpinelinux.org/)
+[![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.16.2-green.svg?style=for-the-badge&logo=alpine-linux)](https://alpinelinux.org/)
 
 
 This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
-### Alpine Version 3.16.1 (Released 2022-07-18)
+### Alpine Version 3.16.2 (Released 2022-07-18)
 ### Alpine Version 3.15.5 (Released 2022-07-19)
 ### Alpine Version 3.14.7 (Released 2022-07-19)
 ### Alpine Version 3.13.11 (Released 2022-07-19)
