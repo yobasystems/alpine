@@ -141,7 +141,7 @@ amd64 3.17.0 build:
       && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.17.0-amd64
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
       && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.17-amd64
-  arm32v7 3.17.0 build:
+arm32v7 3.17.0 build:
     image: yobasystems/alpine-docker:dind
     stage: build
     tags:
@@ -182,7 +182,7 @@ amd64 3.17.0 build:
       && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.17.0-armhf
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
       && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.17-armhf
-  arm64v8 3.17.0 build:
+arm64v8 3.17.0 build:
     image: yobasystems/alpine-docker:dind
     stage: build
     tags:
