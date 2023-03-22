@@ -20,23 +20,39 @@ This docker image is the base Alpine Linux. For more info on versions & support 
 
 ----
 
-## What is Alpine Linux?
+
+## Table of Contents
+
+- [What is Alpine Linux?](#what-is-alpine-linux)
+- [Features](#features)
+- [Architectures](#architectures)
+- [Tags](#tags)
+- [Layers & Sizes](#layers--sizes)
+- [How to use this image](#how-to-use-this-image)
+- [Image contents & Vulnerability analysis](#image-contents--vulnerability-analysis)
+- [Source Repositories](#source-repositories)
+- [Container Registries](#container-registries)
+- [Links](#links)
+- [Donation](#donation)
+
+
+## 🏔️ What is Alpine Linux?
 Alpine Linux is a Linux distribution built around musl libc and BusyBox. The image is only 5 MB in size and has access to a package repository that is much more complete than other BusyBox based images. This makes Alpine Linux a great image base for utilities and even production applications. Read more about Alpine Linux here and you can see how their mantra fits in right at home with Docker images.
 
-## Features
+## ✨ Features
 
 * Minimal size only, minimal layers
 * Memory usage is minimal on a simple install.
 
-## Architectures
+## 🏗️ Architectures
 
 * ```:amd64```, ```:x86_64``` - 64 bit Intel/AMD (x86_64/amd64)
 * ```:arm64v8```, ```:aarch64``` - 64 bit ARM (ARMv8/aarch64)
 * ```:arm32v7```, ```:armhf``` - 32 bit ARM (ARMv7/armhf)
 
-#### PLEASE CHECK TAGS BELOW FOR SUPPORTED ARCHITECTURES, THE ABOVE IS A LIST OF EXPLANATION
+#### 📝 PLEASE CHECK TAGS BELOW FOR SUPPORTED ARCHITECTURES, THE ABOVE IS A LIST OF EXPLANATION
 
-## Tags
+## 🏷️ Tags
 
 * ```:latest``` latest branch based (Automatic Architecture Selection)
 * ```:master``` master branch usually inline with latest
@@ -45,7 +61,7 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 * ```:aarch64```, ```:arm64v8``` Armv8 based on latest tag but arm64 architecture
 * ```:armhf```, ```:arm32v7``` Armv7 based on latest tag but arm architecture
 
-## Layers & Sizes
+## 📏 Layers & Sizes
 
 ![Version](https://img.shields.io/badge/version-amd64-blue.svg?style=for-the-badge)
 ![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/yobasystems/alpine/amd64.svg?style=for-the-badge)
@@ -59,7 +75,7 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 ![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/yobasystems/alpine/armhf.svg?style=for-the-badge)
 ![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/yobasystems/alpine/armhf.svg?style=for-the-badge)
 
-## How to use this image
+## 🚀 How to use this image
 #### Usage
 Use like you would any other base image:
 
@@ -79,7 +95,13 @@ ENTRYPOINT ["mysql"]
 ```
 This yields us a base image size of about 74MB image.
 
-## Source Repositories
+## 🔍 Image contents & Vulnerability analysis
+
+| PACKAGE NAME          | PACKAGE VERSION | VULNERABILITIES |
+|-----------------------|-----------------|-----------------|
+
+
+## 📚 Source Repositories
 
 * [Github - yobasystems/alpine](https://github.com/yobasystems/alpine)
 
@@ -88,14 +110,14 @@ This yields us a base image size of about 74MB image.
 * [Bitbucket - yobasystems/alpine](https://bitbucket.org/yobasystems/alpine/)
 
 
-## Container Registries
+## 🐳 Container Registries
 
 * [Dockerhub - yobasystems/alpine](https://hub.docker.com/r/yobasystems/alpine/)
 
 * [Quay.io - yobasystems/alpine](https://quay.io/repository/yobasystems/alpine)
 
 
-## Links
+## 🔗 Links
 
 * [Yoba Systems](https://www.yobasystems.co.uk/)
 
@@ -107,7 +129,7 @@ This yields us a base image size of about 74MB image.
 
 * [Maintainer - Dominic Taylor](https://github.com/dominictayloruk)
 
-## Donation
+## 💰 Donation
 
 [![BMAC](https://img.shields.io/badge/BUY%20ME%20A%20COFFEE-£5-blue.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/dominictayloruk?new=1)
 
