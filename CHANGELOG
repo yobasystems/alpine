@@ -1,3 +1,20 @@
+ALPINE 3.14.9, 3.15.7 AND 3.16.4 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.14.9
+3.15.7
+3.16.4
+Those releases include security fixes for openssl:
+
+CVE-2022-4203
+CVE-2022-4304
+CVE-2022-4450
+CVE-2023-0215
+CVE-2023-0216
+CVE-2023-0217
+CVE-2023-0286
+CVE-2023-0401
+
 ALPINE LINUX 3.17.2 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.17.2 of its Alpine Linux operating system.
 
