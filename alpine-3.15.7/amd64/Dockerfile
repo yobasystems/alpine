@@ -5,17 +5,17 @@ ARG VCS_REF
 
 LABEL maintainer="Dominic Taylor <dominic@yobasystems.co.uk>" \
     architecture="amd64/x86_64" \
-    alpine-version="3.15.6" \
+    alpine-version="3.15.7" \
     build="22-Mar-2023" \
     org.opencontainers.image.title="alpine" \
     org.opencontainers.image.description="Docker image running on Alpine Linux" \
     org.opencontainers.image.authors="Dominic Taylor <dominic@yobasystems.co.uk>" \
     org.opencontainers.image.vendor="Yoba Systems" \
-    org.opencontainers.image.version="v3.15.6" \
+    org.opencontainers.image.version="v3.15.7" \
     org.opencontainers.image.url="https://hub.docker.com/r/yobasystems/alpine/" \
     org.opencontainers.image.source="https://github.com/yobasystems/alpine" \
     org.opencontainers.image.revision=$VCS_REF \
     org.opencontainers.image.created=$BUILD_DATE
 
-ADD alpine-minirootfs-3.15.6-x86_64.tar.gz /
+ADD alpine-minirootfs-3.15.7-x86_64.tar.gz /
 CMD ["/bin/sh"]
