@@ -1,3 +1,301 @@
+ALPINE LINUX 3.18.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.18.0, the first in the v3.18 stable series.
+
+HIGHLIGHTS
+Linux kernel 6.1 – with signed kernel modules
+musl libc 1.2.4 – now with TCP fallback in DNS resolver
+Python 3.11
+Ruby 3.2
+Node.js (current) 20.1
+GNOME 44
+Go 1.20
+KDE Plasma 5.27
+Rust 1.69
+Experimental support for unattended installs via tiny-cloud
+SIGNIFICANT CHANGES
+Kernel modules are now signed. Verified modules are not enforced by default, so 3rd party modules with akms still works.
+
+All packages for ppc64le, x86, and x86_64 was linked with DT_RELR. This should have reduced size of compiled binares.
+
+Python pre-compiled files (pyc) are now shipped in separate packages. It is now possible to avoid install those and save space by doing apk add !pyc.
+
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+CREDITS
+Thanks to everyone sending patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or contributing in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree and ungleich for providing us with hardware and hosting.
+
+APORTS COMMIT CONTRIBUTORS
+6543
+AN3223
+Adam Jensen
+Adam Plumb
+Adam Thiede
+Aiden Grossman
+Alex Denes
+Alex Dowad
+Alex McGrath
+Alex Xu (Hello71)
+Alexander Edland
+Alexey Minnekhanov
+Alexey Yerin
+Andres Almiray
+André Klitzing
+Andy Hawkins
+Andy Postnikov
+Anjandev Momi
+Antoine Martin
+Antoni Aloy Torrens
+Apo Apangona
+Ariadne Conill
+Armin Weigl
+Arnav Singh
+Bader Zaidan
+Bart Ribbers
+Ben Fuhrmannek
+Bradford D. Boyle
+Brian Cole
+Brice
+Bryan Kaplan
+Camil Băncioiu
+Carlo Landmeter
+Catherine Schönhammer
+Clayton Craft
+Coco Liliace
+Conrad Hoffmann
+Consus
+Cormac Stephenson
+Cowington Post
+Craig Andrews
+Cédric Bellegarde
+Daniel Fancsali
+Dave Henderson
+David Demelier
+David Florness
+David Wilson
+Dekedro
+Dermot Bradley
+Dhruvin Gandhi
+Djaker Abderrahmane
+Dmitry Zakharchenko
+Dominika Liberda
+Dominique Martinet
+DracoBlue
+Drew DeVault
+Duncan Bellamy
+Dylan Van Assche
+Dzmitry Sankouski
+Edd Salkield
+Eirik Furuseth
+Elagost
+Elly Fong-Jones
+Eloi Torrents
+Emma Nora Theuer
+Fabricio Silva
+Fiona Klute
+FollieHiyuki
+Francesco Colista
+G.J.R Timmer
+Galen Abell
+Gary Holtz
+Geod24
+Glenn Strauss
+Grigory Kirillov
+Guillaume Quintard
+Guy Broome
+Guy Godfroy
+Haelwenn (lanodan) Monnier
+Henrik Grimler
+Henrik Riomar
+Hiroshi Kajisha
+Hoang Nguyen
+Holger Jaekel
+Hoël Bézier
+Hugo Osvaldo Barrera
+Hugo Rodrigues
+Hugo Wang
+Hygna
+Iskren Chernev
+Iztok Fister Jr
+Izumi Tsutsui
+J0WI
+Jacopo Mondi
+Jake Buchholz Göktürk
+Jakob Hauser
+Jakob Meier
+Jakub Jirutka
+Jakub Panek
+Jami Kettunen
+Jason Swank
+Jeff Dickey
+Jeremy Saklad
+Jinming Wu, Patrick
+Johannes Heimansberg
+John Gebbie
+John Unland
+John Vogel
+Jonas
+Jonas Heinrich
+Jonas Marklén
+Jordan Christiansen
+Jordan ERNST
+Josef Vybíhal
+JuniorJPDJ
+KAAtheWise
+Kaarle Ritvanen
+Karel Gardas
+Kaspar Schleiser
+Kate
+Kay Thomas
+Kevin Daudt
+Klaus Frank
+Klemens Nanni
+Konstantin Kulikov
+Krassy Boykinov
+Krystian Chachuła
+Laszlo Gombos
+Lauren N. Liberda
+Laurent Bercot
+Lauri Tirkkonen
+Leon Marz
+Leon ROUX
+Leonardo Arena
+Linux User
+Luca Weiss
+Lucas Ramage
+Lucidiot
+MPThLee
+Maarten van Gompel
+Magnus Sandin
+Marc0x1
+Marco Schröder
+Marian Buschsieweke
+Mark Hills
+Martijn Braam
+Matthew T Hoare
+Matthew Via
+Maxim Karasev
+Michael Ekstrand
+Michael Pirogov
+Michal Jirku
+Michal Tvrznik
+Michal Vasilek
+Michał Polański
+Mike Crute
+Milan P. Stanić
+Miles Alan
+Natanael Copa
+Nathan Angelacos
+Newbyte
+Nico de Haer
+Nicolas Lorin
+Noah Zalev
+Noel Kuntze
+Nulo
+Oleg Titov
+Oliver Smith
+Olliver Schinagl
+Orhun Parmaksız
+Pablo Correa Gómez
+Patrick Gansterer
+Paul Bredbury
+Peter Shkenev
+Peter van Dijk
+Petr Hodina
+Petr Vorel
+Philipp Arras
+Piraty
+ProgCat
+Prokop Randacek
+Quillith
+R4SAS
+Ralf Rachinger
+Raymond Hackley
+Rob Blanckaert
+Rogério da Silva Yokomizo
+Rosie K Languet
+Rudolf Polzer
+Saijin-Naib
+Sascha Brawer
+Sean McAvoy
+Severin Neumann
+Simon Frankenberger
+Simon Rupf
+Simon Zeni
+Siva Mahadevan
+Sodface
+Stacy Harper
+Stefan de Konink
+Steffen Nurpmeso
+Steve McMaster
+Steven Honson
+Stone Tickle
+Sylvain Prat
+Síle Ekaterin Liszka
+Sören Tempel
+Thomas Aldrian
+Thomas Deutsch
+Thomas Faughnan
+Thomas Kienlen
+Thomas Liske
+TianYaX
+Tim Magee
+Tim Stanley
+Timo Teräs
+Timotej Lazar
+Timothy Legge
+Tom Lebreux
+Tom Wieczorek
+Uli Baum
+Umar Getagazov
+Valentin
+Veikka Valtteri Kallinen
+Wesley van Tilburg
+Will Sinatra
+William Desportes
+William Walker
+Willow Barraco
+Wolf
+Yuriy Chumak
+Ziyao
+alealexpro100
+alice
+build@apk-groulx
+crapStone
+dixyes
+donoban
+eugenefil
+firefly-cpp
+guddaff
+j.r
+knuxify
+kpcyrd
+leso-kn
+lgehr
+macmpi
+messense
+mio
+nibon7
+nu
+omni
+ovf
+prspkt
+psykose
+ptrcnull
+sales@ip2location.com
+strophy
+techknowlogick
+tetsumaki
+wdl
+wener
+xrs
+Óliver García Albertos
+
 ALPINE LINUX 3.17.3 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of version 3.17.3 of its Alpine Linux operating system.
 
