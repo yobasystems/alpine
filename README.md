@@ -11,8 +11,8 @@ This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/al
 
 ### Alpine Version 3.17.3 (Released 2023-03-29)
 ### Alpine Version 3.16.5 (Released 2023-03-29)
-### Alpine Version 3.15.8 (Released 2023-02-10)
-### Alpine Version 3.14.9 (Released 2023-02-10)
+### Alpine Version 3.15.8 (Released 2023-03-29)
+### Alpine Version 3.14.10 (Released 2023-02-10)
 
 
 
