@@ -1,3 +1,16 @@
+ALPINE 3.15.10, 3.16.7, 3.17.5 AND 3.18.3 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.15.10
+3.16.7
+3.17.5
+3.18.3
+Those releases include security fixes for openssl:
+
+CVE-2023-2975
+CVE-2023-3446
+CVE-2023-3817
+
 ALPINE 3.15.9, 3.16.6, 3.17.4 AND 3.18.2 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
