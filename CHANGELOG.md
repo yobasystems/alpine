@@ -1,3 +1,350 @@
+ALPINE 3.18.4 RELEASED
+We are pleased to announce the release of Alpine Linux 3.18.4, a maintenance release of the 3.18 series. This release includes various bug fixes and security updates.
+
+The full lists of changes can be found in the git log.
+
+GIT SHORTLOG
+Alex McGrath (1):
+      community/transmission: upgrade to 4.0.4
+
+Andy Postnikov (9):
+      community/php82-pecl-couchbase: upgrade to 4.1.5
+      community/php81-pecl-couchbase: upgrade to 4.1.5
+      community/php81-pecl-mailparse: upgrade to 3.1.6
+      main/nodejs: security upgrade to 18.17.1
+      community/php82: upgrade to 8.2.9
+      community/php82: upgrade to 8.2.10
+      community/php81: upgrade to 8.1.23
+      community/php81-pecl-redis: upgrade to 6.0.0
+      community/php82-pecl-redis: upgrade to 6.0.0
+
+Antoine Martin (9):
+      community/dotnet7-build: upgrade to 7.0.110
+      community/dotnet7-runtime: upgrade to 7.0.10
+      community/dotnet6-build: upgrade to 6.0.121
+      community/dotnet6-runtime: upgrade to 6.0.21
+      community/dotnet6-build: upgrade to 6.0.122
+      community/dotnet6-runtime: upgrade to 6.0.22
+      community/git-annex: upgrade to 10.20230828
+      community/dotnet7-build: security upgrade to 7.0.111
+      community/dotnet7-runtime: security upgrade to 7.0.11
+
+Bart Ribbers (1):
+      community/koko: make it easier to update geodata
+
+Celeste (27):
+      main/mosquitto: upgrade to 2.0.16
+      main/mosquitto: upgrade to 2.0.17
+      community/neo4j: upgrade to 4.4.25
+      community/java-netty-transport-native: upgrade to 4.1.97
+      community/vnstat: upgrade to 2.11
+      community/python3-tkinter: upgrade to 3.11.5
+      main/python3: security upgrade to 3.11.5
+      community/xrdp: security upgrade to 0.9.23
+      community/borgbackup: security upgrade to 1.2.6
+      community/open-vm-tools: security upgrade to 12.3.0
+      community/py3-django: security upgrade to 4.2.5
+      main/mariadb: upgrade to 10.11.5
+      main/redis: security upgrade to 7.0.13
+      community/neovim: upgrade to 0.9.2
+      community/py3-openssl: upgrade to 23.2.0
+      community/ruby-pkg-config: upgrade to 1.5.5
+      community/ruby-timecop: upgrade to 0.9.8
+      community/netatalk: security upgrade to 3.1.17
+      main/cups: security upgrade to 2.4.7
+      main/curl: security upgrade to 8.3.0
+      community/minio: upgrade to 0.20230920.224955
+      main/bind: security upgrade to 9.18.19
+      community/stunnel: upgrade to 5.71
+      community/neo4j: upgrade to 4.4.26
+      community/keepassxc: upgrade to 2.7.6
+      community/synapse: security upgrade to 1.93.0
+      community/xrdp: security upgrade to 0.9.23.1
+
+Dhruvin Gandhi (1):
+      community/hledger-interest: upgrade to 1.6.6
+
+Duncan Bellamy (3):
+      main/mariadb: add fmt10 patches
+      community/ceph16: upgrade to 16.2.14
+      community/py3-cryptography: security upgrade to 41.0.3 for CVE-2023-38325
+
+Elly Fong-Jones (1):
+      community/chromium: roll 3.18-stable to 117.0.5938.62
+
+Francesco Colista (7):
+      community/py3-sentry-sdk: upgrade to 1.24.0
+      community/perl-business-isbn-data: upgrade to 20230516.001
+      main/sofia-sip: bump pkgrel
+      community/lua-resty-lock: backport from edge
+      community/lua-resty-lock: added missing dep
+      community/lua-resty-lock: bump pkgrel due to added depend
+      community/lua-resty-lock: fix build due to luajit missing for ppc64 and riscv64
+
+Henrik Riomar (3):
+      main/intel-ucode: security upgrade to 20230808
+      main/xen: security upgrade to 4.17.2
+      community/nats-server: upgrade to 2.9.22
+
+Hugo Osvaldo Barrera (1):
+      community/linux-edge: set CONFIG_KEXEC=y
+
+J0WI (5):
+      community/firefox-esr: security upgrade to 115.1.0
+      community/thunderbird: security upgrade to 115.1.0
+      community/ntpsec: security upgrade to 1.2.2a
+      main/procps-ng: security upgrade to 4.0.4
+      community/wolfssl: upgrade to 5.6.3
+
+Jake Buchholz Göktürk (1):
+      main/tiny-cloud: [3.18] upgrade to 3.0.2
+
+Jakub Jirutka (15):
+      community/apk-deploy-tool: upgrade to 0.5.3
+      main/postgresql15: security upgrade to 15.4
+      main/postgresql14: security upgrade to 14.9
+      community/postgresql13: security upgrade to 13.12
+      community/postgresql12: security upgrade to 12.16
+      community/qemu-openrc: upgrade to 0.11.1
+      community/jetty-runner: use exec in jetty-runner script
+      community/jetty-runner: init: allow to override $command
+      community/jetty-runner: check server_{access,out}_log location
+      community/jetty-runner: upgrade to 9.4.51.20230217
+      community/jetty-runner: fix perms and backport rest of changes from edge
+      community/jetty-runner: add $start_wait to init script
+      main/one-context: upgrade to 0.8.0
+      main/linux-lts: enable EFI_ZBOOT on aarch64
+      community/alpine-make-vm-image: upgrade to 0.12.0
+
+Jakub Panek (3):
+      community/rust: security upgrade to 1.71.1, take ownership
+      community/rust-analyzer: upgrade to 2023.08.28, takeover maintainership
+      community/rust-analyzer: upgrade to 2023.09.18
+
+Jiri Kastner (1):
+      mariadb: re-enable partition plugin
+
+Kaarle Ritvanen (1):
+      community/py3-django-oscar: align with upstream
+
+Kevin Daudt (5):
+      community/docker-cli-buildx: backport host header patch to docker
+      community/tea: fix checksum filename
+      community/vault: security upgrade to 1.13.5
+      community/nfpm: upgrade to 2.32.0
+      community/qemu: upgrade to 8.0.5
+
+Leonardo Arena (1):
+      community/nextcloud: upgrade to 26.0.5
+
+Michał Polański (2):
+      community/py3-trove-classifiers: upgrade to 2023.9.19
+      main/openssl: upgrade to 3.1.3
+
+Milan P. Stanić (12):
+      community/linux-edge: upgrade to 6.4.9
+      main/haproxy: bugfix upgrade to 2.6.15
+      community/linux-edge: upgrade to 6.4.10
+      community/qemu: upgrade to 8.0.4
+      community/linux-edge: upgrade to 6.4.12
+      community/linux-edge: upgrade to 6.5.0
+      main/postfix: bugfix upgrade to 3.8.2
+      community/linux-edge: upgrade to 6.5.1
+      community/linux-edge: upgrade to 6.5.2
+      community/mutt: bugfix upgrade to 2.2.12
+      community/linux-edge: upgrade to 6.5.3
+      community/linux-edge: upgrade to 6.5.5
+
+Natanael Copa (104):
+      community/gitlab-runner: backport docker cli fix
+      main/samba: add secfixes info
+      main/samba: add secfixes comment
+      main/linux-lts: upgrade to 6.1.44
+      community/jool-modules-lts: rebuild against kernel 6.1.44-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.44-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.44-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.44-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.44-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.44-r0
+      main/zfs-lts: rebuild against kernel 6.1.44-r0
+      main/linux-lts: upgrade to 6.1.45
+      community/jool-modules-lts: rebuild against kernel 6.1.45-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.45-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.45-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.45-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.45-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.45-r0
+      main/zfs-lts: rebuild against kernel 6.1.45-r0
+      main/linux-lts: fix x86 PAE and HIGHMEM
+      main/linux-lts: upgrade to 6.1.46
+      community/jool-modules-lts: rebuild against kernel 6.1.46-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.46-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.46-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.46-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.46-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.46-r0
+      main/zfs-lts: rebuild against kernel 6.1.46-r0
+      main/linux-lts: use default log buffer size
+      main/linux-lts: upgrade to 6.1.47
+      community/jool-modules-lts: rebuild against kernel 6.1.47-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.47-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.47-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.47-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.47-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.47-r0
+      main/zfs-lts: rebuild against kernel 6.1.47-r0
+      main/sofia-sip: backport of support for forking calls. See mr #50659
+      main/linux-lts: upgrade to 6.1.49
+      community/jool-modules-lts: rebuild against kernel 6.1.49-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.49-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.49-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.49-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.49-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.49-r0
+      main/zfs-lts: rebuild against kernel 6.1.49-r0
+      community/thunderbird: upgrade to 115.1.1
+      main/sofia-sip: actually add the patch
+      main/linux-lts: upgrade to 6.1.50
+      community/jool-modules-lts: rebuild against kernel 6.1.50-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.50-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.50-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.50-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.50-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.50-r0
+      main/zfs-lts: rebuild against kernel 6.1.50-r0
+      main/linux-lts: upgrade to 6.1.51
+      community/jool-modules-lts: rebuild against kernel 6.1.51-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.51-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.51-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.51-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.51-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.51-r0
+      main/zfs-lts: rebuild against kernel 6.1.51-r0
+      main/linux-lts: upgrade to 6.1.52
+      community/jool-modules-lts: rebuild against kernel 6.1.52-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.52-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.52-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.52-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.52-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.52-r0
+      main/zfs-lts: rebuild against kernel 6.1.52-r0
+      Revert "main/linux-lts: enable EFI_ZBOOT on aarch64"
+      main/linux-lts: upgrade to 6.1.53
+      community/jool-modules-lts: rebuild against kernel 6.1.53-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.53-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.53-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.53-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.53-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.53-r0
+      main/zfs-lts: rebuild against kernel 6.1.53-r0
+      main/libwebp: upgrade to 1.3.2
+      community/lua-resty-session: upgrade to 3.10
+      community/lua-bitop: fix with lua 5.2+ and run tests
+      main/linux-lts: upgrade to 6.1.54
+      community/jool-modules-lts: rebuild against kernel 6.1.54-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.54-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.54-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.54-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.54-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.54-r0
+      main/zfs-lts: rebuild against kernel 6.1.54-r0
+      main/linux-lts: upgrade to 6.1.55
+      community/jool-modules-lts: rebuild against kernel 6.1.55-r0
+      community/rtl8821ce-lts: rebuild against kernel 6.1.55-r0
+      community/rtpengine-lts: rebuild against kernel 6.1.55-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.1.55-r0
+      community/vmm_clock-lts: rebuild against kernel 6.1.55-r0
+      main/xtables-addons-lts: rebuild against kernel 6.1.55-r0
+      main/zfs-lts: rebuild against kernel 6.1.55-r0
+      main/linux-rpi: upgrade to 6.1.55
+      community/jool-modules-rpi: rebuild against kernel 6.1.55-r0
+      main/zfs-rpi: rebuild against kernel 6.1.55-r0
+      ===== release 3.18.4 =====
+
+Oleg Titov (1):
+      community/k3s: security upgrade to 1.27.5.1
+
+Pablo Correa Gómez (1):
+      community/gnome-console: upgrade to 44.4
+
+Peter van Dijk (1):
+      community/dnsdist: upgrade to 1.8.1
+
+Sertonix (1):
+      community/keepassxc: fix opening doc from gui
+
+Simon Frankenberger (1):
+      community/openjdk17: upgrade to 17.0.8
+
+Simon Rupf (1):
+      community/clamav: upgrade to 1.1.2
+
+Siva Mahadevan (1):
+      community/linux-edge: add initial support for pinebook pro
+
+Steven Guikal (1):
+      community/py3-flask: security upgrade to 2.2.5 (CVE-2023-30861)
+
+Sören Tempel (3):
+      community/go: upgrade to 1.20.8
+      community/*: rebuild with Go 1.20.8
+      main/busybox: update secfixes (CVE-2022-48174)
+
+Zach DeCook (1):
+      community/verovio: upgrade to 3.15.0 and fix py3-verovio subpackage
+
+bin456789 (1):
+      main/linux-lts: enable Google Virtual NIC (gVNIC) driver
+
+jahway603 (1):
+      community/nextcloud: upgrade to 26.0.7
+
+jane400 (1):
+      main/libwebp: patch CVE-2023-4863
+
+lauren n. liberda (2):
+      community/yt-dlp: mark CVE as resolved
+      community/libvpx: hotfix for CVE-2023-5217
+
+macmpi (4):
+      community/raspberrypi-utils: upgrade to 0.20230809
+      main/raspberrypi-bootloader: upgrade to 1.20230811
+      community/raspberrypi-utils: upgrade to 0.20230919
+      main/raspberrypi-bootloader: upgrade to 1.20230921
+
+omni (16):
+      community/qt5-qtwebengine: chromium security upgrade
+      community/tor: upgrade to 0.4.8.4
+      community/tor: disable a test also for x86_64
+      community/tor: upgrade to 0.4.8.5
+      community/qt5-qtwebengine: chromium security upgrade
+      community/arti: upgrade to 1.1.8
+      community/qt5-qtwebengine: chromium security upgrade
+      main/libarchive: security upgrade to 3.7.2
+      community/qt5-qtimageformats: patch CVE-2023-4863
+      community/qt6-qtimageformats: patch CVE-2023-4863
+      community/qt5-qtwebengine: chromium security upgrade
+      community/tor: upgrade to 0.4.8.6
+      main/xen: add mitigations for XSA-437 & XSA-438
+      main/linux-lts: fix pkgrel
+      community/tor: upgrade to 0.4.8.7
+      main/xen: add mitigations for XSA-439
+
+ptrcnull (5):
+      community/telegraf: fix embedding version
+      community/firefox: upgrade to 116.0.3
+      community/tea: rebuild against go 1.20.7
+      community/firefox: fix sqlite3 on ppc with clang
+      community/kitty: disable check on ppc64le
+
+streaksu (6):
+      community/limine: upgrade to 4.20230811.0
+      community/limine: take over maintainership
+      community/limine: upgrade to 4.20230830.0
+      community/limine: upgrade to 4.20230911.0
+      community/limine: upgrade to 4.20230917.0
+      community/limine: upgrade to 4.20230924.0
+
 ALPINE 3.15.10, 3.16.7, 3.17.5 AND 3.18.3 RELEASED
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
