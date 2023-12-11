@@ -1,3 +1,392 @@
+ALPINE LINUX 3.19.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.19.0, the first in the v3.19 stable series.
+
+HIGHLIGHTS
+Linux kernel 6.6
+GCC 13.2
+Perl 5.38
+LLVM 17
+Xen 4.18
+PostgreSQL 16
+Node.js (lts) 20.10
+Ceph 18.2
+GNOME 45
+Go 1.21
+KDE Applications 23.08 / KDE Frameworks 5.112
+OpenJDK 21
+PHP 8.3
+Rust 1.72
+SIGNIFICANT CHANGES
+Support for Raspberry Pi 5 was added.
+
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+
+openrc has removed the deprecated /sbin/rc binary. Make sure your /etc/inittab uses /sbin/openrc.
+iptables-nft is now the default iptables backend.
+EFI_ZBOOT was enabled for aarch64 kernels. This change requires grub to be reinstalled with grub-install --bootloader-id=alpine --no-nvram --efi-directory=/boot (or /boot/efi)
+linux-rpi4 and linux-rpi2 kernels have been replaced by a single linux-rpi
+yggdrasil was upgraded to 0.5 and the new routing scheme is incompatible with previous versions.
+Python’s package directory is now marked as externally managed, which means that pip can no longer install to system directory which is managed by apk. Users may use pipx instead.
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+CREDITS
+Thanks to everyone sending patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or contributing in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree and ungleich for providing us with hardware and hosting.
+
+APORTS COMMIT CONTRIBUTORS
+6543
+Adam Bruce
+Adam Jensen
+Adam Saponara
+Adam Thiede
+Ado
+Adrián Arroyo Calle
+Affe Null
+Aiden Grossman
+Aleks Bunin
+Alex
+Alex Denes
+Alex McGrath
+Alex Sivchev
+Alexander Birkner
+Alexey Minnekhanov
+Alexey Yerin
+Alistair Francis
+Alois Klink
+Andrei Jiroh Halili
+Andrei Zavada
+Andrej Kolchin
+Andres Almiray
+André Klitzing
+Andy Hawkins
+Andy Li
+Andy Postnikov
+Anjandev Momi
+Anon Anon
+Antoine Martin
+Anton Bambura
+Antoni Aloy Torrens
+Ariadne Conill
+Arnav Singh
+Assaf Inbal
+Aydin Mercan
+Ayush Agarwal
+Bader Zaidan
+Bart Ribbers
+Ben Westover
+Benoit Masson
+Bernd Rothert
+Bobby Hamblin
+Bryant Mairs
+Bryce Vandegrift
+BugFest
+Caleb Connolly
+Carlo Landmeter
+Celeste
+Chaiwat Suttipongsakul
+Clayton Craft
+Coco Liliace
+Conrad Hoffmann
+Cowington Post
+Craig Comstock
+Curt Tilmes
+Damian Kurek
+Daniel Fancsali
+Daniel Néri
+Dave Henderson
+David Demelier
+David Florness
+David Heidelberg
+Dekedro
+Dennis Przytarski
+Dermot Bradley
+Dhruvin Gandhi
+Dmitry Zakharchenko
+Dominika Liberda
+Dominique Martinet
+Drew DeVault
+Duncan Bellamy
+Dylan Van Assche
+Díaz Urbaneja Víctor Diego Alejandro (Sodomon)
+Edd Salkield
+Elly Fong-Jones
+Eloi Torrents
+Evan Johsnton
+Even Rouault
+Fabricio Silva
+Faustin Lammler
+Fiona Klute
+Firas Khalil Khana
+Florian Schwarzmeier
+FollieHiyuki
+Forza
+Francesco Colista
+Francesco Palumbo
+Frank Oltmanns
+Fxzx mic
+Gabor Csardi
+Gabriel Arakaki Giovanini
+Galen Abell
+Gavin Henry
+Gennady Feldman
+GitHub Action
+Glenn Strauss
+Grigory Kirillov
+Guilherme Macedo
+Guillaume Quintard
+Guy Godfroy
+Gábor Csárdi
+Haelwenn (lanodan) Monnier
+Hakan Erduman
+Henrik Riomar
+Hoang Nguyen
+Holger Jaekel
+Hristiyan Ivanov
+Hugo Osvaldo Barrera
+Hugo Rodrigues
+Hugo Wang
+Hygna
+IP2Location
+Iskren Chernev
+Ivan Popovych
+Iztok Fister Jr
+Iztok Fister Jr.
+J0WI
+Jake Buchholz Göktürk
+Jakob Hauser
+Jakob Meier
+Jakub Jirutka
+Jakub Panek
+Jan Samek
+Janik Besendorf
+Jason Swank
+Jean-Christophe Amiel
+Jeff Dickey
+Jingyun Hua
+Jiri Kastner
+Jo Coscia
+John Anthony
+John Gebbie
+John Vogel
+Jonas
+Jonathan Schleifer
+Jordan Christiansen
+Josef Vybíhal
+Joshua Murphy
+Julie Koubova
+JuniorJPDJ
+Justin
+Justinas Grigas
+KAA the Wise
+Kaarle Ritvanen
+Kaspar Schleiser
+Kevin Daudt
+Khem Raj
+Klaus Frank
+Klemens Nanni
+Konstantin Kulikov
+Krassy Boykinov
+Krystian Chachuła
+Laszlo Gombos
+Lauren N. Liberda
+Laurent Bercot
+Lennart Jablonka
+Leon Marz
+Leon ROUX
+Leonardo Arena
+Lindsay Zhou
+Luca Weiss
+Lucidiot
+M Hickford
+Maarten van Gompel
+Magnus Sandin
+Marian Buschsieweke
+Mark Hills
+Markus Göllnitz
+Martijn Braam
+Matthew T Hoare
+Matthias Ahouansou
+Mauricio Sandt
+Michael M
+Michael Pirogov
+Michael Truog
+Michal Jirku
+Michal Tvrznik
+Michał Adamski
+Michał Polański
+Michał Szmidt
+Mike Crute
+Milan P. Stanić
+Miles Alan
+Mogens Jensen
+Nash Kaminski
+Natanael Copa
+Nathan Rennie-Waldock
+Nero
+Newbyte
+Nia Espera
+Nic Boet
+Nicolas Lorin
+Niklas Meyer
+Niko
+Nulo
+Oleg Titov
+Oliver Kuckertz
+Oliver Smith
+Oliver Wilkes
+Olliver Schinagl
+Orhun Parmaksız
+Pablo Correa Gómez
+Paolo Barbolini
+Papiris
+Paul Spooren
+Pedro Lucas Porcellis
+Peter Shkenev
+Peter van Dijk
+Petr Hodina
+Philipp Arras
+Phillip Jaenke
+Piraty
+Prokop Randacek
+QC8086
+R4SAS
+Rabindra Dhakal
+Ralf Rachinger
+Raymond Page
+Renê de Souza Pinto
+Ricardo F
+Rob Blanckaert
+Rosie K Languet
+Rudolf Polzer
+Ruven
+SSD
+Saijin-Naib
+Sam Edwards
+Sam Nystrom
+Sando
+Sascha Brawer
+Sean McAvoy
+Sergio Talens-Oliag
+Sergiy Stupar
+Sertonix
+Sicelo A. Mhlongo
+Simon Frankenberger
+Simon Rupf
+Simon Zeni
+Siva Mahadevan
+Sodface
+Stanislav Kholmanskikh
+Stefan Hansson
+Steve McMaster
+Steven Brudenell
+Steven Guikal
+Steven Honson
+Steven Vanden Branden
+Stuart Cardall
+Sylvain Prat
+Síle Ekaterin Liszka
+Sören Tempel
+Ted Trask
+Thomas Aldrian
+Thomas Böhler
+Thomas Deutsch
+Thomas Faughnan
+Thomas J Faughnan Jr
+Thomas Kienlen
+Thomas Liske
+Tim Magee
+Timo Teräs
+Timothy Legge
+Tom Lebreux
+Tom Wieczorek
+Umar Getagazov
+Usia Bechtle
+Val V
+Valery Ushakov
+Veikka Valtteri Kallinen
+Viet Pham
+Vlad Glagolev
+Vladimir Vitkov
+Wesley van Tilburg
+Weston Steimel
+Will Sinatra
+William Desportes
+William Walker
+Willow Barraco
+Yang Xiwen
+Yann Vigara
+Yingbai He
+Zach DeCook
+Zachary Andrews
+Zsolt Vadasz
+adamthiede
+alealexpro100
+aptalca
+bin456789
+crapStone
+donoban
+duckl1ng
+elruwen
+fanquake
+guddaff
+hitechshell
+j.r
+jahway603
+jane400
+john3dc
+jvoisin
+knuxify
+kpcyrd
+lauren n. liberda
+lazywalker
+leso-kn
+lgehr
+linear cannon
+llightcb
+macmpi
+mbrowny
+messense
+michalszmidt
+mio
+nezu
+nibon7
+notfound405
+omni
+ovf
+papiris
+prspkt
+psykose
+ptrcnull
+qaqland
+rubicon
+sando38
+sodface
+streaksu
+sudotac
+svrnm
+takumin
+techknowlogick
+tetsumaki
+tiotags
+w
+wener
+zamfofex
+
+ALPINE 3.15.11, 3.16.8, 3.17.6 AND 3.18.5 RELEASED
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.15.11
+3.16.8
+3.17.6
+3.18.5
+Those releases include security fixes for openssl:
+
+CVE-2023-5678
+CVE-2023-5363
+
 ALPINE 3.18.4 RELEASED
 We are pleased to announce the release of Alpine Linux 3.18.4, a maintenance release of the 3.18 series. This release includes various bug fixes and security updates.
 
