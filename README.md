@@ -10,7 +10,7 @@
 This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
 ### Alpine Version 3.18.5 (Released 2023-09-28)
-### Alpine Version 3.17.5 (Released 2023-08-07)
+### Alpine Version 3.17.6 (Released 2023-08-07)
 ### Alpine Version 3.16.7 (Released 2023-08-07)
 ### Alpine Version 3.15.10 (Released 2023-08-07)
 
