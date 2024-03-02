@@ -1,6 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: docker
-    directory: /
+    directory: /alpine-3.19.1/amd64/
+    schedule:
+      interval: weekly
+  - package-ecosystem: docker
+    directory: /alpine-3.19.1/arm32v7/
+    schedule:
+      interval: weekly
+  - package-ecosystem: docker
+    directory: /alpine-3.19.1/arm64v8/
     schedule:
       interval: weekly
