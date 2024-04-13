@@ -7,7 +7,7 @@
 [![Alpine Version](https://img.shields.io/badge/Alpine%20version-v3.19.1-green.svg?style=for-the-badge&logo=alpine-linux)](https://alpinelinux.org/)
 
 
-This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
+This Container image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
 ### Alpine Version 3.19.1 (Released 2023-01-26)
 ### Alpine Version 3.18.6 (Released 2023-01-26)
@@ -17,7 +17,7 @@ This Docker image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/al
 
 
 
-This docker image is the base Alpine Linux. For more info on versions & support see [Releases](https://wiki.alpinelinux.org/wiki/Alpine_Linux:Releases)
+This Container image is the base Alpine Linux. For more info on versions & support see [Releases](https://wiki.alpinelinux.org/wiki/Alpine_Linux:Releases)
 
 ----
 
@@ -38,7 +38,7 @@ This docker image is the base Alpine Linux. For more info on versions & support 
 
 
 ## 🏔️ What is Alpine Linux?
-Alpine Linux is a Linux distribution built around musl libc and BusyBox. The image is only 5 MB in size and has access to a package repository that is much more complete than other BusyBox based images. This makes Alpine Linux a great image base for utilities and even production applications. Read more about Alpine Linux here and you can see how their mantra fits in right at home with Docker images.
+Alpine Linux is a Linux distribution built around musl libc and BusyBox. The image is only 5 MB in size and has access to a package repository that is much more complete than other BusyBox based images. This makes Alpine Linux a great image base for utilities and even production applications. Read more about Alpine Linux here and you can see how their mantra fits in right at home with Container images.
 
 ## ✨ Features
 
