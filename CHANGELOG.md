@@ -1,3 +1,349 @@
+ALPINE LINUX 3.20.0 RELEASED
+We are pleased to announce the release of Alpine Linux 3.20.0, the first in the v3.20 stable series.
+
+HIGHLIGHTS
+LLVM 18
+Node.js (lts) 20.10
+Python 3.12
+Ruby 3.3
+Rust 1.78
+Crystal 1.12
+GNOME 46
+Go 1.22
+KDE 6
+Sway 1.9
+.NET 8.0
+SIGNIFICANT CHANGES
+Initial support for 64 bit RISC-V was added.
+
+UPGRADE NOTES
+As always, make sure to use apk upgrade --available when switching between major versions.
+
+The yq package was renamed to yq-go.
+
+CHANGES
+The full list of changes can be found in the wiki, git log and bug tracker.
+
+CREDITS
+Thanks to everyone sending patches, bug reports, new and updated aports, and to everyone helping with writing documentation, maintaining the infrastructure, or contributing in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree and ungleich for providing us with hardware and hosting.
+
+APORTS COMMIT CONTRIBUTORS
+6543
+Aaron Fischer
+Adam Jensen
+Adam Thiede
+Adrian Siekierka
+Adrián Arroyo Calle
+Affe Null
+Aleks Bunin
+Alex Denes
+Alex McGrath
+Alex Xu (Hello71)
+Alexey Minnekhanov
+Alexey Yerin
+Alistair Francis
+Amelia Clarke
+Andre Klitzing
+Andrei Jiroh Eugenio Halili
+Andrej Kolchin
+Andres Almiray
+André Klitzing
+André Zwing
+Andy Hawkins
+Andy Postnikov
+Anjandev Momi
+Antoine Martin
+Anton Bambura
+Antoni Aloy Torrens
+Ariadne Conill
+Arnav Singh
+Aron
+Author: 6543
+Bader Zaidan
+Bart Ribbers
+Biswapriyo Nath
+Bobby The Builder
+Boris Dolgov
+Brandon Boese
+Bryce Vandegrift
+Carl Chave
+Carlo Landmeter
+Carter Li
+Celeste
+Chleba
+Clayton Craft
+Coco Liliace
+Cormac Stephenson
+Cory Sanin
+Cowington Post
+Craig Andrews
+Curt Tilmes
+DaKnig
+Daniel Fancsali
+Daniel Néri
+Daniél Kerkmann
+Dave Henderson
+David Demelier
+David Heidelberg
+David Sugar
+Dekedro
+Dennis Krupenik
+DerLinkman
+Dermot Bradley
+Devin Lin
+Devon Thyne
+Dhruvin Gandhi
+Dmitry Klochkov
+Dmitry Zakharchenko
+Dominique Martinet
+Duncan Bellamy
+Díaz Urbaneja Víctor Diego Alejandro (Sodomon)
+Edd Salkield
+Edin Tarić
+Eduardo Bart
+Elly Fong-Jones
+Eric Roshan-Eisner
+Fabian Affolter
+Fabricio Silva
+Faustin Lammler
+FintasticMan
+Fiona Klute
+FollieHiyuki
+Francesco Colista
+Frank Oltmanns
+Fusl
+Fxzx mic
+Galen Abell
+George Hopkins
+Glenn Strauss
+Guillaume Quintard
+Guy Godfroy
+Haelwenn (lanodan) Monnier
+Hal Martin
+Hannes Braun
+Henrik Riomar
+Hoang Nguyen
+Holger Jaekel
+Hugo Osvaldo Barrera
+Håkan Lindqvist
+Iskren Chernev
+Iztok Fister Jr
+Iztok Fister Jr.
+J0WI
+Jacob Ludvigsen
+Jake Buchholz Göktürk
+Jakob Hauser
+Jakob Meier
+Jakub Jirutka
+Jakub Panek
+Jaroslav Kysela
+Jason Gross
+Jason Staten
+Jason Swank
+Jeff Dickey
+Jesse Mandel
+Jingyun Hua
+Jinming Wu, Patrick
+Joel Selvaraj
+Johannes Heimansberg
+Johannes Marbach
+John Anthony
+John Gebbie
+Jonas
+Jonas Vautherin
+Jonathan Schleifer
+Jordan Christiansen
+Joshua Murphy
+Jules Maselbas
+Julian Groß
+Julie Koubova
+Jurvis Tan
+Justin Berthault
+Kaarle Ritvanen
+Kaspar Schleiser
+Kevin Daudt
+Khem Raj
+Koni Marti
+Konstantin Kulikov
+Krassy Boykinov
+Krystian Chachuła
+Lassebq
+Laurent Bercot
+Leon Marz
+Leon ROUX
+Leonardo Arena
+Lindsay Zhou
+Luca Weiss
+Lucidiot
+Lukas Franek
+Maarten van Gompel
+Magnus Sandin
+Marcel Steinbeck
+Marco Schröder
+Marian Buschsieweke
+Mark Hills
+Marten Ringwelski
+Martijn Braam
+Marvin Feldmann
+Matthias Ahouansou
+Michael Pirogov
+Michael Truog
+Michal Tvrznik
+Michał Adamski
+Michał Polański
+Micheal Smith
+Mike Crute
+Milan P. Stanić
+Miles Alan
+Mogens Jensen
+Muhammad Adeel
+Natanael Copa
+Nathan Angelacos
+Neale Pickett
+NekoCWD
+NepNep21
+Newbyte
+Nicolas Lorin
+Nik B
+Niklas Meyer
+Noah Zalev
+Noel Kuntze
+Nulo
+Oleg Titov
+Oliver Smith
+Orhun Parmaksız
+Pablo Correa Gómez
+Patrick Gansterer
+Paul Bredbury
+Pedro Lucas Porcellis
+Peter
+Peter Shkenev
+Peter van Dijk
+Petr Vorel
+Phil Estes
+Philipp Arras
+Qi Xiao
+R4SAS
+Rabindra Dhakal
+Rafael Ávila de Espíndola
+Rasmus Thomsen
+Raymond Hackley
+Ricardo Pchevuzinske Katz
+RickyRockRat
+Rob Blanckaert
+Robert Eckelmann
+Robert Mader
+Robin Candau
+Rudolf Polzer
+Sadie Powell
+Saijin-Naib
+Sam Day
+Sam Nystrom
+Santurysim
+Sascha Brawer
+Sean E. Russell
+Sean McAvoy
+Sebastian Meyer
+Sergiy Stupar
+Sertonix
+Simon Frankenberger
+Simon Rupf
+Simon Zeni
+Siva Mahadevan
+Sodface
+Stanislav Kholmanskikh
+Stefan Hansson
+Stefan de Konink
+Steffen Nurpmeso
+Steve McMaster
+Steven Guikal
+Sumeet Jhand
+Summpot
+Sven Wick
+Sylvain Prat
+Sören Tempel
+The one with the braid
+Thomas Aldrian
+Thomas Böhler
+Thomas Deutsch
+Thomas J Faughnan Jr
+Thomas Kienlen
+Thomas Liske
+Timo Teräs
+Timothy Legge
+Tom Lebreux
+Tom Wieczorek
+Tuan Anh Tran
+VehementHam
+Vladimir Vitkov
+Will Sinatra
+William Desportes
+William Wilhelm
+Willow Barraco
+Yann Vigara
+Yao Zi
+Zach DeCook
+Zoey
+adamthiede
+alealexpro100
+bin456789
+blacksilver
+chimo
+crapStone
+cristian_ci
+dlatchx
+donoban
+duckl1ng
+eletrotupi
+famfo
+fossdd
+geek-at
+gs250427
+j.r
+jahway603
+jane400
+juef
+jvoisin
+kamijo
+knuxify
+kpcyrd
+lauren n. liberda
+leso-kn
+lucidiot
+macmpi
+michalszmidt
+mini-bomba
+mio
+nezu
+nibon7
+odrling
+omni
+ovf
+prspkt
+psykose
+ptrcnull
+qaqland
+rdbo
+rubicon
+sewn
+shum
+sodface
+stepech
+steve
+streaksu
+strophy
+tetsumaki
+timothysteward-wk
+u8l
+user
+wesley van tilburg
+xrs
+znley
+Štěpán Pechman
+李通洲
+
 ALPINE 3.19.1 RELEASED
 We are pleased to announce the release of Alpine Linux 3.19.1, a maintenance release of the 3.19 series. This release includes various bug fixes and security updates, including security fixes for OpenSSL:
 
