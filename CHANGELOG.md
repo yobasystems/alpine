@@ -1,3 +1,237 @@
+Alpine 3.20.1 released
+We are pleased to announce the release of Alpine Linux 3.20.1, a maintenance release of the 3.20 series. This release includes various bug fixes and security updates, including security fixes for:
+
+OpenSSL
+CVE-2024-4741
+busybox
+CVE-2023-42364
+CVE-2023-42365
+The full lists of changes can be found in the git log.
+
+Git Shortlog
+
+Alex (1):
+      community/dolphin-emu: upgrade to 5.0_git20240429
+
+Andy Postnikov (9):
+      community/php82-pecl-mongodb: upgrade to 1.19.1
+      community/php83-pecl-mongodb: upgrade to 1.19.1
+      community/php82-pecl-grpc: upgrade to 1.64.1
+      community/php83-pecl-grpc: upgrade to 1.64.1
+      community/php82-pecl-msgpack: fix provides #16147
+      community/php83-pecl-msgpack: fix provides #16147
+      community/php82: security upgrade to 8.2.20
+      community/php83: security upgrade to 8.3.8
+      community/composer: security upgrade to 2.7.7
+
+Antoine Martin (6):
+      community/git-annex: upgrade to 10.20240531
+      community/dotnet8-runtime: upgrade to 8.0.6
+      community/dotnet8-sdk: upgrade to 8.0.6
+      community/dotnet6-build: upgrade to 6.0.131
+      community/dotnet6-runtime: upgrade to 6.0.31
+      community/py3-w3lib: upgrade to 2.2.0
+
+Bart Ribbers (6):
+      community/plasma: upgrade to 6.0.5
+      community/kwidgetsaddons: upgrade to 6.2.1
+      community/kwidgetsaddons: upgrade to 6.2.2
+      community/kwallet: upgrade to 6.2.1
+      main/dav1d: upgrade to 1.4.2
+      community/plasma-workspace: upgrade to 6.0.5.1
+
+Celeste (8):
+      community/minio: upgrade to 0.20240527.191746
+      community/minio-client: upgrade to 0.20240524.090849
+      community/crystal: upgrade to 1.12.2
+      community/imagemagick: fix perlmagick dir
+      main/git: upgrade to 2.45.2
+      community/libvpx: security upgrade to 1.14.1
+      main/fribidi: upgrade to 1.0.15
+      community/rsgain: upgrade to 3.5.1
+
+David Heidelberg (2):
+      main/mesa: upgrade to 24.0.8
+      community/ffmpeg: add fixes for VA-API
+
+Holger Jaekel (1):
+      community/geos: upgrade to 3.12.2
+
+J0WI (3):
+      main/openssl: patch CVE-2024-4741
+      main/openssl: upgrade to 3.3.1
+      community/vlc: security upgrade to 3.0.21
+
+Jakub Jirutka (6):
+      community/neovim: don't crash if tree-sitter is not installed
+      main/ruby-rbs: upgrade to 3.4.4 to fix ruby-full
+      main/nginx: backport patch fixing js_set duplicate checker
+      main/nginx: upgrade to 1.26.1
+      community/knot-resolver: upgrade to 5.7.3
+      community/keycloak: upgrade to 24.0.5
+
+Kevin Daudt (9):
+      main/valkey: move unixsocket to writable location
+      community/zabbix: upgrade to 6.4.15
+      community/opentofu: upgrade to 1.7.2
+      community/prometheus: increase open file limit during build
+      community/netdata: upgrade to 1.45.5
+      community/chezmoi: upgrade to 2.48.2
+      community/cs-firewall-bouncer: fix policy rules
+      community/cs-firewall-bouncer: unstringify values in policy
+      main/freeswitch: security upgrade to 1.10.11 (CVE-2023-51443)
+
+Leonardo Arena (4):
+      community/nextcloud: upgrade to 29.0.1
+      community/incus: fix bash-completion subpkg
+      community/nextcloud: upgrade to 29.0.2
+      community/incus: ship simplestreams tool
+
+Mai Thanh Minh (1):
+      main/linux-lts: enable RT35XX for RT2800USB/RT2800PCI driver
+
+Michal Tvrznik (1):
+      community/emptty: upgrade to 0.12.1
+
+Milan P. Stanić (6):
+      community/linux-edge: upgrade to 6.9.2
+      community/linux-edge: upgrade to 6.9.3
+      community/linux-edge: upgrade to 6.9.4
+      main/haproxy: upgrade to 2.8.10
+      community/linux-edge: upgrade to 6.9.5
+      community/qemu: upgrade to 9.0.1
+
+Natanael Copa (40):
+      main/linux-lts: upgrade to 6.6.32
+      community/jool-modules-lts: rebuild against kernel 6.6.32-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.32-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.32-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.32-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.32-r0
+      main/zfs-lts: rebuild against kernel 6.6.32-r0
+      main/busybox: fix CVE-2023-42364 and CVE-2023-42365
+      main/yajl: fix CVE-2023-33460
+      main/syslog-ng: fix c++ underlinking
+      main/linux-lts: upgrade to 6.6.33
+      community/jool-modules-lts: rebuild against kernel 6.6.33-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.33-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.33-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.33-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.33-r0
+      main/zfs-lts: rebuild against kernel 6.6.33-r0
+      main/linux-lts: upgrade to 6.6.34
+      community/jool-modules-lts: rebuild against kernel 6.6.34-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.34-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.34-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.34-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.34-r0
+      main/zfs-lts: rebuild against kernel 6.6.34-r0
+      main/linux-rpi: upgrade to 6.6.34
+      community/jool-modules-rpi: rebuild against kernel 6.6.34-r0
+      main/xtables-addons-rpi: rebuild against kernel 6.6.34-r0
+      main/zfs-rpi: rebuild against kernel 6.6.34-r0
+      main/mkinitfs: upgrade to 3.10.1
+      main/alpine-conf: upgrade to 3.18.1
+      main/linux-lts: enable i915 GVT KVMGT module
+      community/jool-modules-lts: rebuild against kernel 6.6.34-r1
+      community/rtpengine-lts: rebuild against kernel 6.6.34-r1
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.34-r1
+      community/vmm_clock-lts: rebuild against kernel 6.6.34-r1
+      main/xtables-addons-lts: rebuild against kernel 6.6.34-r1
+      main/zfs-lts: rebuild against kernel 6.6.34-r1
+      community/qemu: fix build on riscv64
+      scripts/mkimg.standard.sh: remove riscv64
+      ===== release 3.20.1 =====
+
+Oliver Smith (1):
+      community/millipixels: fix libtiff 4.6.0t compat
+
+Peter van Dijk (1):
+      community/pdns: upgrade to 4.9.1
+
+Sertonix (1):
+      main/cups: security upgrade to 2.4.9 (CVE-2024-35235)
+
+Simon Frankenberger (2):
+      community/java-libsignal-client: upgrade to 0.48.0
+      community/signal-cli: upgrade to 0.13.4
+
+Stefan Hansson (3):
+      community/calls: backport crash fix
+      community/marknote: add missing dependencies
+      community/lollypop: upgrade to 1.4.40
+
+Sören Tempel (2):
+      community/go: upgrade to 1.22.4
+      community/*: rebuild with Go 1.22.4
+
+Thomas Böhler (1):
+      main/pcsc-lite: fix libusb build option
+
+fossdd (16):
+      community/aws-c-io: upgrade to 0.14.8
+      community/aws-c-common: upgrade to 0.9.19
+      community/aws-c-auth: upgrade to 0.7.22
+      community/aws-c-s3: upgrade to 0.5.9
+      community/aws-c-cal: upgrade to 0.6.14
+      community/aws-c-event-stream: upgrade to 0.4.2
+      community/aws-c-http: upgrade to 0.8.1
+      community/aws-c-mqtt: upgrade to 0.10.4
+      community/aws-c-sdkutils: upgrade to 0.1.16
+      community/aws-c-compression: upgrade to 0.2.18
+      community/aws-cli: enable, upgrade to 2.15.57
+      main/py3-pytest: upgrade to 8.2.2
+      community/tor: upgrade to 0.4.8.12
+      community/phosh: include some bug fixes
+      community/pipx: upgrade to 1.6.0
+      community/pipx: update source url
+
+jahway603 (1):
+      community/nextcloud28: upgrade to 28.0.6
+
+lauren n. liberda (1):
+      community/chromium: security upgrade to 125.0.6422.112
+
+macmpi (2):
+      [3.20] main/raspberrypi-bootloader: upgrade to 1.20240524
+      [3.20] community/raspberrypi-utils: upgrade to 0.20240523
+
+omni (4):
+      community/py3-pymysql: security upgrade to 1.1.1
+      community/qt6-qtwebengine: chromium security upgrade
+      community/arti: security upgrade to 1.2.4
+      community/passt: upgrade to 2024.06.07
+
+ptrcnull (4):
+      main/mesa: fix crashes due to stack overflow in gl threads
+      main/gawk: backport str2wstr fix
+      community/firefox: upgrade to 126.0.1
+      community/firefox-esr: build with system libjpeg
+
+streaksu (5):
+      community/limine: upgrade to 7.5.3
+      community/limine: upgrade to 7.6.0
+      community/limine: upgrade to 7.7.0
+      community/limine: upgrade to 7.7.1
+      community/limine: upgrade to 7.7.2
+
+Alpine 3.17.8, 3.18.7 and 3.19.2 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.17.8
+3.18.7
+3.19.2
+Those releases contains various security fixes including fixes for:
+
+OpenSSL
+CVE-2024-2511
+CVE-2024-4603
+busybox
+CVE-2023-42363
+CVE-2023-42364
+CVE-2023-42365
+CVE-2023-42366
+
 ALPINE LINUX 3.20.0 RELEASED
 We are pleased to announce the release of Alpine Linux 3.20.0, the first in the v3.20 stable series.
 
