@@ -1,3 +1,257 @@
+Alpine 3.20.2 released
+We are pleased to announce the release of Alpine Linux 3.20.2, a maintenance release of the 3.20 series. This release includes various bug fixes and security updates, including a security fix with low severity for OpenSSL CVE-2024-5535
+
+The full lists of changes can be found in the git log.
+
+Git Shortlog
+
+Adam Thiede (1):
+      community/wmenu: upgrade to 0.1.9
+
+Andy Postnikov (3):
+      community/php82: upgrade to 8.2.21
+      community/php83: upgrade to 8.3.9
+      community/phpspy: upgrade to 0.7.0
+
+Antoine Martin (6):
+      community/ikiwiki: add po4a 0.7.0 support
+      community/git-annex: upgrade to 10.20240701
+      community/dotnet8-runtime: security upgrade to 8.0.7
+      community/dotnet8-sdk: security upgrade to 8.0.107
+      community/dotnet6-build: security upgrade to 6.0.132
+      community/dotnet6-runtime: security upgrade to 6.0.32
+
+Bart Ribbers (3):
+      community/falkon: re-enable on armv7
+      community/plasmatube: add missing dependency on qqc2-desktop-style
+      community/plasmatube: add missing dependency on kitemmodels
+
+Celeste (6):
+      community/emacs: security upgrade to 29.4
+      community/znc: security upgrade to 1.9.1
+      community/helm: fix tests
+      community/exiv2: security upgrade to 0.28.3
+      community/qpdf: upgrade to 11.9.1
+      community/ktistec: upgrade to 2.1.0
+
+Daniel Néri (3):
+      main/py3-requests: security upgrade to 2.32.3
+      community/mercurial: upgrade to 6.7.4
+      community/soju: upgrade to 0.8.1
+
+David Heidelberg (1):
+      main/mesa: upgrade to 24.0.9
+
+Duncan Bellamy (1):
+      community/dovecot-fts-xapian: upgrade to 1.7.13
+
+Francesco Colista (1):
+      community/py3-docker-py: upgrade to 7.1.0
+
+Henrik Grimler (2):
+      community/heimdall: backport patch from v2.1.0 to fix segfault
+      community/heimdall: upgrade to 2.1.0
+
+Henrik Riomar (1):
+      community/py3-pydantic-settings: new aport
+
+Holger Jaekel (1):
+      community/gdal: upgrade to 3.9.1
+
+J0WI (7):
+      main/openssl: patch CVE-2024-5535
+      main/krb5: security upgrade to 1.21.3
+      main/apache2: security upgrade to 2.4.60
+      main/ghostscript: security upgrade to 10.03.1
+      community/exim: security upgrade to 4.98
+      community/qpdf: update secfixes
+      main/apache2: security upgrade to 2.4.62
+
+Jakub Jirutka (3):
+      main/ruby-rexml: upgrade to 3.2.9
+      main/ruby: upgrade to 3.3.3
+      community/keycloak: rebuild
+
+Jonathan Schleifer (1):
+      [3.20] community/objfw: upgrade to 1.1.5
+
+Kevin Daudt (3):
+      main/py3-requests: fix secfixes
+      main/openvpn: security upgrade to 2.6.11
+      main/ca-certificates: upgrade to 20240705
+
+Krassy Boykinov (4):
+      community/libdex: upgrade to 0.6.1
+      community/libpeas2: upgrade to 2.0.3
+      community/gexiv2: upgrade to 0.14.3
+      community/libadwaita: upgrade to 1.5.2
+
+Michał Polański (2):
+      community/soju: move from testing
+      community/borgmatic: upgrade to 1.8.13
+
+Milan P. Stanić (4):
+      community/linux-edge: upgrade to 6.9.6
+      community/linux-edge: upgrade to 6.9.7
+      community/linux-edge: upgrade to 6.9.8
+      community/linux-edge: upgrade to 6.9.9
+
+Natanael Copa (70):
+      community/virt-manager: backport fix for virt-install
+      main/linux-lts: upgrade to 6.6.35
+      community/jool-modules-lts: rebuild against kernel 6.6.35-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.35-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.35-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.35-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.35-r0
+      main/zfs-lts: rebuild against kernel 6.6.35-r0
+      main/nghttp2: upgrade to 1.62.1
+      main/linux-lts: enablel SLUB debug
+      main/linux-lts: upgrade to 6.6.36
+      community/jool-modules-lts: rebuild against kernel 6.6.36-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.36-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.36-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.36-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.36-r0
+      main/zfs-lts: rebuild against kernel 6.6.36-r0
+      community/osinfo-db: upgrade to 20240701
+      main/apache2: security upgrade to 2.4.61 (CVE-2024-39884)
+      main/linux-lts: upgrade to 6.6.37
+      community/jool-modules-lts: rebuild against kernel 6.6.37-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.37-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.37-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.37-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.37-r0
+      main/zfs-lts: rebuild against kernel 6.6.37-r0
+      community/jool-modules-lts: rebuild against kernel 6.6.37-r1
+      community/rtpengine-lts: rebuild against kernel 6.6.37-r1
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.37-r1
+      community/vmm_clock-lts: rebuild against kernel 6.6.37-r1
+      main/xtables-addons-lts: rebuild against kernel 6.6.37-r1
+      main/zfs-lts: rebuild against kernel 6.6.37-r1
+      main/linux-lts: upgrade to 6.6.38
+      community/jool-modules-lts: rebuild against kernel 6.6.38-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.38-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.38-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.38-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.38-r0
+      main/zfs-lts: rebuild against kernel 6.6.38-r0
+      main/linux-lts: upgrade to 6.6.39
+      community/jool-modules-lts: rebuild against kernel 6.6.39-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.39-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.39-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.39-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.39-r0
+      main/zfs-lts: rebuild against kernel 6.6.39-r0
+      community/jfsutils: fix use of basename
+      community/py3-nose: add cpython license
+      main/awall: backport fix for legacy compat
+      main/linux-lts: upgrade to 6.6.40
+      community/jool-modules-lts: rebuild against kernel 6.6.40-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.40-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.40-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.40-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.40-r0
+      main/zfs-lts: rebuild against kernel 6.6.40-r0
+      main/linux-rpi: upgrade to 6.6.41
+      community/jool-modules-rpi: rebuild against kernel 6.6.41-r0
+      main/xtables-addons-rpi: rebuild against kernel 6.6.41-r0
+      main/zfs-rpi: rebuild against kernel 6.6.41-r0
+      main/linux-lts: enable drivers for v86 in -virt
+      main/linux-lts: upgrade to 6.6.41
+      community/jool-modules-lts: rebuild against kernel 6.6.41-r0
+      community/rtpengine-lts: rebuild against kernel 6.6.41-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.6.41-r0
+      community/vmm_clock-lts: rebuild against kernel 6.6.41-r0
+      main/xtables-addons-lts: rebuild against kernel 6.6.41-r0
+      main/zfs-lts: rebuild against kernel 6.6.41-r0
+      main/raspberrypi-bootloader: bump to 2024-07-16
+      ===== release 3.20.2 =====
+
+Patrycja Rosa (1):
+      community/qemu: fix liburing detection
+
+Sertonix (1):
+      main/linux-lts: fix KBUILD_BUILD_TIMESTAMP not parsable by busybox date
+
+Simon Frankenberger (4):
+      community/plantuml: enable aarch64 and fix build
+      community/openjdk11: security upgrade to 11.0.24
+      community/openjdk17: security upgrade to 17.0.12
+      community/openjdk21: security upgrade to 21.0.4
+
+Sören Tempel (4):
+      community/go: upgrade to 1.22.5
+      community/*: rebuild with Go 1.22.5
+      community/quota-tools: fix implicit basename declaration
+      community/connman: fix implicit basename(3) declaration
+
+adamthiede (1):
+      [3.20] community/reader: upgrade to 0.4.5
+
+fossdd (7):
+      main/pcsc-lite: upgrade to 2.2.3
+      community/gmobile: upgrade to 0.2.1
+      community/jellyfin-web: upgrade to 10.9.6
+      community/jellyfin: upgrade to 10.9.6
+      main/curl: upgrade to 8.8.0
+      community/arti: upgrade to 1.2.5
+      community/wlroots: upgrade to 0.17.4
+
+jahway603 (5):
+      [3.20] community/nextcloud: upgrade to 29.0.3
+      [3.20] community/nextcloud28: upgrade to 28.0.7
+      community/synapse: upgrade to 1.110.0
+      community/nextcloud: upgrade to 29.0.4
+      community/nextcloud28: upgrade to 28.0.8
+
+lauren n. liberda (10):
+      community/chromium: upgrade to 125.0.6422.141
+      main/openssh: hotfix recent security vulneribilities
+      community/chromium: upgrade to 126.0.6478.126
+      community/yt-dlp: upgrade to 2024.07.02
+      community/yt-dlp: upgrade to 2024.07.07
+      community/yt-dlp: upgrade to 2024.07.08
+      community/yt-dlp: upgrade to 2024.07.09
+      main/nodejs: upgrade to 20.15.1
+      community/yt-dlp: upgrade to 2024.07.16
+      community/chromium: upgrade to 126.0.6478.182
+
+oxpa (1):
+      main/openssl: backport fix for a regression breaking FIPS
+
+psykose (1):
+      main/openssl: use the auxv cpu detection variant on ppc/s390x/arm
+
+ptrcnull (2):
+      main/nss: upgrade to 3.101
+      community/firefox-esr: upgrade to 115.12.0
+
+streaksu (8):
+      community/limine: upgrade to 7.8.0
+      community/limine: upgrade to 7.9.0
+      community/limine: upgrade to 7.9.1
+      community/limine: upgrade to 7.9.2
+      community/limine: upgrade to 7.10.1
+      community/limine: upgrade to 7.10.2
+      community/limine: upgrade to 7.10.3
+      community/limine: upgrade to 7.11.0
+
+wesley van tilburg (1):
+      [3.20] community/minify: upgrade to 2.20.37
+
+Štěpán Pechman (1):
+      community/gitlab-runner: upgrade to v16.11.2
+
+Alpine 3.17.9, 3.18.8 and 3.19.3 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.17.9
+3.18.8
+3.19.3
+Those releases contains various security fixes including a fix for OpenSSL CVE-2024-5535.
+
+
 Alpine 3.20.1 released
 We are pleased to announce the release of Alpine Linux 3.20.1, a maintenance release of the 3.20 series. This release includes various bug fixes and security updates, including security fixes for:
 
