@@ -1,3 +1,396 @@
+Alpine 3.21.1 released
+We are pleased to announce the release of Alpine Linux 3.21.1, a maintenance release of the 3.21 series. This release includes various bug fixes and security updates. It also introduces a U-Boot release tarball for riscv64 and StarFive VisionFive2 boards.
+
+The full lists of changes can be found in the git log.
+
+Git Shortlog
+Adam Jensen (1):
+      community/imageflow: fix build on x86_64
+
+Alex (1):
+      community/mgba: upgrade to 0.10.4
+
+Andy Postnikov (10):
+      community/php84-pecl-ds: move from testing
+      testing/php84-pecl-amqp: new aport
+      community/php84-pecl-amqp: move from testing
+      community/php82-pecl-swoole: upgrade to 6.0.0
+      community/php83-pecl-swoole: upgrade to 6.0.0
+      community/php84-pecl-swoole: upgrade to 6.0.0
+      community/php82: upgrade to 8.2.27
+      community/php83: upgrade to 8.3.15
+      community/php84: upgrade to 8.4.2
+      community/unit: upgrade to 1.34.0
+
+Antoine Martin (5):
+      community/git-annex: upgrade to 10.20241202
+      community/py3-slack-sdk: upgrade to 3.33.5
+      community/py3-recipe-scrapers: upgrade to 15.3.3
+      community/zotero: upgrade to 7.0.11
+      community/git-annex: upgrade to 10.20250102
+
+Bart Ribbers (2):
+      community/tiledb: rebuild against spdlog 0.15.0
+      community/print-manager: add missing depends on system-config-printer
+
+Celeste (2):
+      community/mautrix-whatsapp: upgrade to 0.11.2
+      community/rqlite: upgrade to 8.36.1
+
+Christopher Brannon (1):
+      main/linux-lts: enable speakup in riscv64 config
+
+Clayton Craft (1):
+      main/drbd-utils: add missing drbdsetup-84 utility
+
+Daniel Néri (6):
+      main/python3: security upgrade to 3.12.8
+      main/python3: patch CVE-2024-12254
+      main/nsd: upgrade to 4.11.0
+      main/knot: upgrade to 3.4.3
+      community/age: security upgrade to 1.2.1
+      main/py3-jinja2: security upgrade to 3.1.5
+
+Duncan Bellamy (2):
+      community/dovecot-fts-xapian: upgrade to 1.8.1
+      community/dovecot-fts-xapian: upgrade to 1.8.3
+
+Fabricio Silva (8):
+      community/pnpm: upgrade to 9.15.0
+      community/autobrr: upgrade to 1.53.1
+      community/autobrr: upgrade to 1.54.0
+      community/vaultwarden: security upgrade to 1.32.7
+      community/pnpm: upgrade to 9.15.1
+      community/autobrr: upgrade to 1.55.0
+      community/autobrr: upgrade to 1.56.0
+      community/autobrr: upgrade to 1.56.1
+
+Filippo Valsorda (1):
+      main/syslinux: allow disabling trigger
+
+Hoang Nguyen (5):
+      community/nerdctl: upgrade to 2.0.2
+      community/oras-cli: upgrade to 1.2.1
+      community/buildkit: upgrade to 0.18.2
+      community/oras-cli: upgrade to 1.2.2
+      community/cue-cli: upgrade to 0.11.1
+
+Hugo Osvaldo Barrera (1):
+      community/linux-edge: set license to GPL-2.0-only
+
+J0WI (2):
+      community/libphonenumber: upgrade to 8.13.52
+      main/freeradius: security upgrade to 3.0.27
+
+Jakub Jirutka (15):
+      community/keycloak: upgrade to 26.0.7
+      community/maven: enable on riscv64
+      community/ruby-zstd-ruby: move from testing
+      community/tacacs+ng: upgrade to 0_git20241212
+      community/ruby-rbvmomi2: new aport (needed for community/opennebula)
+      community/opennebula: fix missing dependencies and add basic check
+      community/opennebula: upgrade to 6.10.0
+      community/php83-pecl-swoole: fix checksum
+      community/php84-pecl-swoole: fix checksum
+      community/php82-pecl-swoole: fix checksum
+      community/jetty-runner: fix log directory permissions
+      main/nginx: upgrade http-auth-jwt to 0.9.0
+      main/akms: upgrade to 0.3.0
+      main/alpine-make-rootfs: upgrade to 0.7.1
+      community/alpine-make-vm-image: upgrade to 0.13.1
+
+Jingyun Hua (1):
+      community/monado: enable on loongarch64
+
+Johannes Heimansberg (1):
+      community/stubby: fix user not found error
+
+Jonathan Schleifer (2):
+      community/objfw: upgrade to 1.2.2
+      community/objfw: upgrade to 1.2.3
+
+Kevin Daudt (4):
+      community/py3-pyzabbix: depend on py-packaging
+      main/rsync: restore ipv6 support
+      community/zabbix: upgrade to 7.0.7
+      community/opentofu: upgrade to 1.8.8
+
+Krassy Boykinov (3):
+      community/py3-gst: upgrade to 1.24.10
+      main/linux-lts: enable MT7925 device support on x86_64
+      community/mozjs: upgrade to 128.5.2
+
+LN Liberda (7):
+      community/yt-dlp: upgrade to 2024.12.06
+      community/chromium: upgrade to 131.0.6778.108
+      community/yt-dlp: upgrade to 2024.12.13
+      community/chromium: upgrade to 131.0.6778.139
+      community/chromium: fix devices with non-4k page size
+      community/chromium: upgrade to 131.0.6778.204
+      community/yt-dlp: upgrade to 2024.12.23
+
+Leonardo Arena (8):
+      community/nextcloud-client: upgrade to 3.15.2
+      community/incus: upgrade to 6.0.3
+      community/nextcloud29: upgrade to 29.0.10
+      community/nextcloud28: upgrade to 28.0.14
+      community/nextcloud30: upgrade to 30.0.4
+      main/lua-resty-core: upgrade to 0.1.29
+      community/incus: add agent in vm subpkg
+      community/incus-feature: add agent in vm subpkg
+
+Linux User (1):
+      community/ansible: upgrade to 11.1.0
+
+Luca Weiss (2):
+      community/astyle: upgrade to 3.6.5
+      community/py3-udev: fix dependency on libudev
+
+Marian Buschsieweke (1):
+      community/gcc-avr: add gawk to makedepends
+
+Meng Zhuo (1):
+      main/nodejs: disable trap handler for sv39
+
+Michał Polański (9):
+      community/syft: upgrade to 1.18.0
+      community/grype: upgrade to 0.86.0
+      community/gojq: upgrade to 0.12.17
+      community/borgmatic: upgrade to 1.9.4
+      community/py3-faker: upgrade to 33.1.0
+      community/ginkgo: upgrade to 2.22.0
+      community/qpwgraph: upgrade to 0.8.0
+      community/py3-hypothesis: upgrade to 6.122.3
+      community/py3-miniflux: upgrade to 1.1.2
+
+Milan P. Stanić (8):
+      community/linux-edge: upgrade to 6.12.2
+      community/linux-edge: upgrade to 6.12.3
+      community/linux-edge: upgrade to 6.12.4
+      main/haproxy: bugfix upgrade to 3.0.7
+      community/linux-edge: upgrade to 6.12.5
+      community/linux-edge: upgrade to 6.12.6
+      community/linux-edge: upgrade to 6.12.7
+      community/linux-edge: upgrade to 6.12.8
+
+Moritz Haase (2):
+      main/file: Add patch for buffer overflow in v5.46
+      main/file: Import patch file instead of downloading it from GitHub
+
+NN708 (7):
+      main/linux-lts: enable pcie for rockchip socs
+      main/linux-lts: enable drm for rockchip socs
+      main/linux-lts: reorder config to match kernel defconfig
+      main/linux-lts: enable pmic for rockchip socs
+      main/linux-lts: enable sound for rockchip socs
+      main/linux-lts: enable more drivers for rockchip socs
+      community/linux-edge: enable some drivers for rockchip socs
+
+Naomi Rennie-Waldock (1):
+      main/linux-lts: enable qemu guest support for riscv64
+
+Natanael Copa (76):
+      main/linux-lts: upgrade to 6.12.3
+      community/jool-modules-lts: rebuild against kernel 6.12.3-r0
+      community/rtpengine-lts: rebuild against kernel 6.12.3-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.3-r0
+      community/vmm_clock-lts: rebuild against kernel 6.12.3-r0
+      main/xtables-addons-lts: rebuild against kernel 6.12.3-r0
+      main/zfs-lts: rebuild against kernel 6.12.3-r0
+      main/linux-lts: upgrade to 6.12.4
+      community/jool-modules-lts: rebuild against kernel 6.12.4-r0
+      community/rtpengine-lts: rebuild against kernel 6.12.4-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.4-r0
+      community/vmm_clock-lts: rebuild against kernel 6.12.4-r0
+      main/xtables-addons-lts: rebuild against kernel 6.12.4-r0
+      main/zfs-lts: rebuild against kernel 6.12.4-r0
+      main/busybox: fix literal backslashes in awk
+      main/linux-lts: enable ATH10K USB/SDIO drivers
+      main/linux-lts: enable driver for Realtek RTL8812BU/RTL8822BU
+      main/linux-lts: upgrade to 6.12.5
+      community/jool-modules-lts: rebuild against kernel 6.12.5-r0
+      community/rtpengine-lts: rebuild against kernel 6.12.5-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.5-r0
+      community/vmm_clock-lts: rebuild against kernel 6.12.5-r0
+      main/xtables-addons-lts: rebuild against kernel 6.12.5-r0
+      main/zfs-lts: rebuild against kernel 6.12.5-r0
+      main/linux-lts: enable dm-vdo
+      main/linux-lts: upgrade to 6.12.6
+      community/jool-modules-lts: rebuild against kernel 6.12.6-r0
+      community/rtpengine-lts: rebuild against kernel 6.12.6-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.6-r0
+      community/vmm_clock-lts: rebuild against kernel 6.12.6-r0
+      main/xtables-addons-lts: rebuild against kernel 6.12.6-r0
+      main/zfs-lts: rebuild against kernel 6.12.6-r0
+      community/xfce4-screensaver: separate and fix python script
+      main/alpine-conf: backport xfce fix
+      main/alpine-conf: backport fix for xfce
+      main/alpine-conf: upgrade to 3.19.1
+      scripts: move uboot image to separate file
+      scripts/mkimg.uboot.sh: enable riscv64 uboot tarball
+      main/linux-lts: upgrade to 6.12.7
+      community/jool-modules-lts: rebuild against kernel 6.12.7-r2
+      community/rtpengine-lts: rebuild against kernel 6.12.7-r2
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.7-r2
+      community/vmm_clock-lts: rebuild against kernel 6.12.7-r2
+      main/xtables-addons-lts: rebuild against kernel 6.12.7-r2
+      main/zfs-lts: rebuild against kernel 6.12.7-r2
+      main/grub: fix generation of grub config with xen
+      main/libsndfile: enable mp3 support
+      main/libsndfile: backport fix for CVE-2024-50612
+      main/alpine-conf: upgrade to 3.19.2
+      main/shared-mime-info: fix trigger with apk --overlay-from-stdin
+      main/linux-lts: enable ipv6 optimistic DAD
+      main/linux-lts: upgrade to 6.12.8
+      community/jool-modules-lts: rebuild against kernel 6.12.8-r0
+      community/rtpengine-lts: rebuild against kernel 6.12.8-r0
+      community/virtio_vmmci-lts: rebuild against kernel 6.12.8-r0
+      community/vmm_clock-lts: rebuild against kernel 6.12.8-r0
+      main/xtables-addons-lts: rebuild against kernel 6.12.8-r0
+      main/zfs-lts: rebuild against kernel 6.12.8-r0
+      main/ca-certificates: upgrade to 20241121
+      main/abuild: add -C option for chdir
+      main/xtables-addons-rpi: enable on armv7 and armhf
+      main/linux-rpi: upgrade to 6.12.4
+      community/jool-modules-rpi: rebuild against kernel 6.12.4-r0
+      main/xtables-addons-rpi: rebuild against kernel 6.12.4-r0
+      main/zfs-rpi: rebuild against kernel 6.12.4-r0
+      main/linux-rpi: upgrade to 6.12.6
+      community/jool-modules-rpi: rebuild against kernel 6.12.6-r0
+      main/xtables-addons-rpi: rebuild against kernel 6.12.6-r0
+      main/zfs-rpi: rebuild against kernel 6.12.6-r0
+      main/linux-rpi: upgrade to 6.12.8
+      community/jool-modules-rpi: rebuild against kernel 6.12.8-r0
+      main/xtables-addons-rpi: rebuild against kernel 6.12.8-r0
+      main/zfs-rpi: rebuild against kernel 6.12.8-r0
+      main/coreutils: avoid using statvfs
+      main/raspberrypi-bootloader: update to 20250102
+      ===== release 3.21.1 =====
+
+Oliver Smith (2):
+      community/kodi: rebuild against spdlog 1.15.0
+      community/pmbootstrap: upgrade to 3.1.0
+
+Paolo Barbolini (4):
+      community/eza: drop call to `cargo update`
+      community/composer: upgrade to 2.8.4
+      main/zstd: replace broken URL
+      community/eza: upgrade to 0.20.12
+
+Patrycja Rosa (2):
+      community/mumble: upgrade to 1.5.634
+      community/thunderbird: upgrade to 128.5.2
+
+Peter Mack (1):
+      community/confy: add py3-cairo to depends
+
+Sertonix (8):
+      community/ardour: fix configdir
+      community/lightdm: fix PAM error when elogind is not installed
+      community/sysstat: upgrade to 12.7.6
+      community/dcc: fix parallel make install
+      community/jbig2enc: upgrade to 0.30
+      main/linux-lts: include microsoft surface related modules
+      main/linux-lts: set CONFIG_SERIAL_DEV_BUS=y
+      main/alpine-baselayout: create /run/lock
+
+Simon Frankenberger (5):
+      community/java-libsignal-client: upgrade to 0.62.0
+      community/signal-cli: upgrade to 0.13.10
+      community/proftpd: security upgrade to 1.3.8c
+      community/java-libsignal-client: upgrade to 0.64.1
+      community/signal-cli: upgrade to 0.13.11
+
+Sören Tempel (2):
+      community/go: upgrade to 1.23.4
+      community/dracut: remove network-legacy module
+
+Thomas Liske (3):
+      community/birdwatcher: fix install of ipv6 initd
+      community/ifstate: upgrade to 1.13.2
+      community/irtt: modernize initrd
+
+Timo Teräs (3):
+      community/openresty: add lua-resty-openssl-aux module
+      community/lua-resty-openssl: new aport
+      community/lua-resty-jwt: fix dependencies and add tests
+
+Willow Barraco (2):
+      community/hare-ev: upgrade to 0_git20241213
+      community/bonsai: upgrade to 1.2.1
+
+fossdd (40):
+      main/gstreamer: upgrade to 1.24.10
+      main/gst-plugins-base: security upgrade to 1.24.10
+      community/gst-plugins-good: security upgrade to 1.24.10
+      community/gst-plugins-bad: upgrade to 1.24.10
+      community/gst-plugins-ugly: upgrade to 1.24.10
+      community/gst-libav: upgrade to 1.24.10
+      community/gst-vaapi: upgrade to 1.24.10
+      community/gst-editing-services: upgrade to 1.24.10
+      community/py3-gst: upgrade to 1.24.8, add -pyc subpackage
+      community/phosh: upgrade to 0.43.1
+      community/mutter: upgrade to 47.3
+      community/fwupd: upgrade to 2.0.3
+      community/ffmpeg: rebuild against libvpx-1.15.0
+      community/ffmpeg4: rebuild against libvpx-1.15.0
+      community/jellyfin-ffmpeg: rebuild against libvpx-1.15.0
+      community/nautilus: upgrade to 47.1
+      main/glib: upgrade to 2.82.3
+      community/json-glib: upgrade to 1.10.6
+      community/localsearch: upgrade to 3.8.2
+      main/curl: security upgrade to 8.11.1
+      main/glib: upgrade to 2.82.4
+      community/dump1090: build with rtl-sdr and bladerf
+      main/bind: upgrade to 9.18.32
+      community/mautrix-signal: upgrade to 0.7.4
+      community/mautrix-slack: upgrade to 0.1.4
+      community/mautrix-meta: upgrade to 0.4.3
+      main/meson: upgrade to 1.6.1
+      community/rage: security upgrade to 0.11.1
+      community/gnome-calculator: upgrade to 47.1
+      community/gnome-contacts: upgrade to 47.1.1
+      community/tinysparql: upgrade to 3.8.2
+      community/feedbackd: upgrade to 0.6.0
+      community/networkmanager: upgrade to 1.50.1
+      community/libphonenumber: upgrade to 8.13.51
+      community/libphonenumber: downgrade to 8.13.49
+      community/confy: upgrade to 0.8.0
+      community/gtk4.0: upgrade to 4.16.12
+      community/evolution-data-server: upgrade to 3.54.3
+      community/evolution: upgrade to 3.54.3
+      community/libshumate: upgrade to 1.3.1
+
+jahway603 (1):
+      community/synapse: upgrade to 1.121.1
+
+omni (13):
+      community/bear: rebuild against libspdlog.so.1.15
+      community/gr-funcube: rebuild against libspdlog.so.1.15
+      community/mtxclient: rebuild against libspdlog.so.1.15
+      community/nheko: rebuild against libspdlog.so.1.15
+      community/sslscan: upgrade to 2.1.6
+      community/mpvpaper: move from testing
+      community/mergiraf: upgrade to 0.4.0
+      main/glib: use portable code to suppress part of trigger output
+      community/cargo-modules: security upgrade to 0.21.1
+      community/rset: remove gawk dependency
+      main/zfs: upgrade to 2.2.7
+      main/zfs-lts: upgrade zfs to 2.2.6
+      main/zfs-rpi: upgrade zfs to 2.2.7
+
+ptrcnull (3):
+      community/firefox: fix build with python 3.12.8
+      community/firefox-esr: fix build with python 3.12.8
+      community/thunderbird: fix build with python 3.12.8
+
+streaksu (1):
+      community/limine: upgrade to 8.6.0
+
+Štěpán Pechman (1):
+      community/gitlab-runner: upgrade to 17.6.0
+
+
 Alpine 3.18.10, 3.19.5 and 3.20.4 released
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
