@@ -1,3 +1,33 @@
+Alpine Linux 3.21.0 Released
+We are pleased to announce the release of Alpine Linux 3.21.0, the first in the v3.21 stable series.
+
+Highlights
+Linux kernel 6.12
+GCC 14
+LLVM 19
+Node.js (lts) 22.11
+Rust 1.83
+Crystal 1.14
+GNOME 47
+Go 1.23
+KDE Plasma 6.2
+LXQt 2.1
+PHP 8.4
+Qt 6.8
+Sway 1.10
+.NET 9.0
+Significant changes
+Initial support for loongarch64 was added.
+
+Upgrade notes
+As always, make sure to use apk upgrade --available when switching between major versions.
+
+OpenSSH service will automatically restart when upgrading to be able to accept new connections.
+
+The linux-firmware is now compressed with ZSTD. Users running custom-built kernels need to ensure that CONFIG_FW_LOADER_COMPRESS_ZSTD=y is present in the kernel configuration.
+
+Users with / and /usr on separate filesystems (which is unsupported) need take special care. See the wiki for details.
+
 Alpine 3.17.10, 3.18.9, 3.19.4, 3.20.3 released
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
