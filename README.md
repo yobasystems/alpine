@@ -12,7 +12,7 @@ This Container image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems
 ### Alpine Version 3.21.0 (Released 2024-12-05)
 ### Alpine Version 3.20.3 (Released 2024-09-06)
 ### Alpine Version 3.19.4 (Released 2024-09-06)
-### Alpine Version 3.18.9 (Released 2024-09-06)
+### Alpine Version 3.18.10 (Released 2025-01-06)
 
 
 
