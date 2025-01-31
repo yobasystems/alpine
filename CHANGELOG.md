@@ -1,3 +1,12 @@
+Alpine 3.18.11, 3.19.6, 3.20.5 and 3.21.2 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.18.11
+3.19.6
+3.20.5
+3.21.2
+
+
 Alpine 3.21.1 released
 We are pleased to announce the release of Alpine Linux 3.21.1, a maintenance release of the 3.21 series. This release includes various bug fixes and security updates. It also introduces a U-Boot release tarball for riscv64 and StarFive VisionFive2 boards.
 
