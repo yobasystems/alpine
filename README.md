@@ -9,10 +9,10 @@
 
 This Container image [(yobasystems/alpine)](https://hub.docker.com/r/yobasystems/alpine/) is based on the minimal [Alpine Linux](https://alpinelinux.org/).
 
-### Alpine Version 3.21.3 (Released 2025-01-08)
-### Alpine Version 3.20.6 (Released 2025-01-08)
-### Alpine Version 3.19.7 (Released 2025-01-08)
-### Alpine Version 3.18.12 (Released 2025-01-08)
+### Alpine Version 3.21.3 (Released 2025-02-13)
+### Alpine Version 3.20.6 (Released 2025-02-13)
+### Alpine Version 3.19.7 (Released 2025-02-13)
+### Alpine Version 3.18.12 (Released 2025-02-13)
 
 
 
