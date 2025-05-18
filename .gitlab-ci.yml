@@ -180,6 +180,12 @@ build_alpine_3.18.12_arm64v8:
     IMAGE_TAGS: "3.18.12-arm64v8 3.18-arm64v8 3.18.12-aarch64 3.18-aarch64"
     PLATFORM: "linux/arm64/v8"
 
+.manifest_job_template_versioned:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+    - manifest
+
 manifest creation latest:
   image: yobasystems/alpine-docker:dind
   stage: manifest
