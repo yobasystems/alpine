@@ -31,21 +31,33 @@ amd64 latest build:
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
   - cd alpine-3.21.3/amd64/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
     --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:x86_64
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86_64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:x86_64
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:amd64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:x86_64
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86_64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64 --platform linux/amd64 .
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:amd64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest -t $DOCKER_REGISTRY_DOCKERHUB_REPO:x86_64
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:amd64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:x86_64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest --platform linux/amd64 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:amd64
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:x86_64
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:amd64
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:x86_64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64
+  - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest
 arm32v7 latest build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -61,19 +73,32 @@ arm32v7 latest build:
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
   - cd alpine-3.21.3/arm32v7/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
     --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm32v7
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:armhf -t $DOCKER_REGISTRY_DOCKERHUB_REPO:armhf
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf --platform linux/arm/v7 .
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:armhf -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:armhf
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:latest -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:armhf -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest --platform linux/arm/v7 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:armhf
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:arm32v7
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:armhf
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:armhf
+  - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest
 arm64v8 latest build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -89,19 +114,32 @@ arm64v8 latest build:
   - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
   - cd alpine-3.21.3/arm64v8/ && docker build --build-arg VCS_REF=${CI_COMMIT_SHORT_SHA}
     --build-arg BUILD_DATE=${COMMIT_TIME} -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm64v8
-    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm64v8
-    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:aarch64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:aarch64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:aarch64 --platform linux/arm64/v8 .
+    -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:aarch64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm64v8
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:aarch64
+    -t $DOCKER_REGISTRY_DOCKERHUB_REPO:latest -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:aarch64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest --platform linux/arm64/v8 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:aarch64
+  - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:arm64v8
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:aarch64
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    && docker push $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm64v8
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:aarch64
+  - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest
 amd64 3.21.3 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -122,7 +160,9 @@ amd64 3.21.3 build:
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3-amd64
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-x86_64
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-amd64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-amd64 --platform linux/amd64 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-amd64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-x86_64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-x86_64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-amd64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-amd64 --platform linux/amd64 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-amd64
@@ -143,6 +183,14 @@ amd64 3.21.3 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-amd64
 arm32v7 3.21.3 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -163,7 +211,9 @@ arm32v7 3.21.3 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-arm32v7
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3-arm32v7
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-arm32v7
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-arm32v7 --platform linux/arm/v7 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-arm32v7 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-armhf
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-armhf -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm32v7
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm32v7 --platform linux/arm/v7 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-armhf
@@ -184,6 +234,14 @@ arm32v7 3.21.3 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm32v7
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm32v7
 arm64v8 3.21.3 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -204,7 +262,9 @@ arm64v8 3.21.3 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-arm64v8
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3-arm64v8
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-arm64v8
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-arm64v8 --platform linux/arm64/v8 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm64v8
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-aarch64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-aarch64 --platform linux/arm64/v8 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.21.3-aarch64
@@ -225,6 +285,14 @@ arm64v8 3.21.3 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21.3-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.21-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-aarch64
 amd64 3.20.6 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -245,7 +313,9 @@ amd64 3.20.6 build:
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20.6-amd64
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-x86_64
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-amd64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-amd64 --platform linux/amd64 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-amd64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-x86_64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-x86_64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-amd64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-amd64 --platform linux/amd64 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20.6-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20.6-amd64
@@ -266,6 +336,14 @@ amd64 3.20.6 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-amd64
 arm32v7 3.20.6 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -286,7 +364,9 @@ arm32v7 3.20.6 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20.6-arm32v7
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20.6-arm32v7
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-arm32v7
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-arm32v7 --platform linux/arm/v7 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-arm32v7 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-armhf
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-armhf -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm32v7
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm32v7 --platform linux/arm/v7 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20.6-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.20.6-armhf
@@ -307,6 +387,14 @@ arm32v7 3.20.6 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm32v7
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm32v7
 arm64v8 3.20.6 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -348,6 +436,14 @@ arm64v8 3.20.6 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20.6-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.20-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-aarch64
 amd64 3.19.7 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -368,7 +464,9 @@ amd64 3.19.7 build:
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7-amd64
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-x86_64
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-amd64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-amd64 --platform linux/amd64 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-amd64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-x86_64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-x86_64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-amd64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-amd64 --platform linux/amd64 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-amd64
@@ -389,6 +487,14 @@ amd64 3.19.7 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-amd64
 arm32v7 3.19.7 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -409,7 +515,9 @@ arm32v7 3.19.7 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-arm32v7
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7-arm32v7
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-arm32v7
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-arm32v7 --platform linux/arm/v7 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-arm32v7 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-armhf
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-armhf -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm32v7
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm32v7 --platform linux/arm/v7 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-armhf
@@ -430,6 +538,14 @@ arm32v7 3.19.7 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm32v7
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm32v7
 arm64v8 3.19.7 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -450,7 +566,9 @@ arm64v8 3.19.7 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-arm64v8
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7-arm64v8
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-arm64v8
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-arm64v8 --platform linux/arm64/v8 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm64v8
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-aarch64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-aarch64 --platform linux/arm64/v8 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.19.7-aarch64
@@ -471,6 +589,14 @@ arm64v8 3.19.7 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19.7-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.19-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-aarch64
 amd64 3.18.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -491,7 +617,9 @@ amd64 3.18.12 build:
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18-x86_64 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12-amd64
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18-amd64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-x86_64
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-x86_64 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-amd64
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-amd64 --platform linux/amd64 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-amd64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-x86_64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-x86_64 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-amd64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-amd64 --platform linux/amd64 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18-x86_64
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-amd64
@@ -512,6 +640,14 @@ amd64 3.18.12 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-amd64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-x86_64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-amd64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-amd64
 arm32v7 3.18.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -532,7 +668,9 @@ arm32v7 3.18.12 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-armhf -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-arm32v7
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18-arm32v7 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12-arm32v7
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18-arm32v7 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-arm32v7
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-arm32v7 --platform linux/arm/v7 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-arm32v7 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-armhf
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-armhf -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm32v7
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm32v7 --platform linux/arm/v7 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18-arm32v7
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-armhf
@@ -553,6 +691,14 @@ arm32v7 3.18.12 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-armhf
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-armhf
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm32v7
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm32v7
 arm64v8 3.18.12 build:
   image: yobasystems/alpine-docker:dind
   stage: build
@@ -573,7 +719,9 @@ arm64v8 3.18.12 build:
     -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-aarch64 -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-arm64v8
     -t $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18-arm64v8 -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12-arm64v8
     -t $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18-arm64v8 -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-arm64v8
-    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-arm64v8 --platform linux/arm64/v8 .
+    -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm64v8
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm64v8 -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-aarch64
+    -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-aarch64 --platform linux/arm64/v8 .
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18-arm64v8
   - docker push $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:3.18.12-aarch64
@@ -594,6 +742,14 @@ arm64v8 3.18.12 build:
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18.12-aarch64
   - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     && docker push $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:3.18-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm64v8
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-aarch64
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    && docker push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-aarch64
 gitlab manifest creation latest:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -636,6 +792,27 @@ dockerhub manifest creation latest:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:latest $DOCKER_REGISTRY_DOCKERHUB_REPO:arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:latest
+ghcr manifest creation latest:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest
 gitlab manifest creation 3.21:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -678,6 +855,27 @@ dockerhub manifest creation 3.21:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21
+ghcr manifest creation 3.21:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21
 gitlab manifest creation 3.21.3:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -720,6 +918,27 @@ dockerhub manifest creation 3.21.3:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.21.3
+ghcr manifest creation 3.21.3:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.21.3
 gitlab manifest creation 3.20:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -762,6 +981,27 @@ dockerhub manifest creation 3.20:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20
+ghcr manifest creation 3.20:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20
 gitlab manifest creation 3.20.6:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -804,6 +1044,27 @@ dockerhub manifest creation 3.20.6:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20.6 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20.6-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.20.6
+ghcr manifest creation 3.20.6:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.20.6
 gitlab manifest creation 3.19:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -846,6 +1107,27 @@ dockerhub manifest creation 3.19:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19
+ghcr manifest creation 3.19:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19
 gitlab manifest creation 3.19.7:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -888,6 +1170,27 @@ dockerhub manifest creation 3.19.7:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.19.7
+ghcr manifest creation 3.19.7:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.19.7
 gitlab manifest creation 3.18:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -930,6 +1233,27 @@ dockerhub manifest creation 3.18:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18
+ghcr manifest creation 3.18:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18
 gitlab manifest creation 3.18.12:
   image: yobasystems/alpine-docker:dind
   stage: manifest
@@ -972,6 +1296,27 @@ dockerhub manifest creation 3.18.12:
   - docker manifest annotate $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12 $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12-arm64v8
     --os linux --arch arm64 --variant 8
   - docker manifest push $DOCKER_REGISTRY_DOCKERHUB_REPO:3.18.12
+ghcr manifest creation 3.18.12:
+  image: yobasystems/alpine-docker:dind
+  stage: manifest
+  tags:
+  - manifest
+  script:
+  - mkdir /root/.docker
+  - 'echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json'
+  - echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-amd64
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm32v7
+  - docker pull ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm64v8
+  - docker manifest create ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-amd64
+    ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm32v7 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm64v8
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-amd64
+    --os linux --arch amd64
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm32v7
+    --os linux --arch arm --variant 7
+  - docker manifest annotate ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12 ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12-arm64v8
+    --os linux --arch arm64 --variant 8
+  - docker manifest push ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:3.18.12
 
 sast:
   stage: test
