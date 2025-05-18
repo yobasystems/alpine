@@ -88,65 +88,65 @@ build_alpine_3.21.3_arm64v8:
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.20.x builds
-build_alpine_3.20.7_amd64:
+build_alpine_3.20.6_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.20.7"
+    ALPINE_DIR_VERSION: "3.20.6"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "3.20.7-x86_64 3.20-x86_64 3.20.7-amd64 3.20-amd64"
+    IMAGE_TAGS: "3.20.6-x86_64 3.20-x86_64 3.20.6-amd64 3.20-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.20.7_arm32v7:
+build_alpine_3.20.6_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.20.7"
+    ALPINE_DIR_VERSION: "3.20.6"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "3.20.7-arm32v7 3.20-arm32v7 3.20.7-armhf 3.20-armhf"
+    IMAGE_TAGS: "3.20.6-arm32v7 3.20-arm32v7 3.20.6-armhf 3.20-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.20.7_arm64v8:
+build_alpine_3.20.6_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.20.7"
+    ALPINE_DIR_VERSION: "3.20.6"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "3.20.7-arm64v8 3.20-arm64v8 3.20.7-aarch64 3.20-aarch64"
+    IMAGE_TAGS: "3.20.6-arm64v8 3.20-arm64v8 3.20.6-aarch64 3.20-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.19.x builds
-build_alpine_3.19.2_amd64:
+build_alpine_3.19.7_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.19.2"
+    ALPINE_DIR_VERSION: "3.19.7"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "3.19.2-x86_64 3.19-x86_64 3.19.2-amd64 3.19-amd64"
+    IMAGE_TAGS: "3.19.7-x86_64 3.19-x86_64 3.19.7-amd64 3.19-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.19.2_arm32v7:
+build_alpine_3.19.7_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.19.2"
+    ALPINE_DIR_VERSION: "3.19.7"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "3.19.2-arm32v7 3.19-arm32v7 3.19.2-armhf 3.19-armhf"
+    IMAGE_TAGS: "3.19.7-arm32v7 3.19-arm32v7 3.19.7-armhf 3.19-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.19.2_arm64v8:
+build_alpine_3.19.7_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.19.2"
+    ALPINE_DIR_VERSION: "3.19.7"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "3.19.2-arm64v8 3.19-arm64v8 3.19.2-aarch64 3.19-aarch64"
+    IMAGE_TAGS: "3.19.7-arm64v8 3.19-arm64v8 3.19.7-aarch64 3.19-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.18.x builds
