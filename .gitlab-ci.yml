@@ -193,6 +193,18 @@ manifest creation latest:
     GL_IMG_AMD64="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:amd64"
     GL_IMG_ARM32V7="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm32v7"
     GL_IMG_ARM64V8="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:arm64v8"
+    # Define Docker Hub specific image names for 'latest'
+    DH_IMG_AMD64="$DOCKER_REGISTRY_DOCKERHUB_REPO:amd64"
+    DH_IMG_ARM32V7="$DOCKER_REGISTRY_DOCKERHUB_REPO:arm32v7"
+    DH_IMG_ARM64V8="$DOCKER_REGISTRY_DOCKERHUB_REPO:arm64v8"
+    # Define GHCR specific image names for 'latest'
+    GHCR_IMG_AMD64="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:amd64"
+    GHCR_IMG_ARM32V7="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm32v7"
+    GHCR_IMG_ARM64V8="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:arm64v8"
+    # Define Quay.io specific image names for 'latest'
+    QUAY_IMG_AMD64="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:amd64"
+    QUAY_IMG_ARM32V7="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm32v7"
+    QUAY_IMG_ARM64V8="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:arm64v8"
 
     echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
@@ -212,28 +224,28 @@ manifest creation latest:
     echo "INFO: Processing Docker Hub manifest for latest..."
     echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     MANIFEST_LIST_DOCKERHUB="$DOCKER_REGISTRY_DOCKERHUB_REPO:latest"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB" "$DH_IMG_AMD64" "$DH_IMG_ARM32V7" "$DH_IMG_ARM64V8"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$DH_IMG_AMD64" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$DH_IMG_ARM32V7" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB" "$DH_IMG_ARM64V8" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_DOCKERHUB"
 
     echo "INFO: Processing GHCR manifest for latest..."
     echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
     MANIFEST_LIST_GHCR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:latest"
-    docker manifest create "$MANIFEST_LIST_GHCR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    docker manifest create "$MANIFEST_LIST_GHCR" "$GHCR_IMG_AMD64" "$GHCR_IMG_ARM32V7" "$GHCR_IMG_ARM64V8"
+    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GHCR_IMG_AMD64" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GHCR_IMG_ARM32V7" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR" "$GHCR_IMG_ARM64V8" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GHCR"
 
     echo "INFO: Processing Quay.io manifest for latest..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     MANIFEST_LIST_QUAY="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest"
-    docker manifest create "$MANIFEST_LIST_QUAY" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    docker manifest create "$MANIFEST_LIST_QUAY" "$QUAY_IMG_AMD64" "$QUAY_IMG_ARM32V7" "$QUAY_IMG_ARM64V8"
+    docker manifest annotate "$MANIFEST_LIST_QUAY" "$QUAY_IMG_AMD64" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY" "$QUAY_IMG_ARM32V7" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY" "$QUAY_IMG_ARM64V8" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY"
 
 manifest creation 3.21.x:
@@ -245,337 +257,492 @@ manifest creation 3.21.x:
     set -e
     mkdir -p /root/.docker
     echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json
-    TAG_VERSION_FULL="3.21.3"
-    TAG_VERSION_MINOR="3.21"
 
-    GL_IMG_AMD64="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-amd64"
-    GL_IMG_ARM32V7="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm32v7"
-    GL_IMG_ARM64V8="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm64v8"
+    # Define ALL architecture-specific image names for GitLab, DockerHub, GHCR, Quay.io
+    # For FULL version (${ALPINE_VERSION_FULL})
+    GL_IMG_AMD64_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GL_IMG_ARM32V7_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GL_IMG_ARM64V8_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    DH_IMG_AMD64_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-amd64"
+    DH_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    DH_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    GHCR_IMG_AMD64_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GHCR_IMG_ARM32V7_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GHCR_IMG_ARM64V8_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    QUAY_IMG_AMD64_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    QUAY_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    QUAY_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
 
-    echo "INFO: Logging into GitLab Registry and pulling images for ${TAG_VERSION_FULL}..."
+    # For MINOR version (${ALPINE_VERSION_MINOR})
+    GL_IMG_AMD64_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GL_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GL_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    DH_IMG_AMD64_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    DH_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    DH_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    GHCR_IMG_AMD64_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GHCR_IMG_ARM32V7_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GHCR_IMG_ARM64V8_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    QUAY_IMG_AMD64_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    QUAY_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    QUAY_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+
+    echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-    docker pull "$GL_IMG_AMD64"
-    docker pull "$GL_IMG_ARM32V7"
-    docker pull "$GL_IMG_ARM64V8"
 
-    echo "INFO: Processing GitLab manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
-    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_FULL} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
+    docker pull "$GL_IMG_AMD64_FULL"
+    docker pull "$GL_IMG_ARM32V7_FULL"
+    docker pull "$GL_IMG_ARM64V8_FULL"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
+    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" "$GL_IMG_ARM32V7_FULL" "$GL_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GITLAB_FULL"
 
-    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
-
-    echo "INFO: Processing Docker Hub manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_FULL}..."
     echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" "$DH_IMG_ARM32V7_FULL" "$DH_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_DOCKERHUB_FULL"
 
-    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
-
-    echo "INFO: Processing GHCR manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_FULL}..."
     echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
-    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" "$GHCR_IMG_ARM32V7_FULL" "$GHCR_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GHCR_FULL"
 
-    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
-
-    echo "INFO: Processing Quay.io manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_FULL}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_FULL"
 
-    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_MINOR} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
+    docker pull "$GL_IMG_AMD64_MINOR"
+    docker pull "$GL_IMG_ARM32V7_MINOR"
+    docker pull "$GL_IMG_ARM64V8_MINOR"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
+    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" "$GL_IMG_ARM32V7_MINOR" "$GL_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
+
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" "$DH_IMG_ARM32V7_MINOR" "$DH_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
+
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" "$GHCR_IMG_ARM32V7_MINOR" "$GHCR_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
+
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
 manifest creation 3.20.x:
-  image: yobasystems/alpine-docker:dind
-  stage: manifest
-  tags:
-    - manifest
+  extends: .manifest_job_template_versioned
+  variables:
+    ALPINE_VERSION_FULL: "3.20.6" # Check if this is the latest patch for 3.20
+    ALPINE_VERSION_MINOR: "3.20"
   script: |
     set -e
     mkdir -p /root/.docker
     echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json
-    TAG_VERSION_FULL="3.20.6"
-    TAG_VERSION_MINOR="3.20"
 
-    GL_IMG_AMD64="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-amd64"
-    GL_IMG_ARM32V7="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm32v7"
-    GL_IMG_ARM64V8="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm64v8"
+    # Define ALL architecture-specific image names for GitLab, DockerHub, GHCR, Quay.io
+    # For FULL version (${ALPINE_VERSION_FULL})
+    GL_IMG_AMD64_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GL_IMG_ARM32V7_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GL_IMG_ARM64V8_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    DH_IMG_AMD64_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-amd64"
+    DH_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    DH_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    GHCR_IMG_AMD64_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GHCR_IMG_ARM32V7_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GHCR_IMG_ARM64V8_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    QUAY_IMG_AMD64_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    QUAY_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    QUAY_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
 
-    echo "INFO: Logging into GitLab Registry and pulling images for ${TAG_VERSION_FULL}..."
+    # For MINOR version (${ALPINE_VERSION_MINOR})
+    GL_IMG_AMD64_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GL_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GL_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    DH_IMG_AMD64_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    DH_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    DH_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    GHCR_IMG_AMD64_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GHCR_IMG_ARM32V7_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GHCR_IMG_ARM64V8_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    QUAY_IMG_AMD64_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    QUAY_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    QUAY_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+
+    echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-    docker pull "$GL_IMG_AMD64"
-    docker pull "$GL_IMG_ARM32V7"
-    docker pull "$GL_IMG_ARM64V8"
 
-    echo "INFO: Processing GitLab manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
-    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_FULL} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
+    docker pull "$GL_IMG_AMD64_FULL"
+    docker pull "$GL_IMG_ARM32V7_FULL"
+    docker pull "$GL_IMG_ARM64V8_FULL"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
+    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" "$GL_IMG_ARM32V7_FULL" "$GL_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GITLAB_FULL"
 
-    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
-
-    echo "INFO: Processing Docker Hub manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_FULL}..."
     echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" "$DH_IMG_ARM32V7_FULL" "$DH_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_DOCKERHUB_FULL"
 
-    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
-
-    echo "INFO: Processing GHCR manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_FULL}..."
     echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
-    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" "$GHCR_IMG_ARM32V7_FULL" "$GHCR_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GHCR_FULL"
 
-    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
-
-    echo "INFO: Processing Quay.io manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_FULL}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_FULL"
 
-    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_MINOR} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
+    docker pull "$GL_IMG_AMD64_MINOR"
+    docker pull "$GL_IMG_ARM32V7_MINOR"
+    docker pull "$GL_IMG_ARM64V8_MINOR"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
+    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" "$GL_IMG_ARM32V7_MINOR" "$GL_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
+
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" "$DH_IMG_ARM32V7_MINOR" "$DH_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
+
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" "$GHCR_IMG_ARM32V7_MINOR" "$GHCR_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
+
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
 manifest creation 3.19.x:
-  image: yobasystems/alpine-docker:dind
-  stage: manifest
-  tags:
-    - manifest
+  extends: .manifest_job_template_versioned
+  variables:
+    ALPINE_VERSION_FULL: "3.19.7" # Check if this is the latest patch for 3.19
+    ALPINE_VERSION_MINOR: "3.19"
   script: |
     set -e
     mkdir -p /root/.docker
     echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json
-    TAG_VERSION_FULL="3.19.7"
-    TAG_VERSION_MINOR="3.19"
 
-    GL_IMG_AMD64="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-amd64"
-    GL_IMG_ARM32V7="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm32v7"
-    GL_IMG_ARM64V8="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm64v8"
+    # Define ALL architecture-specific image names for GitLab, DockerHub, GHCR, Quay.io
+    # For FULL version (${ALPINE_VERSION_FULL})
+    GL_IMG_AMD64_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GL_IMG_ARM32V7_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GL_IMG_ARM64V8_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    DH_IMG_AMD64_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-amd64"
+    DH_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    DH_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    GHCR_IMG_AMD64_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GHCR_IMG_ARM32V7_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GHCR_IMG_ARM64V8_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    QUAY_IMG_AMD64_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    QUAY_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    QUAY_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
 
-    echo "INFO: Logging into GitLab Registry and pulling images for ${TAG_VERSION_FULL}..."
+    # For MINOR version (${ALPINE_VERSION_MINOR})
+    GL_IMG_AMD64_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GL_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GL_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    DH_IMG_AMD64_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    DH_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    DH_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    GHCR_IMG_AMD64_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GHCR_IMG_ARM32V7_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GHCR_IMG_ARM64V8_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    QUAY_IMG_AMD64_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    QUAY_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    QUAY_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+
+    echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-    docker pull "$GL_IMG_AMD64"
-    docker pull "$GL_IMG_ARM32V7"
-    docker pull "$GL_IMG_ARM64V8"
 
-    echo "INFO: Processing GitLab manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
-    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_FULL} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
+    docker pull "$GL_IMG_AMD64_FULL"
+    docker pull "$GL_IMG_ARM32V7_FULL"
+    docker pull "$GL_IMG_ARM64V8_FULL"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
+    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" "$GL_IMG_ARM32V7_FULL" "$GL_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GITLAB_FULL"
 
-    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
-
-    echo "INFO: Processing Docker Hub manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_FULL}..."
     echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" "$DH_IMG_ARM32V7_FULL" "$DH_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_DOCKERHUB_FULL"
 
-    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
-
-    echo "INFO: Processing GHCR manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_FULL}..."
     echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
-    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" "$GHCR_IMG_ARM32V7_FULL" "$GHCR_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GHCR_FULL"
 
-    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
-
-    echo "INFO: Processing Quay.io manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_FULL}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_FULL"
 
-    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_MINOR} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
+    docker pull "$GL_IMG_AMD64_MINOR"
+    docker pull "$GL_IMG_ARM32V7_MINOR"
+    docker pull "$GL_IMG_ARM64V8_MINOR"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
+    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" "$GL_IMG_ARM32V7_MINOR" "$GL_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
+
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" "$DH_IMG_ARM32V7_MINOR" "$DH_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
+
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" "$GHCR_IMG_ARM32V7_MINOR" "$GHCR_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
+
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
 manifest creation 3.18.x:
-  image: yobasystems/alpine-docker:dind
-  stage: manifest
-  tags:
-    - manifest
+  extends: .manifest_job_template_versioned
+  variables:
+    ALPINE_VERSION_FULL: "3.18.9" # Check if this is the latest patch for 3.18
+    ALPINE_VERSION_MINOR: "3.18"
   script: |
     set -e
     mkdir -p /root/.docker
     echo -e "{\n    \"experimental\": \"enabled\"\n}\n" >> ~/.docker/config.json
-    TAG_VERSION_FULL="3.18.12"
-    TAG_VERSION_MINOR="3.18"
 
-    GL_IMG_AMD64="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-amd64"
-    GL_IMG_ARM32V7="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm32v7"
-    GL_IMG_ARM64V8="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}-arm64v8"
+    # Define ALL architecture-specific image names for GitLab, DockerHub, GHCR, Quay.io
+    # For FULL version (${ALPINE_VERSION_FULL})
+    GL_IMG_AMD64_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GL_IMG_ARM32V7_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GL_IMG_ARM64V8_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    DH_IMG_AMD64_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-amd64"
+    DH_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    DH_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    GHCR_IMG_AMD64_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-amd64"
+    GHCR_IMG_ARM32V7_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    GHCR_IMG_ARM64V8_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}-arm64v8"
+    QUAY_IMG_AMD64_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-amd64"
+    QUAY_IMG_ARM32V7_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm32v7"
+    QUAY_IMG_ARM64V8_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}-arm64v8"
 
-    echo "INFO: Logging into GitLab Registry and pulling images for ${TAG_VERSION_FULL}..."
+    # For MINOR version (${ALPINE_VERSION_MINOR})
+    GL_IMG_AMD64_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GL_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GL_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    DH_IMG_AMD64_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    DH_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    DH_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    GHCR_IMG_AMD64_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    GHCR_IMG_ARM32V7_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    GHCR_IMG_ARM64V8_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+    QUAY_IMG_AMD64_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-amd64"
+    QUAY_IMG_ARM32V7_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm32v7"
+    QUAY_IMG_ARM64V8_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}-arm64v8"
+
+    echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
-    docker pull "$GL_IMG_AMD64"
-    docker pull "$GL_IMG_ARM32V7"
-    docker pull "$GL_IMG_ARM64V8"
 
-    echo "INFO: Processing GitLab manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
-    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    # --- Processing for ${ALPINE_VERSION_FULL} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
+    docker pull "$GL_IMG_AMD64_FULL"
+    docker pull "$GL_IMG_ARM32V7_FULL"
+    docker pull "$GL_IMG_ARM64V8_FULL"
+
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
+    MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" "$GL_IMG_ARM32V7_FULL" "$GL_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_FULL" "$GL_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GITLAB_FULL"
 
-    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
-
-    echo "INFO: Processing Docker Hub manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_FULL}..."
     echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_DOCKERHUB_FULL="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" "$DH_IMG_ARM32V7_FULL" "$DH_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_FULL" "$DH_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_DOCKERHUB_FULL"
 
-    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
-
-    echo "INFO: Processing GHCR manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_FULL}..."
     echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
-    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_GHCR_FULL="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" "$GHCR_IMG_ARM32V7_FULL" "$GHCR_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_FULL" "$GHCR_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_GHCR_FULL"
 
-    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
-
-    echo "INFO: Processing Quay.io manifests for ${TAG_VERSION_FULL} and ${TAG_VERSION_MINOR}..."
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_FULL}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
-    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_FULL}"
-    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
+    MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}"
+    docker manifest create "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM32V7_FULL" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_ARM64V8_FULL" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_FULL"
 
-    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${TAG_VERSION_MINOR}"
-    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" "$GL_IMG_ARM32V7" "$GL_IMG_ARM64V8"
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_AMD64" --os linux --arch amd64
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM32V7" --os linux --arch arm --variant 7
-    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$GL_IMG_ARM64V8" --os linux --arch arm64 --variant 8
-    docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
+    # --- Processing for ${ALPINE_VERSION_MINOR} ---
+    echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
+    docker pull "$GL_IMG_AMD64_MINOR"
+    docker pull "$GL_IMG_ARM32V7_MINOR"
+    docker pull "$GL_IMG_ARM64V8_MINOR"
 
+    echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
+    MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" "$GL_IMG_ARM32V7_MINOR" "$GL_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GITLAB_MINOR" "$GL_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GITLAB_MINOR"
+
+    echo "INFO: Processing Docker Hub manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    MANIFEST_LIST_DOCKERHUB_MINOR="$DOCKER_REGISTRY_DOCKERHUB_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" "$DH_IMG_ARM32V7_MINOR" "$DH_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_DOCKERHUB_MINOR" "$DH_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_DOCKERHUB_MINOR"
+
+    echo "INFO: Processing GHCR manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" ghcr.io --password-stdin
+    MANIFEST_LIST_GHCR_MINOR="ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" "$GHCR_IMG_ARM32V7_MINOR" "$GHCR_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_GHCR_MINOR" "$GHCR_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_GHCR_MINOR"
+
+    echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_MINOR}..."
+    echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
+    MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}"
+    docker manifest create "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" --os linux --arch amd64
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
+    docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
+    docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
 sast:
   stage: test
