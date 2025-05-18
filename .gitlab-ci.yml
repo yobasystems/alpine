@@ -24,7 +24,8 @@ include:
     CI_APPLICATION_TAG: "$CI_COMMIT_SHA"
   script:
     - export COMMIT_TIME=$(git show -s --format=%ct $CI_APPLICATION_TAG)
-    - echo "Commit time: $COMMIT_TIME, Short SHA: $CI_COMMIT_SHORT_SHA"
+    - echo "Commit time: $COMMIT_TIME"
+    - echo "Short SHA: $CI_COMMIT_SHORT_SHA"
     - apk add --no-cache --update git
     - echo "Logging into GitLab Registry: $DOCKER_REGISTRY"
     - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
