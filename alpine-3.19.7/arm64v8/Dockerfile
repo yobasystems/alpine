@@ -6,7 +6,7 @@ ARG VCS_REF
 LABEL maintainer="Dominic Taylor <dominic@yoba.systems>" \
     architecture="arm64v8/aarch64" \
     alpine-version="3.19.7" \
-    build="19-Mar-2025" \
+    build="18-May-2025" \
     org.opencontainers.image.title="alpine" \
     org.opencontainers.image.description="Container image running Alpine Linux" \
     org.opencontainers.image.authors="Dominic Taylor <dominic@yoba.systems>" \
