@@ -255,10 +255,10 @@ manifest creation latest:
     docker manifest push "$MANIFEST_LIST_QUAY"
 
 manifest creation 3.21.x:
-  image: yobasystems/alpine-docker:dind
-  stage: manifest
-  tags:
-    - manifest
+  extends: .manifest_job_template_versioned
+  variables:
+    ALPINE_VERSION_FULL: "3.21.3"
+    ALPINE_VERSION_MINOR: "3.21"
   script: |
     set -e
     mkdir -p /root/.docker
@@ -629,7 +629,7 @@ manifest creation 3.19.x:
 manifest creation 3.18.x:
   extends: .manifest_job_template_versioned
   variables:
-    ALPINE_VERSION_FULL: "3.18.9" # Check if this is the latest patch for 3.18
+    ALPINE_VERSION_FULL: "3.18.12" # Check if this is the latest patch for 3.18
     ALPINE_VERSION_MINOR: "3.18"
   script: |
     set -e
