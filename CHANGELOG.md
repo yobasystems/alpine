@@ -1,3 +1,12 @@
+Alpine 3.19.8, 3.20.7, 3.21.4 and 3.22.1 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.19.8
+3.20.7
+3.21.4
+3.22.1
+The 3.22.1 release includes a security fix for OpenSSL CVE-2025-4575.
+
 Alpine Linux 3.22.0 Released
 We are pleased to announce the release of Alpine Linux 3.22.0, the first in the v3.22 stable series.
 

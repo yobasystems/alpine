@@ -57,127 +57,127 @@ include:
       done
 
 # Alpine 3.22.x builds (includes 'latest' tags)
-build_alpine_3.22.0_amd64:
+build_alpine_3.22.1_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.22.0"
+    ALPINE_DIR_VERSION: "3.22.1"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "latest x86_64 amd64 3.22.0-x86_64 3.22-x86_64 3.22.0-amd64 3.22-amd64"
+    IMAGE_TAGS: "latest x86_64 amd64 3.22.1-x86_64 3.22-x86_64 3.22.1-amd64 3.22-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.22.0_arm32v7:
+build_alpine_3.22.1_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.22.0"
+    ALPINE_DIR_VERSION: "3.22.1"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "latest arm32v7 armhf 3.22.0-arm32v7 3.22-arm32v7 3.22.0-armhf 3.22-armhf"
+    IMAGE_TAGS: "latest arm32v7 armhf 3.22.1-arm32v7 3.22-arm32v7 3.22.1-armhf 3.22-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.22.0_arm64v8:
+build_alpine_3.22.1_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.22.0"
+    ALPINE_DIR_VERSION: "3.22.1"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "latest arm64v8 aarch64 3.22.0-arm64v8 3.22-arm64v8 3.22.0-aarch64 3.22-aarch64"
+    IMAGE_TAGS: "latest arm64v8 aarch64 3.22.1-arm64v8 3.22-arm64v8 3.22.1-aarch64 3.22-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.21.x builds
-build_alpine_3.21.3_amd64:
+build_alpine_3.21.4_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.21.3"
+    ALPINE_DIR_VERSION: "3.21.4"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "3.21.3-x86_64 3.21-x86_64 3.21.3-amd64 3.21-amd64"
+    IMAGE_TAGS: "3.21.4-x86_64 3.21-x86_64 3.21.4-amd64 3.21-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.21.3_arm32v7:
+build_alpine_3.21.4_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.21.3"
+    ALPINE_DIR_VERSION: "3.21.4"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "3.21.3-arm32v7 3.21-arm32v7 3.21.3-armhf 3.21-armhf"
+    IMAGE_TAGS: "3.21.4-arm32v7 3.21-arm32v7 3.21.4-armhf 3.21-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.21.3_arm64v8:
+build_alpine_3.21.4_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.21.3"
+    ALPINE_DIR_VERSION: "3.21.4"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "3.21.3-arm64v8 3.21-arm64v8 3.21.3-aarch64 3.21-aarch64"
+    IMAGE_TAGS: "3.21.4-arm64v8 3.21-arm64v8 3.21.4-aarch64 3.21-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.20.x builds
-build_alpine_3.20.6_amd64:
+build_alpine_3.20.7_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.20.6"
+    ALPINE_DIR_VERSION: "3.20.7"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "3.20.6-x86_64 3.20-x86_64 3.20.6-amd64 3.20-amd64"
+    IMAGE_TAGS: "3.20.7-x86_64 3.20-x86_64 3.20.7-amd64 3.20-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.20.6_arm32v7:
+build_alpine_3.20.7_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.20.6"
+    ALPINE_DIR_VERSION: "3.20.7"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "3.20.6-arm32v7 3.20-arm32v7 3.20.6-armhf 3.20-armhf"
+    IMAGE_TAGS: "3.20.7-arm32v7 3.20-arm32v7 3.20.7-armhf 3.20-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.20.6_arm64v8:
+build_alpine_3.20.7_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.20.6"
+    ALPINE_DIR_VERSION: "3.20.7"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "3.20.6-arm64v8 3.20-arm64v8 3.20.6-aarch64 3.20-aarch64"
+    IMAGE_TAGS: "3.20.7-arm64v8 3.20-arm64v8 3.20.7-aarch64 3.20-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.19.x builds
-build_alpine_3.19.7_amd64:
+build_alpine_3.19.8_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.19.7"
+    ALPINE_DIR_VERSION: "3.19.8"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "3.19.7-x86_64 3.19-x86_64 3.19.7-amd64 3.19-amd64"
+    IMAGE_TAGS: "3.19.8-x86_64 3.19-x86_64 3.19.8-amd64 3.19-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.19.7_arm32v7:
+build_alpine_3.19.8_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.19.7"
+    ALPINE_DIR_VERSION: "3.19.8"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "3.19.7-arm32v7 3.19-arm32v7 3.19.7-armhf 3.19-armhf"
+    IMAGE_TAGS: "3.19.8-arm32v7 3.19-arm32v7 3.19.8-armhf 3.19-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.19.7_arm64v8:
+build_alpine_3.19.8_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.19.7"
+    ALPINE_DIR_VERSION: "3.19.8"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "3.19.7-arm64v8 3.19-arm64v8 3.19.7-aarch64 3.19-aarch64"
+    IMAGE_TAGS: "3.19.8-arm64v8 3.19-arm64v8 3.19.8-aarch64 3.19-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.18.x builds
@@ -288,7 +288,7 @@ manifest creation latest:
 manifest creation 3.22.x:
   extends: .manifest_job_template_versioned
   variables:
-    ALPINE_VERSION_FULL: "3.22.0"
+    ALPINE_VERSION_FULL: "3.22.1"
     ALPINE_VERSION_MINOR: "3.22"
   script: |
     set -e
@@ -412,7 +412,7 @@ manifest creation 3.22.x:
 manifest creation 3.21.x:
   extends: .manifest_job_template_versioned
   variables:
-    ALPINE_VERSION_FULL: "3.21.3"
+    ALPINE_VERSION_FULL: "3.21.4"
     ALPINE_VERSION_MINOR: "3.21"
   script: |
     set -e
@@ -536,7 +536,7 @@ manifest creation 3.21.x:
 manifest creation 3.20.x:
   extends: .manifest_job_template_versioned
   variables:
-    ALPINE_VERSION_FULL: "3.20.6" # Check if this is the latest patch for 3.20
+    ALPINE_VERSION_FULL: "3.20.7" # Check if this is the latest patch for 3.20
     ALPINE_VERSION_MINOR: "3.20"
   script: |
     set -e
@@ -660,7 +660,7 @@ manifest creation 3.20.x:
 manifest creation 3.19.x:
   extends: .manifest_job_template_versioned
   variables:
-    ALPINE_VERSION_FULL: "3.19.7" # Check if this is the latest patch for 3.19
+    ALPINE_VERSION_FULL: "3.19.8" # Check if this is the latest patch for 3.19
     ALPINE_VERSION_MINOR: "3.19"
   script: |
     set -e
