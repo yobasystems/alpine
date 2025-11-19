@@ -1,3 +1,13 @@
+Alpine 3.19.9, 3.20.8, 3.21.5 and 3.22.2 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.19.9
+3.20.8
+3.21.5
+3.22.2
+These updates include security fixes for OpenSSL addressing the September 30, 2025 advisory (CVE-2025-9230, CVE-2025-9231, CVE-2025-9232).
+
+
 Alpine 3.19.8, 3.20.7, 3.21.4 and 3.22.1 released
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
