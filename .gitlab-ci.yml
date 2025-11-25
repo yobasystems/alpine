@@ -752,3 +752,6 @@ manifest creation 3.19.x:
 
 sast:
   stage: test
+  variables:
+    ALPINE_VERSION_FULL: "3.22.2"
+    CS_DOCKERFILE_PATH: "${{CI_PROJECT_NAME}}-${{ALPINE_VERSION_FULL}}/${{BUILD_ARCH_DIR}}/Dockerfile"

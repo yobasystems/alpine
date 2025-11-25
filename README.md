@@ -104,7 +104,6 @@ This yields us a base image size of about 74MB image.
 
 * [Github - yobasystems/alpine](https://github.com/yobasystems/alpine)
 * [Gitlab - yobasystems/alpine](https://gitlab.com/yobasystems/alpine)
-* [Bitbucket - yobasystems/alpine](https://bitbucket.org/yobasystems/alpine/)
 
 
 ## 🐳 Container Registries
