@@ -17,16 +17,34 @@ include:
 - template: Jobs/SAST.gitlab-ci.yml
 
 container_scanning_amd64:
+  tags:
+    - amd64
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.22.2/amd64/Dockerfile"
 
 container_scanning_armhf:
+  tags:
+    - aarch64 # Use aarch64 runner as there isnt an image for armhf
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.22.2/arm32v7/Dockerfile"
 
 container_scanning_aarch64:
+  tags:
+    - aarch64
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.22.2/arm64v8/Dockerfile"
+
+sbom_amd64:
+  tags:
+    - amd64
+
+sbom_armhf:
+  tags:
+    - armhf
+
+sbom_aarch64:
+  tags:
+    - aarch64
 
 .build_job_template:
   image: yobasystems/alpine-docker:dind
