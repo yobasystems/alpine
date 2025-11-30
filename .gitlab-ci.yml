@@ -8,13 +8,25 @@
 stages:
 - build
 - test
-- manifest
 - deploy
+- manifest
 
 include:
 - remote: https://gitlab.com/yobasystems/gitlab-ci-templates/raw/master/container_scanning_all_arch.yml
-- template: Security/Secret-Detection.gitlab-ci.yml
-- template: Security/SAST.gitlab-ci.yml
+- template: Jobs/Secret-Detection.gitlab-ci.yml
+- template: Jobs/SAST.gitlab-ci.yml
+
+container_scanning_amd64:
+  variables:
+    CS_DOCKERFILE_PATH: "alpine-3.22.2/amd64/Dockerfile"
+
+container_scanning_armhf:
+  variables:
+    CS_DOCKERFILE_PATH: "alpine-3.22.2/arm32v7/Dockerfile"
+
+container_scanning_aarch64:
+  variables:
+    CS_DOCKERFILE_PATH: "alpine-3.22.2/arm64v8/Dockerfile"
 
 .build_job_template:
   image: yobasystems/alpine-docker:dind
@@ -186,7 +198,7 @@ build_alpine_3.19.9_arm64v8:
   tags:
     - manifest
 
-manifest creation latest:
+manifest_creation_latest:
   image: yobasystems/alpine-docker:dind
   stage: manifest
   tags:
@@ -254,7 +266,7 @@ manifest creation latest:
     docker manifest annotate "$MANIFEST_LIST_QUAY" "$QUAY_IMG_ARM64V8" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY"
 
-manifest creation 3.22.x:
+manifest_creation_3.22.x:
   extends: .manifest_job_template_versioned
   variables:
     ALPINE_VERSION_FULL: "3.22.2"
@@ -378,7 +390,7 @@ manifest creation 3.22.x:
     docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
-manifest creation 3.21.x:
+manifest_creation_3.21.x:
   extends: .manifest_job_template_versioned
   variables:
     ALPINE_VERSION_FULL: "3.21.5"
@@ -502,7 +514,7 @@ manifest creation 3.21.x:
     docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
-manifest creation 3.20.x:
+manifest_creation_3.20.x:
   extends: .manifest_job_template_versioned
   variables:
     ALPINE_VERSION_FULL: "3.20.8" # Check if this is the latest patch for 3.20
@@ -626,7 +638,7 @@ manifest creation 3.20.x:
     docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
 
-manifest creation 3.19.x:
+manifest_creation_3.19.x:
   extends: .manifest_job_template_versioned
   variables:
     ALPINE_VERSION_FULL: "3.19.9" # Check if this is the latest patch for 3.19
@@ -749,9 +761,3 @@ manifest creation 3.19.x:
     docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM32V7_MINOR" --os linux --arch arm --variant 7
     docker manifest annotate "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_ARM64V8_MINOR" --os linux --arch arm64 --variant 8
     docker manifest push "$MANIFEST_LIST_QUAY_MINOR"
-
-sast:
-  stage: test
-  variables:
-    ALPINE_VERSION_FULL: "3.22.2"
-    CS_DOCKERFILE_PATH: "${{CI_PROJECT_NAME}}-${{ALPINE_VERSION_FULL}}/${{BUILD_ARCH_DIR}}/Dockerfile"
