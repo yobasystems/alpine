@@ -1,3 +1,412 @@
+Alpine Linux 3.23.0 Released
+We are pleased to announce the release of Alpine Linux 3.23.0, the first release in the v3.23 stable series.
+
+Highlights
+Linux kernel 6.18
+GCC 15
+LLVM 21
+Node.js (LTS) 24.11
+Rust 1.91
+Valkey 9.0
+ZFS 2.4.0-rc4
+Crystal 1.18
+Docker 29
+.NET 10.0
+GNOME 49
+Go 1.25
+ISC Kea 3.0
+KDE Plasma 6.5.3
+LXQt 2.3.0
+OpenJDK 25
+Perl 5.42
+PHP 8.5
+PostgreSQL 18
+Qt 6.10
+Sway 1.11
+Significant changes
+apk-tools v3
+Version 3 of apk is now ready for Alpine v3.23.0. This should be a safe and seamless upgrade from v2, but might have breaking changes if you use libapk. The package manager has been upgraded to v3, but keeping the v2 index and package format for now.
+
+See apk-tools v3.0.0 release notes for more details.
+
+linux-stable replaces linux-edge
+linux-stable replaces linux-edge with an identical configuration as linux-lts while following stable instead of long-term releases. On systems with linux-edge installed, apk automatically installs linux-stable as a replacement.
+
+See the wiki for details about this release.
+
+Upgrade notes
+As always, make sure to use apk upgrade --available when switching between major versions.
+
+We previously announced that 3.23 would be /usr-merged, but due to technical challenges this has been postponed to a later release. A new timeline will be published later.
+
+Users with / and /usr on separate filesystems (which is unsupported) will still need to take special care. See the wiki for details.
+
+Changes
+The full list of changes can be found in the wiki, the git log and the bug tracker.
+
+Credits
+Thanks to everyone sending patches, bug reports, new and updated aports, and to everyone helping with documentation, maintaining the infrastructure, or contributing in any other way!
+
+Thanks to GIGABYTE, Linode, Fastly, IBM, Equinix Metal, vpsFree, AlpineLinuxSupport.com, CloudOn, Osso B.V., HorizonIQ, Cherry Servers and NetMountains for providing us with hardware and hosting.
+
+aports Commit Contributors
+Achill Gilgenast
+Adam Jensen
+adamthiede
+aerodomigue
+Akihiro Suda
+Alex Denes
+Alex McGrath
+Alex Xu (Hello71)
+Alexander Edland
+Alexandre Marquet
+Alexey Yerin
+Alice R
+Alistair Francis
+Amelia Clarke
+André Klitzing
+Andrej Kolčin
+Andres Almiray
+Andrew Hills
+Andrew Palardy
+Andrij Abyzov
+Andy Hawkins
+Andy Postnikov
+Angelo Verlain
+Angelo Verlain Shema
+Anjandev Momi
+Antoine Martin
+Antoni Aloy Torrens
+Antonio Mihăeș
+Apo Apangona
+Ariadne Conill
+Arnav Singh
+Arne de Bruijn
+Arne Schoonvliet
+Aster Boese
+avinesh2101
+ayakael
+Barnabás Czémán
+Bart Ribbers
+bin456789
+Biswapriyo Nath
+bj8sk
+Bradford D. Boyle
+Bradley Perkins
+Bryce Vandegrift
+bytesharky
+Callum Andrew
+Carlo Landmeter
+Celeste
+Chad Dougherty
+Channing Bellamy
+Charadon
+Christian Dupuis
+Christiano Haesbaert
+Christoph Heiss
+chwoa
+Clayton Craft
+Coco Liliace
+Conrad Hoffmann
+Cormac Stephenson
+CorruptedVor
+cos
+cow
+Cow
+Craig Andrews
+crapStone
+dabao1955
+Daniel Aloor
+Daniel Black
+Daniel Hejduk
+Daniel Markstedt
+Daniel Néri
+Daniel Simko
+Dario Caroprese
+David Florness
+David Heidelberg
+David Sugar
+Dennis Krupenik
+DerLinkman
+Devin Lin
+Dhruvin Gandhi
+Díaz Urbaneja Víctor Diego Alejandro (Sodomon)
+Dominic
+Dominique Martinet
+donoban
+DragonTalk
+Dries Schaumont
+Duncan Bellamy
+DWwanghao
+Dylan Van Assche
+Eeo Jun
+Eisenbahnfan
+Eivind Larsen
+eu
+Fabian Affolter
+Fabricio Silva
+famfo
+Faustin Lammler
+Ferass El Hafidi
+Fiona Klute
+Forza
+Francesco Colista
+François Chavant
+Fredrik Foss-Indrehus
+gabriel
+Galen Abell
+Gavin Williams
+Georg Lehner
+Gil Pedersen
+Glenn Strauss
+Guido Günther
+Guy Godfroy
+Gyorgy Szing
+Haelwenn (lanodan) Monnier
+hairyhenderson-bot[bot]
+Hannes Braun
+Hans de Goede
+Henrik Grimler
+Henrik Riomar
+heurist
+Hoang Nguyen
+Holger Jaekel
+Hristiyan Ivanov
+Hugo Osvaldo Barrera
+Integral
+Iskren Chernev
+Ivan Popovych
+Iztok Fister Jr.
+Iztok Fister, Jr.
+J. Neuschäfer
+j.r
+J0WI
+Jacques Boscq
+jahway603
+Jake Buchholz Göktürk
+Jakob Hauser
+Jakob Meier
+Jakob Probst
+Jakub Jirutka
+James Chen-Smith
+Jan Houstek
+Jan Houštěk
+Jane Rachinger
+Jason Swank
+jb
+Jean-Francois Lessard
+Jean-Louis Fuchs
+Jens Reidel
+Jens Zeilund
+Jesse Mandel
+Jingyun Hua
+Jo Zzsi
+Johannes Müller
+John Anthony
+John Vogel
+Jonas
+Jonathan Schleifer
+Jordan Christiansen
+Joren
+Joshua Murphy
+Jozef Mlich
+juef
+jvoisin
+k8ie
+Kaarle Ritvanen
+Kaspar Schleiser
+Kasper K
+Kate
+Kevin Daudt
+kkflt
+knuxify
+Konstantin Goncharik
+Konstantin Kulikov
+kpcyrd
+Krassy Boykinov
+Krystian Chachuła
+L. E. Segovia
+Lassebq
+László Várady
+Laurent Bercot
+Lauri Tirkkonen
+lazywalker
+Leon Marz
+Leon White
+Leonardo Arena
+leso-kn
+Lindsay Zhou
+Linus Groh
+LN Liberda
+lonjil
+Lovell Fuller
+Luc Bijl
+Luca Weiss
+Lucas Ieks
+Lucidiot
+Luis Henriques
+Lukas Wedeking
+Maarten van Gompel
+macmpi
+Magnus Sandin
+Marco
+Marek Zori
+Maria Lisina
+Marian Buschsieweke
+Markus Göllnitz
+Mate Farkas
+Matt Bell
+Matt Hauck
+Matthias Ahouansou
+Matthieu Baerts (NGI0)
+max1truc
+Maximilian Friedersdorff
+mekyt
+Meng Zhuo
+Michael Pirogov
+Michal Jirků
+Michał Polański
+Mike Crute
+Milan P. Stanić
+Miles Alan
+Mindaugas Vaitiekūnas
+mini-bomba
+minoplhy
+Mintsuki
+mio
+Moritz Haase
+Naomi Rennie-Waldock
+Natanael Copa
+NeYurii
+Nick Østergaard
+Nico Schottelius
+Nicolas Lorin
+NN708
+Noel Kuntze
+Oleg Titov
+Oliver Smith
+Olivia Thiderman
+omni
+Orhun Parmaksız
+ovf
+p_q
+Pablo Correa Gómez
+Paolo Barbolini
+Paolo Cuffiani
+para
+Patrick Gansterer
+Pavel Demin
+Pavel Zakopaylo
+pawciobiel
+pcmagas
+Pedro Lucas Porcellis
+Pepijn de Vos
+Peter Bui
+Peter Mack
+Peter Meiser
+Peter Shkenev
+Peter van Dijk
+Petr Vorel
+pfzetto
+Philip Schlusslicht
+Philipp Arras
+Piero Mantovani La Terza
+Prabu Anand Kalivaradhan
+PRIVATE-TOKEN
+prspkt
+ptrcnull
+Puneeth Chaganti
+qaqland
+Quentin Bornet
+R4SAS
+Rabindra Dhakal
+Rafael Ávila de Espíndola
+Rasmus Thomsen
+RavFX XMR
+Raymond Hackley
+rdbo
+revsuine
+Rob Blanckaert
+Robert Eckelmann
+Robert Mader
+Robin Candau
+Ron Nazarov
+rooyca
+rubicon
+Rudolf Polzer
+Runxi Yu
+Ryan Walklin
+Sacha
+Saijin-Naib
+Sam Day
+Sam Nystrom
+Sam Thursfield
+Samuel Kalbfleisch
+Sascha Brawer
+Sean E. Russell
+Sean McAvoy
+Sebastian Hamann
+Sebastian Meyer
+Sergey Safarov
+Sertonix
+Sicelo A. Mhlongo
+Simon Frankenberger
+Simon Rupf
+Simon Zeni
+Siva Mahadevan
+sivasaipega
+Skyler Mayfield
+sodface
+sodomon2
+Sören Tempel
+srcfn
+sriharsha.arakatavemula
+Stefan Hansson
+Štěpán Pechman
+stephen
+Steve Lam
+streaksu
+strophy
+Struan Robertson
+Sylvain Prat
+techknowlogick
+tetsumaki
+Theo Zanchi
+Thiago Perrotta
+Thomas Aldrian
+Thomas Böhler
+Thomas J Faughnan Jr
+Thomas Kienlen
+Thomas Liske
+Tim Düsterhus
+Timo Teräs
+Timothy Legge
+Topoetry
+Travis Shivers
+Tuan Anh Tran
+Tyrone Buggims
+Val Packett
+Val V
+Vasiliy Doylov
+Victor Mignot
+wen
+Wen Heping
+wener
+Wesley van Tilburg
+Wiktor Kwapisiewicz
+Will Sinatra
+William Desportes
+William Floyd
+Willow Barraco
+Wolfgang Fischer
+xrs
+yabobay
+Yaksh Bariya
+yurenchen
+Z
+Zach DeCook
+Zsolt Vadasz
+
 Alpine 3.19.9, 3.20.8, 3.21.5 and 3.22.2 released
 The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
 
