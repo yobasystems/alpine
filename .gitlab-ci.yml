@@ -247,11 +247,11 @@ manifest_creation_latest:
     - manifest
   needs:
     - container_scanning_amd64
-    - container_scanning_arm32v7
-    - container_scanning_arm64v8
-    - sbom_creation_amd64
-    - sbom_creation_arm32v7
-    - sbom_creation_arm64v8
+    - container_scanning_armhf
+    - container_scanning_aarch64
+    - sbom_amd64
+    - sbom_armhf
+    - sbom_aarch64
   script: |
     set -e
     mkdir -p /root/.docker
