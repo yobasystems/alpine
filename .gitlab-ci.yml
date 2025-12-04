@@ -13,19 +13,19 @@ container_scanning_amd64:
   tags:
     - amd64
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.22.2/amd64/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.0/amd64/Dockerfile"
 
 container_scanning_armhf:
   tags:
     - aarch64 # Use aarch64 runner as there isnt an image for armhf
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.22.2/arm32v7/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.0/arm32v7/Dockerfile"
 
 container_scanning_aarch64:
   tags:
     - aarch64
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.22.2/arm64v8/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.0/arm64v8/Dockerfile"
 
 sbom_amd64:
   tags:
@@ -310,6 +310,10 @@ manifest_creation_latest:
 
 manifest_creation_3.23.x:
   extends: .manifest_job_template_versioned
+  needs:
+    - build_alpine_3.23.0_amd64
+    - build_alpine_3.23.0_arm32v7
+    - build_alpine_3.23.0_arm64v8
   variables:
     ALPINE_VERSION_FULL: "3.23.0"
     ALPINE_VERSION_MINOR: "3.23"
@@ -434,6 +438,10 @@ manifest_creation_3.23.x:
 
 manifest_creation_3.22.x:
   extends: .manifest_job_template_versioned
+  needs:
+    - build_alpine_3.22.2_amd64
+    - build_alpine_3.22.2_arm32v7
+    - build_alpine_3.22.2_arm64v8
   variables:
     ALPINE_VERSION_FULL: "3.22.2"
     ALPINE_VERSION_MINOR: "3.22"
@@ -558,6 +566,10 @@ manifest_creation_3.22.x:
 
 manifest_creation_3.21.x:
   extends: .manifest_job_template_versioned
+  needs:
+    - build_alpine_3.21.5_amd64
+    - build_alpine_3.21.5_arm32v7
+    - build_alpine_3.21.5_arm64v8
   variables:
     ALPINE_VERSION_FULL: "3.21.5"
     ALPINE_VERSION_MINOR: "3.21"
@@ -682,6 +694,10 @@ manifest_creation_3.21.x:
 
 manifest_creation_3.20.x:
   extends: .manifest_job_template_versioned
+  needs:
+    - build_alpine_3.20.8_amd64
+    - build_alpine_3.20.8_arm32v7
+    - build_alpine_3.20.8_arm64v8
   variables:
     ALPINE_VERSION_FULL: "3.20.8"
     ALPINE_VERSION_MINOR: "3.20"
@@ -806,6 +822,10 @@ manifest_creation_3.20.x:
 
 manifest_creation_3.19.x:
   extends: .manifest_job_template_versioned
+  needs:
+    - build_alpine_3.19.9_amd64
+    - build_alpine_3.19.9_arm32v7
+    - build_alpine_3.19.9_arm64v8
   variables:
     ALPINE_VERSION_FULL: "3.19.9"
     ALPINE_VERSION_MINOR: "3.19"
