@@ -79,7 +79,7 @@ Alpine Linux is a Linux distribution built around musl libc and BusyBox. The ima
 
 Use like you would any other base image:
 
-```
+```yaml
 FROM yobasystems/alpine
 RUN apk add --no-cache mysql-client
 ENTRYPOINT ["mysql"]
@@ -87,7 +87,7 @@ ENTRYPOINT ["mysql"]
 
 This example has a base image size of only 6MB. Compare that to our good friend Ubuntu:
 
-```
+```yaml
 FROM ubuntu
 RUN apt-get update \
     && apt-get install -y --no-install-recommends mysql-client \
@@ -115,7 +115,7 @@ This yields us a base image size of about 74MB image.
 
 ## 🔗 Links
 
-- [Yoba Systems](https://www.yobasystems.co.uk/)
+- [Yoba Systems](https://yoba.systems/)
 - [Github - Yoba Systems](https://github.com/yobasystems/)
 - [Dockerhub - Yoba Systems](https://hub.docker.com/u/yobasystems/)
 - [GHCR - Yoba Systems](https://ghcr.io/yobasystems)
