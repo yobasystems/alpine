@@ -25,6 +25,7 @@ container_scanning_amd64:
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/amd64/Dockerfile"
     CS_IMAGE: "yobasystems/alpine:3.23.2"
+    TRIVY_PLATFORM: "linux/amd64"
 
 container_scanning_armhf:
   tags:
@@ -32,6 +33,7 @@ container_scanning_armhf:
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/arm32v7/Dockerfile"
     CS_IMAGE: "yobasystems/alpine:3.23.2"
+    TRIVY_PLATFORM: "linux/arm"
 
 container_scanning_aarch64:
   tags:
@@ -39,6 +41,7 @@ container_scanning_aarch64:
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/arm64v8/Dockerfile"
     CS_IMAGE: "yobasystems/alpine:3.23.2"
+    TRIVY_PLATFORM: "linux/arm64"
 
 sbom_amd64:
   image: yobasystems/alpine-docker:amd64-dind
