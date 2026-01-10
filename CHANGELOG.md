@@ -1,3 +1,10 @@
+Alpine 3.23.2 released
+We are pleased to announce the release of Alpine Linux 3.23.2, a maintenance update of the 3.23 series.
+
+This release contains varioius bug fixes and improvements for apk-tools, and a fix for busybox mount to handle parsing /proc/mounts with long lines.
+
+The full lists of changes can be found in the git log.
+
 Alpine Linux 3.23.0 Released
 We are pleased to announce the release of Alpine Linux 3.23.0, the first release in the v3.23 stable series.
 

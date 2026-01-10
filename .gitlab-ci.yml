@@ -15,7 +15,7 @@ stages:
   - manifest
 
 include:
-  - remote: https://gitlab.com/yobasystems/gitlab-ci-templates/raw/master/container_scanning_all_arch.yml
+  - remote: https://gitlab.com/yobasystems/gitlab-ci-templates/-/raw/main/container_scanning_all_arch.yml
   - template: Jobs/Secret-Detection.gitlab-ci.yml
   - template: Jobs/SAST.gitlab-ci.yml
 
@@ -23,19 +23,19 @@ container_scanning_amd64:
   tags:
     - amd64
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.23.0/amd64/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.2/amd64/Dockerfile"
 
 container_scanning_armhf:
   tags:
     - aarch64 # Use aarch64 runner as there isnt an image for armhf
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.23.0/arm32v7/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.2/arm32v7/Dockerfile"
 
 container_scanning_aarch64:
   tags:
     - aarch64
   variables:
-    CS_DOCKERFILE_PATH: "alpine-3.23.0/arm64v8/Dockerfile"
+    CS_DOCKERFILE_PATH: "alpine-3.23.2/arm64v8/Dockerfile"
 
 sbom_amd64:
   tags:
@@ -90,34 +90,34 @@ sbom_aarch64:
       done
 
 # Alpine 3.23.x builds (includes 'latest' tags)
-build_alpine_3.23.0_amd64:
+build_alpine_3.23.2_amd64:
   extends: .build_job_template
   tags:
     - amd64
   variables:
-    ALPINE_DIR_VERSION: "3.23.0"
+    ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "latest x86_64 amd64 3.23.0-x86_64 3.23-x86_64 3.23.0-amd64 3.23-amd64"
+    IMAGE_TAGS: "latest x86_64 amd64 3.23.2-x86_64 3.23-x86_64 3.23.2-amd64 3.23-amd64"
     PLATFORM: "linux/amd64"
 
-build_alpine_3.23.0_arm32v7:
+build_alpine_3.23.2_arm32v7:
   extends: .build_job_template
   tags:
     - armhf
   variables:
-    ALPINE_DIR_VERSION: "3.23.0"
+    ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "latest arm32v7 armhf 3.23.0-arm32v7 3.23-arm32v7 3.23.0-armhf 3.23-armhf"
+    IMAGE_TAGS: "latest arm32v7 armhf 3.23.2-arm32v7 3.23-arm32v7 3.23.2-armhf 3.23-armhf"
     PLATFORM: "linux/arm/v7"
 
-build_alpine_3.23.0_arm64v8:
+build_alpine_3.23.2_arm64v8:
   extends: .build_job_template
   tags:
     - aarch64
   variables:
-    ALPINE_DIR_VERSION: "3.23.0"
+    ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "latest arm64v8 aarch64 3.23.0-arm64v8 3.23-arm64v8 3.23.0-aarch64 3.23-aarch64"
+    IMAGE_TAGS: "latest arm64v8 aarch64 3.23.2-arm64v8 3.23-arm64v8 3.23.2-aarch64 3.23-aarch64"
     PLATFORM: "linux/arm64/v8"
 
 # Alpine 3.22.x builds
@@ -328,11 +328,11 @@ manifest_creation_latest:
 manifest_creation_3.23.x:
   extends: .manifest_job_template_versioned
   needs:
-    - build_alpine_3.23.0_amd64
-    - build_alpine_3.23.0_arm32v7
-    - build_alpine_3.23.0_arm64v8
+    - build_alpine_3.23.2_amd64
+    - build_alpine_3.23.2_arm32v7
+    - build_alpine_3.23.2_arm64v8
   variables:
-    ALPINE_VERSION_FULL: "3.23.0"
+    ALPINE_VERSION_FULL: "3.23.2"
     ALPINE_VERSION_MINOR: "3.23"
   script: |
     set -e
