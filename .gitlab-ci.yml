@@ -75,7 +75,7 @@ sbom_aarch64:
       echo "Building image for ${PLATFORM} and tags:"
       # This echo is for readability in logs, actual tags are in DOCKER_BUILD_ARGS
       echo "$DOCKER_BUILD_ARGS"
-      docker build --platform ${PLATFORM} ${DOCKER_BUILD_ARGS} .
+      docker build ${DOCKER_BUILD_ARGS} --platform linux/${PLATFORM}.
     - |
       echo "Pushing images..."
       for TAG_SUFFIX in ${IMAGE_TAGS}; do
@@ -98,7 +98,7 @@ build_alpine_3.23.2_amd64:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "amd64"
     IMAGE_TAGS: "latest x86_64 amd64 3.23.2-x86_64 3.23-x86_64 3.23.2-amd64 3.23-amd64"
-    PLATFORM: "linux/amd64"
+    PLATFORM: "amd64"
 
 build_alpine_3.23.2_arm32v7:
   extends: .build_job_template
@@ -108,7 +108,7 @@ build_alpine_3.23.2_arm32v7:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm32v7"
     IMAGE_TAGS: "latest arm32v7 armhf 3.23.2-arm32v7 3.23-arm32v7 3.23.2-armhf 3.23-armhf"
-    PLATFORM: "linux/arm/v7"
+    PLATFORM: "arm/v7"
 
 build_alpine_3.23.2_arm64v8:
   extends: .build_job_template
@@ -118,7 +118,7 @@ build_alpine_3.23.2_arm64v8:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm64v8"
     IMAGE_TAGS: "latest arm64v8 aarch64 3.23.2-arm64v8 3.23-arm64v8 3.23.2-aarch64 3.23-aarch64"
-    PLATFORM: "linux/arm64/v8"
+    PLATFORM: "arm64/v8"
 
 # Alpine 3.22.x builds
 build_alpine_3.22.2_amd64:
@@ -129,7 +129,7 @@ build_alpine_3.22.2_amd64:
     ALPINE_DIR_VERSION: "3.22.2"
     BUILD_ARCH_DIR: "amd64"
     IMAGE_TAGS: "3.22.2-x86_64 3.22-x86_64 3.22.2-amd64 3.22-amd64"
-    PLATFORM: "linux/amd64"
+    PLATFORM: "amd64"
 
 build_alpine_3.22.2_arm32v7:
   extends: .build_job_template
@@ -139,7 +139,7 @@ build_alpine_3.22.2_arm32v7:
     ALPINE_DIR_VERSION: "3.22.2"
     BUILD_ARCH_DIR: "arm32v7"
     IMAGE_TAGS: "3.22.2-arm32v7 3.22-arm32v7 3.22.2-armhf 3.22-armhf"
-    PLATFORM: "linux/arm/v7"
+    PLATFORM: "arm/v7"
 
 build_alpine_3.22.2_arm64v8:
   extends: .build_job_template
@@ -149,7 +149,7 @@ build_alpine_3.22.2_arm64v8:
     ALPINE_DIR_VERSION: "3.22.2"
     BUILD_ARCH_DIR: "arm64v8"
     IMAGE_TAGS: "3.22.2-arm64v8 3.22-arm64v8 3.22.2-aarch64 3.22-aarch64"
-    PLATFORM: "linux/arm64/v8"
+    PLATFORM: "arm64/v8"
 
 # Alpine 3.21.x builds
 build_alpine_3.21.5_amd64:
@@ -160,7 +160,7 @@ build_alpine_3.21.5_amd64:
     ALPINE_DIR_VERSION: "3.21.5"
     BUILD_ARCH_DIR: "amd64"
     IMAGE_TAGS: "3.21.5-x86_64 3.21-x86_64 3.21.5-amd64 3.21-amd64"
-    PLATFORM: "linux/amd64"
+    PLATFORM: "amd64"
 
 build_alpine_3.21.5_arm32v7:
   extends: .build_job_template
@@ -170,7 +170,7 @@ build_alpine_3.21.5_arm32v7:
     ALPINE_DIR_VERSION: "3.21.5"
     BUILD_ARCH_DIR: "arm32v7"
     IMAGE_TAGS: "3.21.5-arm32v7 3.21-arm32v7 3.21.5-armhf 3.21-armhf"
-    PLATFORM: "linux/arm/v7"
+    PLATFORM: "arm/v7"
 
 build_alpine_3.21.5_arm64v8:
   extends: .build_job_template
@@ -180,7 +180,7 @@ build_alpine_3.21.5_arm64v8:
     ALPINE_DIR_VERSION: "3.21.5"
     BUILD_ARCH_DIR: "arm64v8"
     IMAGE_TAGS: "3.21.5-arm64v8 3.21-arm64v8 3.21.5-aarch64 3.21-aarch64"
-    PLATFORM: "linux/arm64/v8"
+    PLATFORM: "arm64/v8"
 
 # Alpine 3.20.x builds
 build_alpine_3.20.8_amd64:
@@ -191,7 +191,7 @@ build_alpine_3.20.8_amd64:
     ALPINE_DIR_VERSION: "3.20.8"
     BUILD_ARCH_DIR: "amd64"
     IMAGE_TAGS: "3.20.8-x86_64 3.20-x86_64 3.20.8-amd64 3.20-amd64"
-    PLATFORM: "linux/amd64"
+    PLATFORM: "amd64"
 
 build_alpine_3.20.8_arm32v7:
   extends: .build_job_template
@@ -201,7 +201,7 @@ build_alpine_3.20.8_arm32v7:
     ALPINE_DIR_VERSION: "3.20.8"
     BUILD_ARCH_DIR: "arm32v7"
     IMAGE_TAGS: "3.20.8-arm32v7 3.20-arm32v7 3.20.8-armhf 3.20-armhf"
-    PLATFORM: "linux/arm/v7"
+    PLATFORM: "arm/v7"
 
 build_alpine_3.20.8_arm64v8:
   extends: .build_job_template
@@ -211,7 +211,7 @@ build_alpine_3.20.8_arm64v8:
     ALPINE_DIR_VERSION: "3.20.8"
     BUILD_ARCH_DIR: "arm64v8"
     IMAGE_TAGS: "3.20.8-arm64v8 3.20-arm64v8 3.20.8-aarch64 3.20-aarch64"
-    PLATFORM: "linux/arm64/v8"
+    PLATFORM: "arm64/v8"
 
 # Alpine 3.19.x builds
 build_alpine_3.19.9_amd64:
@@ -222,7 +222,7 @@ build_alpine_3.19.9_amd64:
     ALPINE_DIR_VERSION: "3.19.9"
     BUILD_ARCH_DIR: "amd64"
     IMAGE_TAGS: "3.19.9-x86_64 3.19-x86_64 3.19.9-amd64 3.19-amd64"
-    PLATFORM: "linux/amd64"
+    PLATFORM: "amd64"
 
 build_alpine_3.19.9_arm32v7:
   extends: .build_job_template
@@ -232,7 +232,7 @@ build_alpine_3.19.9_arm32v7:
     ALPINE_DIR_VERSION: "3.19.9"
     BUILD_ARCH_DIR: "arm32v7"
     IMAGE_TAGS: "3.19.9-arm32v7 3.19-arm32v7 3.19.9-armhf 3.19-armhf"
-    PLATFORM: "linux/arm/v7"
+    PLATFORM: "arm/v7"
 
 build_alpine_3.19.9_arm64v8:
   extends: .build_job_template
@@ -242,7 +242,7 @@ build_alpine_3.19.9_arm64v8:
     ALPINE_DIR_VERSION: "3.19.9"
     BUILD_ARCH_DIR: "arm64v8"
     IMAGE_TAGS: "3.19.9-arm64v8 3.19-arm64v8 3.19.9-aarch64 3.19-aarch64"
-    PLATFORM: "linux/arm64/v8"
+    PLATFORM: "arm64/v8"
 
 .manifest_job_template_versioned:
   image: yobasystems/alpine-docker:dind
