@@ -286,9 +286,9 @@ manifest_creation_latest:
     echo "INFO: Logging into GitLab Registry ($DOCKER_REGISTRY)..."
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
     echo "INFO: Pulling base architecture images from GitLab Registry for latest tag..."
-    docker pull "$GL_IMG_AMD64"
-    docker pull "$GL_IMG_ARM32V7"
-    docker pull "$GL_IMG_ARM64V8"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8"
 
     echo "INFO: Processing GitLab manifest for latest..."
     MANIFEST_LIST_GITLAB="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:latest"
@@ -373,9 +373,9 @@ manifest_creation_3.23.x:
 
     # --- Processing for ${ALPINE_VERSION_FULL} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
-    docker pull "$GL_IMG_AMD64_FULL"
-    docker pull "$GL_IMG_ARM32V7_FULL"
-    docker pull "$GL_IMG_ARM64V8_FULL"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_FULL"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_FULL"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_FULL"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
     MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
@@ -414,9 +414,9 @@ manifest_creation_3.23.x:
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
-    docker pull "$GL_IMG_AMD64_MINOR"
-    docker pull "$GL_IMG_ARM32V7_MINOR"
-    docker pull "$GL_IMG_ARM64V8_MINOR"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_MINOR"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_MINOR"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_MINOR"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
     MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
@@ -501,9 +501,9 @@ manifest_creation_3.22.x:
 
     # --- Processing for ${ALPINE_VERSION_FULL} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
-    docker pull "$GL_IMG_AMD64_FULL"
-    docker pull "$GL_IMG_ARM32V7_FULL"
-    docker pull "$GL_IMG_ARM64V8_FULL"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_FULL"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_FULL"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_FULL"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
     MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
@@ -542,9 +542,9 @@ manifest_creation_3.22.x:
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
-    docker pull "$GL_IMG_AMD64_MINOR"
-    docker pull "$GL_IMG_ARM32V7_MINOR"
-    docker pull "$GL_IMG_ARM64V8_MINOR"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_MINOR"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_MINOR"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_MINOR"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
     MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
@@ -629,9 +629,9 @@ manifest_creation_3.21.x:
 
     # --- Processing for ${ALPINE_VERSION_FULL} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
-    docker pull "$GL_IMG_AMD64_FULL"
-    docker pull "$GL_IMG_ARM32V7_FULL"
-    docker pull "$GL_IMG_ARM64V8_FULL"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_FULL"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_FULL"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_FULL"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
     MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
@@ -670,9 +670,9 @@ manifest_creation_3.21.x:
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
-    docker pull "$GL_IMG_AMD64_MINOR"
-    docker pull "$GL_IMG_ARM32V7_MINOR"
-    docker pull "$GL_IMG_ARM64V8_MINOR"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_MINOR"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_MINOR"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_MINOR"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
     MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
@@ -757,9 +757,9 @@ manifest_creation_3.20.x:
 
     # --- Processing for ${ALPINE_VERSION_FULL} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
-    docker pull "$GL_IMG_AMD64_FULL"
-    docker pull "$GL_IMG_ARM32V7_FULL"
-    docker pull "$GL_IMG_ARM64V8_FULL"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_FULL"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_FULL"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_FULL"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
     MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
@@ -798,9 +798,9 @@ manifest_creation_3.20.x:
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
-    docker pull "$GL_IMG_AMD64_MINOR"
-    docker pull "$GL_IMG_ARM32V7_MINOR"
-    docker pull "$GL_IMG_ARM64V8_MINOR"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_MINOR"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_MINOR"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_MINOR"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
     MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
@@ -885,9 +885,9 @@ manifest_creation_3.19.x:
 
     # --- Processing for ${ALPINE_VERSION_FULL} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_FULL} tag..."
-    docker pull "$GL_IMG_AMD64_FULL"
-    docker pull "$GL_IMG_ARM32V7_FULL"
-    docker pull "$GL_IMG_ARM64V8_FULL"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_FULL"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_FULL"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_FULL"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_FULL}..."
     MANIFEST_LIST_GITLAB_FULL="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_FULL}"
@@ -926,9 +926,9 @@ manifest_creation_3.19.x:
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Pulling base architecture images from GitLab Registry for ${ALPINE_VERSION_MINOR} tag..."
-    docker pull "$GL_IMG_AMD64_MINOR"
-    docker pull "$GL_IMG_ARM32V7_MINOR"
-    docker pull "$GL_IMG_ARM64V8_MINOR"
+    docker pull --platform linux/amd64 "$GL_IMG_AMD64_MINOR"
+    docker pull --platform linux/arm/v7 "$GL_IMG_ARM32V7_MINOR"
+    docker pull --platform linux/arm64/v8 "$GL_IMG_ARM64V8_MINOR"
 
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
     MANIFEST_LIST_GITLAB_MINOR="$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:${ALPINE_VERSION_MINOR}"
