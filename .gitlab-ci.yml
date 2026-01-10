@@ -75,7 +75,7 @@ sbom_aarch64:
       echo "Building image for ${PLATFORM} and tags:"
       # This echo is for readability in logs, actual tags are in DOCKER_BUILD_ARGS
       echo "$DOCKER_BUILD_ARGS"
-      docker build ${DOCKER_BUILD_ARGS} .
+      docker build --platform ${PLATFORM} ${DOCKER_BUILD_ARGS} .
     - |
       echo "Pushing images..."
       for TAG_SUFFIX in ${IMAGE_TAGS}; do
