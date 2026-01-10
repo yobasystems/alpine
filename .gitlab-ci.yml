@@ -72,10 +72,10 @@ sbom_aarch64:
         DOCKER_BUILD_ARGS="$DOCKER_BUILD_ARGS -t $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:$TAG_SUFFIX"
         DOCKER_BUILD_ARGS="$DOCKER_BUILD_ARGS -t ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:$TAG_SUFFIX"
       done
-      echo "Building image with platform ${PLATFORM} and tags:"
+      echo "Building image for ${PLATFORM} and tags:"
       # This echo is for readability in logs, actual tags are in DOCKER_BUILD_ARGS
       echo "$DOCKER_BUILD_ARGS"
-      docker build ${DOCKER_BUILD_ARGS} --platform "${PLATFORM}" .
+      docker build ${DOCKER_BUILD_ARGS} .
     - |
       echo "Pushing images..."
       for TAG_SUFFIX in ${IMAGE_TAGS}; do
