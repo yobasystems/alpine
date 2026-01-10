@@ -303,7 +303,7 @@ manifest_creation_latest:
     echo "INFO: Processing Quay.io manifest for latest..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     MANIFEST_LIST_QUAY="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:latest"
-    docker buildx imagetools create --prefer-index=false -t "$MANIFEST_LIST_QUAY" "$QUAY_IMG_AMD64" "$QUAY_IMG_ARM32V7" "$QUAY_IMG_ARM64V8"
+    docker buildx imagetools create -t "$MANIFEST_LIST_QUAY" "$QUAY_IMG_AMD64" "$QUAY_IMG_ARM32V7" "$QUAY_IMG_ARM64V8"
 
 manifest_creation_3.23.x:
   extends: .manifest_job_template_versioned
@@ -370,7 +370,7 @@ manifest_creation_3.23.x:
     echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_FULL}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     MANIFEST_LIST_QUAY_FULL="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_FULL}"
-    docker buildx imagetools create --prefer-index=false -t "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
+    docker buildx imagetools create -t "$MANIFEST_LIST_QUAY_FULL" "$QUAY_IMG_AMD64_FULL" "$QUAY_IMG_ARM32V7_FULL" "$QUAY_IMG_ARM64V8_FULL"
 
     # --- Processing for ${ALPINE_VERSION_MINOR} ---
     echo "INFO: Processing GitLab manifest for ${ALPINE_VERSION_MINOR}..."
@@ -390,7 +390,7 @@ manifest_creation_3.23.x:
     echo "INFO: Processing Quay.io manifest for ${ALPINE_VERSION_MINOR}..."
     echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
     MANIFEST_LIST_QUAY_MINOR="$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:${ALPINE_VERSION_MINOR}"
-    docker buildx imagetools create --prefer-index=false -t "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
+    docker buildx imagetools create -t "$MANIFEST_LIST_QUAY_MINOR" "$QUAY_IMG_AMD64_MINOR" "$QUAY_IMG_ARM32V7_MINOR" "$QUAY_IMG_ARM64V8_MINOR"
 
 manifest_creation_3.22.x:
   extends: .manifest_job_template_versioned
