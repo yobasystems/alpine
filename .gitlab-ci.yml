@@ -24,33 +24,38 @@ container_scanning_amd64:
     - amd64
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/amd64/Dockerfile"
+    CS_IMAGE: "alpine:3.23.2-amd64"
 
 container_scanning_armhf:
   tags:
     - aarch64 # Use aarch64 runner as there isnt an image for armhf
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/arm32v7/Dockerfile"
+    CS_IMAGE: "alpine:3.23.2-armhf"
 
 container_scanning_aarch64:
   tags:
     - aarch64
   variables:
     CS_DOCKERFILE_PATH: "alpine-3.23.2/arm64v8/Dockerfile"
+    CS_IMAGE: "alpine:3.23.2-aarch64"
 
 sbom_amd64:
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
 
 sbom_armhf:
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
 
 sbom_aarch64:
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
 
 .build_job_template:
-  image: yobasystems/alpine-docker:dind
   stage: build
   variables:
     CI_APPLICATION_REPOSITORY: "$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG"
@@ -92,37 +97,41 @@ sbom_aarch64:
 # Alpine 3.23.x builds (includes 'latest' tags)
 build_alpine_3.23.2_amd64:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
   variables:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "amd64"
-    IMAGE_TAGS: "latest x86_64 amd64 3.23.2-x86_64 3.23-x86_64 3.23.2-amd64 3.23-amd64"
+    IMAGE_TAGS: "x86_64 amd64 3.23.2-x86_64 3.23-x86_64 3.23.2-amd64 3.23-amd64"
     PLATFORM: "amd64"
 
 build_alpine_3.23.2_arm32v7:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
   variables:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm32v7"
-    IMAGE_TAGS: "latest arm32v7 armhf 3.23.2-arm32v7 3.23-arm32v7 3.23.2-armhf 3.23-armhf"
+    IMAGE_TAGS: "arm32v7 armhf 3.23.2-arm32v7 3.23-arm32v7 3.23.2-armhf 3.23-armhf"
     PLATFORM: "arm/v7"
 
 build_alpine_3.23.2_arm64v8:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
   variables:
     ALPINE_DIR_VERSION: "3.23.2"
     BUILD_ARCH_DIR: "arm64v8"
-    IMAGE_TAGS: "latest arm64v8 aarch64 3.23.2-arm64v8 3.23-arm64v8 3.23.2-aarch64 3.23-aarch64"
+    IMAGE_TAGS: "arm64v8 aarch64 3.23.2-arm64v8 3.23-arm64v8 3.23.2-aarch64 3.23-aarch64"
     PLATFORM: "arm64/v8"
 
 # Alpine 3.22.x builds
 build_alpine_3.22.2_amd64:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
   variables:
@@ -133,6 +142,7 @@ build_alpine_3.22.2_amd64:
 
 build_alpine_3.22.2_arm32v7:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
   variables:
@@ -143,6 +153,7 @@ build_alpine_3.22.2_arm32v7:
 
 build_alpine_3.22.2_arm64v8:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
   variables:
@@ -154,6 +165,7 @@ build_alpine_3.22.2_arm64v8:
 # Alpine 3.21.x builds
 build_alpine_3.21.5_amd64:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
   variables:
@@ -164,6 +176,7 @@ build_alpine_3.21.5_amd64:
 
 build_alpine_3.21.5_arm32v7:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
   variables:
@@ -174,6 +187,7 @@ build_alpine_3.21.5_arm32v7:
 
 build_alpine_3.21.5_arm64v8:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
   variables:
@@ -185,6 +199,7 @@ build_alpine_3.21.5_arm64v8:
 # Alpine 3.20.x builds
 build_alpine_3.20.8_amd64:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
   variables:
@@ -195,6 +210,7 @@ build_alpine_3.20.8_amd64:
 
 build_alpine_3.20.8_arm32v7:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
   variables:
@@ -205,6 +221,7 @@ build_alpine_3.20.8_arm32v7:
 
 build_alpine_3.20.8_arm64v8:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
   variables:
@@ -216,6 +233,7 @@ build_alpine_3.20.8_arm64v8:
 # Alpine 3.19.x builds
 build_alpine_3.19.9_amd64:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:amd64-dind
   tags:
     - amd64
   variables:
@@ -226,6 +244,7 @@ build_alpine_3.19.9_amd64:
 
 build_alpine_3.19.9_arm32v7:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:armhf-dind
   tags:
     - armhf
   variables:
@@ -236,6 +255,7 @@ build_alpine_3.19.9_arm32v7:
 
 build_alpine_3.19.9_arm64v8:
   extends: .build_job_template
+  image: yobasystems/alpine-docker:aarch64-dind
   tags:
     - aarch64
   variables:
