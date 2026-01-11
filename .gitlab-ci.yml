@@ -65,7 +65,7 @@ sbom_aarch64:
     CI_APPLICATION_TAG: "$CI_COMMIT_SHA"
   script:
     - export COMMIT_TIME=$(git show -s --format=%ct $CI_APPLICATION_TAG)
-    - apk add --no-cache --update git
+    - apk add --no-cache --update git docker-cli-buildx
     - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token "$DOCKER_REGISTRY" --password-stdin
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - echo "$QUAY_PASSWORD" | docker login -u "$QUAY_USERNAME" quay.io --password-stdin
@@ -83,21 +83,14 @@ sbom_aarch64:
       echo "Building image for linux/${PLATFORM} and tags:"
       # This echo is for readability in logs, actual tags are in DOCKER_BUILD_ARGS
       echo "$DOCKER_BUILD_ARGS"
-      docker build ${DOCKER_BUILD_ARGS} --platform linux/${PLATFORM} .
+      docker buildx create --name "buildx-${CI_JOB_ID}" --driver docker-container --use
+      docker buildx inspect --bootstrap
+      docker buildx build ${DOCKER_BUILD_ARGS} --platform linux/${PLATFORM} --push .
     - |
-      echo "Pushing images..."
-      for TAG_SUFFIX in ${IMAGE_TAGS}; do
-        echo "Pushing $DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:$TAG_SUFFIX"
-        docker push "$DOCKER_REGISTRY/$DOCKER_REGISTRY_REPO:$TAG_SUFFIX"
-        echo "Pushing $DOCKER_REGISTRY_DOCKERHUB_REPO:$TAG_SUFFIX"
-        docker push "$DOCKER_REGISTRY_DOCKERHUB_REPO:$TAG_SUFFIX"
-        echo "Pushing $DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:$TAG_SUFFIX"
-        docker push "$DOCKER_REGISTRY_QUAY/$DOCKER_REGISTRY_QUAY_REPO:$TAG_SUFFIX"
-        echo "Pushing ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:$TAG_SUFFIX"
-        docker push "ghcr.io/$DOCKER_REGISTRY_GHCR_REPO:$TAG_SUFFIX"
-      done
+      echo "Images pushed via docker buildx build --push"
+  after_script:
+    - docker buildx rm "buildx-${CI_JOB_ID}" || true
 
-# Alpine 3.23.x builds (includes 'latest' tags)
 build_alpine_3.23.2_amd64:
   extends: .build_job_template
   image: yobasystems/alpine-docker:amd64-dind
