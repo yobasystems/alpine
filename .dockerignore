@@ -49,9 +49,6 @@ coverage/
 dist/
 build/
 *.log
-*.tar
-*.tar.gz
-*.tgz
 
 # Temporary files
 tmp/
