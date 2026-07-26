@@ -19,8 +19,6 @@ Thumbs.db
 .docker/
 
 # Build artifacts
-*.tar
-*.tar.gz
 *.log
 
 # Temporary files
