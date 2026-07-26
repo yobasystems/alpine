@@ -1,3 +1,56 @@
+Alpine 3.24.1 released
+The Alpine Linux project is pleased to announce the release of Alpine Linux 3.24.1, a maintenance release of the 3.24 series.
+
+It includes security fixes for OpenSSL, addressing the June 9, 2026 advisory.
+
+CVE-2026-34180
+CVE-2026-34181
+CVE-2026-34182
+CVE-2026-34183
+CVE-2026-42764
+CVE-2026-42766
+CVE-2026-42767
+CVE-2026-42768
+CVE-2026-42769
+CVE-2026-42770
+CVE-2026-45445
+CVE-2026-45446
+CVE-2026-45447
+CVE-2026-7383
+CVE-2026-9076
+The full list of changes can be found in the git log.
+
+Alpine 3.22.5, 3.23.5 released
+The Alpine Linux project is pleased to announce the immediate availability of new stable releases:
+
+3.22.5
+3.23.5
+Those releases include security fixes for OpenSSL, addressing the June 9, 2026 advisory.
+
+CVE-2026-34180
+CVE-2026-34181
+CVE-2026-34182
+CVE-2026-34183
+CVE-2026-42764
+CVE-2026-42766
+CVE-2026-42767
+CVE-2026-42768
+CVE-2026-42769
+CVE-2026-42770
+CVE-2026-45445
+CVE-2026-45446
+CVE-2026-45447
+CVE-2026-7383
+CVE-2026-9076
+Those releases also include security fixes for Xen, addressing XSA-491 through XSA-494.
+
+CVE-2025-10263 XSA-493
+CVE-2026-42487 XSA-491
+CVE-2026-42488 XSA-494
+CVE-2026-42489 XSA-492
+CVE-2026-42490 XSA-492
+The full list of changes can be found in the git log.
+
 Alpine 3.23.2 released
 We are pleased to announce the release of Alpine Linux 3.23.2, a maintenance update of the 3.23 series.
 
